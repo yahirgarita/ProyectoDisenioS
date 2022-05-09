@@ -114,6 +114,11 @@ public class Persona {
     public ArrayList<CuentaBancaria> getMisCuentas(){
         return misCuentas;
     }
+    
+    public void aniadirCuentaBancariaCliente(CuentaBancaria pCuenta){
+        this.misCuentas.add(pCuenta);
+    }
+    
     /**
     * String que permite enviar un mensaje de creación del usuario
     * 

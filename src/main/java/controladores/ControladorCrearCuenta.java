@@ -27,11 +27,13 @@ import validaciones.*;
  *
  * @version 1.0
  */
+
 public class ControladorCrearCuenta implements ActionListener{
     public CrearCuenta crearCuenta;
     private Menu menuInicial;
     private ArrayList<CuentaBancaria> cuentasEnBD;
     private Persona clienteActual;
+    
     
     /**
      * ControladorListarClientes

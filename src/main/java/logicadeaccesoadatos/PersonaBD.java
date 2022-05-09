@@ -24,7 +24,7 @@ public class PersonaBD {
     private static final ConexionBD conexionBD = new ConexionBD();
     
     public static boolean registrarClientesEnBD(Persona pPersona){
-        if(!Validar.existeUsuario(pPersona)){
+        if(!Validar.existeCliente(pPersona)){
             conexionBD.conexionDataBase();
             conexionBD.ejecutarSentSQL("INSERT INTO Persona VALUES (" + "'" +pPersona.getPrimerApellido()+ "','"+ pPersona.getSegundoApellido()
                     +"','" + pPersona.getNombre()+ "'," + pPersona.getIdPersona() + ",'" + pPersona.getFechaNacimiento()

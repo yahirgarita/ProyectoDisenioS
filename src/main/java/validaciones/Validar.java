@@ -10,6 +10,7 @@ import java.util.regex.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDate;
+import logicadeaccesoadatos.*;
 
 /**
  * @author Carlos Rojas Molina
@@ -28,7 +29,7 @@ public class Validar{
      * 
      */
     
-    public static boolean existeUsuario(Persona pPersona){
+    public static boolean existeCliente(Persona pPersona){
         coneccion.conexionDataBase();
         ResultSet resultado = coneccion.inquiry("SELECT * FROM Persona WHERE codigo = '" + pPersona.getCodigo() + 
                 "' or identificacion =" + pPersona.getIdPersona());
@@ -43,21 +44,38 @@ public class Validar{
         return false;        
     }
     
-    public static boolean validarFormatoPIN(String pPin){
-        String simbolos = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){6}$";
-        Pattern patron = Pattern.compile(simbolos);
-        Matcher matcher = patron.matcher(pPin);
-        return matcher.matches();
+    public static boolean espacioVacio(String texto){
+        return texto.length() > 0;
     }
     
-    public static boolean validarEsEntero(String numero){
+    public static boolean espaciosVacios(ArrayList<String> mensajes){
+        for(String mensaje:mensajes){
+            if(mensaje.length()<= 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean fechaVacia(Date fecha){
+        return fecha != null;
+
+    }
+    public static boolean numCuentasPresentesEnBD(String pNumero){
+        coneccion.conexionDataBase();
+        ResultSet resultado = coneccion.inquiry("select * from Cuenta where numeroCuenta = '" + pNumero + "'");
         try{
-            int num = Integer.parseInt(numero);
-            return true;
-            
-        }catch(Exception e){
+            while(resultado.next()){
+                return false;
+            }
+        }
+        catch(SQLException e){
             return false;
         }
+        coneccion.salirBD();
+        return true;
+        
     }
+   
+    
 }
 

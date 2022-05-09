@@ -4,7 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 import logicadenegocios.Persona;
-
+import util.Encriptar;
+import validaciones.Validar;
 /**
  *
  * @author Carlos Rojas Molina
@@ -45,8 +46,14 @@ public class CuentaBancaria {
         return saldo;
     }
 
-    public void getEstatus(String pEstatus) {
+    public void setEstatus(String pEstatus) {
         this.estatus = pEstatus;
+    }
+    public String getEstatus(){
+        return estatus;
+    }
+    public Persona getDuenio(){
+        return duenio;
     }
 
     public String getPin() {
@@ -61,11 +68,31 @@ public class CuentaBancaria {
         return numCuenta; 
     }
     
+    public String msgCreacion(){
+        String msg = "Ha sido creada una nueva cuenta la base de datos, los datos que se almacenaron son;";
+        msg += "\n Número de cuenta: " + this.getNumCuenta();
+        msg += "\n Estatus de la cuenta: " + this.estatus;
+        msg += "\n Salgo actual de la cuenta: " + this.saldo;
+        msg += "\n ---------------------------";
+        msg += "\n Nombre del dueño de la cuenta: " + this.duenio.getNombreCompleto();
+        msg += "\n Número de teléfono asociado a la cuenta: " + this.duenio.getNumTelefonico();
+        msg += "\n Dirección de correo electrónico asociado a la cuenta: " + this.duenio.getCorreoPersona();
+        return msg;
+    }
     public static int generarNumCuenta(){
         Random random = new Random();
         int numRandom = random.nextInt(400000 + 300000)+ 300000;
-        
+        if(Validar.numCuentasPresentesEnBD(Encriptar.cifrar(Integer.toString(numRandom)))){
+            return numRandom;
+        }else{
+            return generarNumCuenta();
+        }
     }
+    
+    public void afiliarDuenio(Persona pDueno){
+        this.duenio = pDueno;
+    }
+    
     
     /**
      * Método para conocer la información de un objeto de tipo CuentaBancaria.

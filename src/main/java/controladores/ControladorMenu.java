@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import controladores.*;
 import gui.*;
+import javax.swing.*;
 
 /**
  * @author Carlos Rojas Molina
@@ -16,7 +17,7 @@ import gui.*;
 public class ControladorMenu implements ActionListener{
      public Menu menuInicial;
      private RegistroCliente registroCliente ;
-     private CrearCuenta crearCuentaBancaria;
+     private CrearCuenta crearCuentaBanco;
      private ListarClientes listarClientes;
     /*private ListarCuenta listarCuentas;*/
      private CambiarPIN cambiarPIN;
@@ -29,7 +30,7 @@ public class ControladorMenu implements ActionListener{
      public ControladorMenu(Menu pMenuInicial){
         this.menuInicial = pMenuInicial;
         this.registroCliente = null;
-        this.crearCuentaBancaria = null;
+        this.crearCuentaBanco = null;
         this.listarClientes = null;
         this.cambiarPIN = null;
         this.menuInicial.botonRegistrarClienteMenu.addActionListener(this);
@@ -61,10 +62,10 @@ public class ControladorMenu implements ActionListener{
          this.menuInicial.setVisible(false);
      }
      private void crearCuentaBancaria(){
-         CrearCuenta crearCuentaBan = new CrearCuenta();
-       
-         this.crearCuentaBancaria.setVisible(true);
-         this.menuInicial.dispose();
+         CrearCuenta nuevaCuenta = new CrearCuenta();
+         ControladorCrearCuenta controlNuevaCuenta = new ControladorCrearCuenta(nuevaCuenta); 
+         controlNuevaCuenta.crearCuenta.setVisible(true);
+         this.menuInicial.setVisible(true);
      }
      private void listarClientes(){
          ListarClientes listarCli = new ListarClientes();
@@ -77,6 +78,7 @@ public class ControladorMenu implements ActionListener{
          this.cambiarPIN.setVisible(true);
          this.menuInicial.dispose();
      }
+     
      private void volver(){
          this.menuInicial.dispose();
      }

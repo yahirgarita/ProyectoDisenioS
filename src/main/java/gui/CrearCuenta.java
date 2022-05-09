@@ -125,7 +125,7 @@ public class CrearCuenta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField montoInicialCrearCuenta;
-    private javax.swing.JTextField pinCrearCuenta;
+    public javax.swing.JTextField montoInicialCrearCuenta;
+    public javax.swing.JTextField pinCrearCuenta;
     // End of variables declaration//GEN-END:variables
 }
