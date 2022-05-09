@@ -11,8 +11,10 @@ import javax.swing.*;
 import java.util.*;
 import controladores.*;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 
 import logicadenegocios.*;
 import logicadeaccesoadatos.PersonaBD;
@@ -27,6 +29,8 @@ import validaciones.*;
 public class ControladorCrearCuenta implements ActionListener{
     public CrearCuenta crearCuenta;
     private Menu menuInicial;
+    private ArrayList<CuentaBancaria> cuentasEnBD;
+    private Persona clienteActual;
     
     /**
      * ControladorListarClientes
@@ -36,6 +40,7 @@ public class ControladorCrearCuenta implements ActionListener{
     public ControladorCrearCuenta(CrearCuenta pCrearCuenta){
         this.crearCuenta = pCrearCuenta;
         this.menuInicial = null;
+        this.cuentasEnBD = new ArrayList<>();
         this.crearCuenta.botonRegistrar.addActionListener(this);
         this.crearCuenta.botonVolver.addActionListener(this);
     }
@@ -43,7 +48,7 @@ public class ControladorCrearCuenta implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
-            case "Consultar clientes":consultarClientes();
+            case "Consultar clientes":crearCuenta();
                 break;
             case "Volver":
                 controladores.ControladoresGlobales.volver();
@@ -55,10 +60,30 @@ public class ControladorCrearCuenta implements ActionListener{
     }
     private void crearCuenta(){
         int numRandomCuenta = CuentaBancaria.generarNumCuenta();
+        if(validarDatosCrearCuenta()){
+            CuentaBancaria newCuenta = new CuentaBancaria(numRandomCuenta, Double.parseDouble(this.crearCuenta.montoInicialCrearCuenta.getText()),
+                    this.crearCuenta.pinCrearCuenta.getText(), LocalDate.now());
+        
+        newCuenta.afiliarDuenio(this.clienteActual);
+        this.clienteActual.aniadirCuentaBancariaCliente(newCuenta);
+        }
         
     }
     private boolean validarDatosCrearCuenta(){
-        ArrayList<String> espacios = ArrayList<>();
-        espacios.add(this.crearCuenta.pinCrearCuenta.getText()));
+        ArrayList<String> espacios = new ArrayList<>();
+        espacios.add(this.crearCuenta.pinCrearCuenta.getText());
+        espacios.add(this.crearCuenta.montoInicialCrearCuenta.getText());
+        
+        ArrayList<Boolean> atributos = new ArrayList<>();
+        atributos.add(validaciones.ValidarTipoDeDato.validarEsEntero(this.crearCuenta.montoInicialCrearCuenta.getText()));
+        atributos.add(validaciones.Validar.espaciosVacios(espacios));
+        atributos.add(validaciones.ValidarTipoDeDato.validarFormatoPIN(this.crearCuenta.pinCrearCuenta.getText()));
+        
+        for(boolean comprobar: atributos){
+            if(!comprobar){
+                return false;
+            }
+        }
+        return true;
     }
 }
