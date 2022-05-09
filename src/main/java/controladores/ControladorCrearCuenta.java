@@ -29,7 +29,7 @@ import validaciones.*;
  */
 
 public class ControladorCrearCuenta implements ActionListener{
-    public CrearCuenta crearCuenta;
+    public CreacionCuenta crearCuenta;
     private Menu menuInicial;
     private ArrayList<CuentaBancaria> cuentasEnBD;
     private Persona clienteActual;
@@ -40,12 +40,12 @@ public class ControladorCrearCuenta implements ActionListener{
      * 
      * @param pCrearCuenta
      */
-    public ControladorCrearCuenta(CrearCuenta pCrearCuenta){
+    public ControladorCrearCuenta(CreacionCuenta pCrearCuenta){
         this.crearCuenta = pCrearCuenta;
         this.menuInicial = null;
         this.cuentasEnBD = new ArrayList<>();
-        this.crearCuenta.botonRegistrar.addActionListener(this);
-        this.crearCuenta.botonVolver.addActionListener(this);
+        this.crearCuenta.botonRegistrarC.addActionListener(this);
+        this.crearCuenta.botonVolverC.addActionListener(this);
     }
     
     @Override

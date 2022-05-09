@@ -17,7 +17,7 @@ import javax.swing.*;
 public class ControladorMenu implements ActionListener{
      public Menu menuInicial;
      private RegistroCliente registroCliente ;
-     private CrearCuenta crearCuentaBanco;
+     private CreacionCuenta crearCuentaBanco;
      private ListarClientes listarClientes;
     /*private ListarCuenta listarCuentas;*/
      private CambiarPIN cambiarPIN;
@@ -62,10 +62,10 @@ public class ControladorMenu implements ActionListener{
          this.menuInicial.setVisible(false);
      }
      private void crearCuentaBancaria(){
-         CrearCuenta nuevaCuenta = new CrearCuenta();
+         CreacionCuenta nuevaCuenta = new CreacionCuenta();
          ControladorCrearCuenta controlNuevaCuenta = new ControladorCrearCuenta(nuevaCuenta); 
          controlNuevaCuenta.crearCuenta.setVisible(true);
-         this.menuInicial.setVisible(true);
+         this.menuInicial.setVisible(false);
      }
      private void listarClientes(){
          ListarClientes listarCli = new ListarClientes();
