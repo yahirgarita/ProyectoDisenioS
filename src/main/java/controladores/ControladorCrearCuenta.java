@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
+import logicadeaccesoadatos.CuentaBD;
 
 import logicadenegocios.*;
 import logicadeaccesoadatos.PersonaBD;
@@ -66,9 +67,14 @@ public class ControladorCrearCuenta implements ActionListener{
         
         newCuenta.afiliarDuenio(this.clienteActual);
         this.clienteActual.aniadirCuentaBancariaCliente(newCuenta);
+        CuentaBD.registrarCuentaEnBD(newCuenta);
+        cuentasEnBD.add(newCuenta);
+        JOptionPane.showMessageDialog(null, newCuenta.msgCreacion());
+        this.crearCuenta.setVisible(false);
+        this.menuInicial.setVisible(true);
         }
-        
     }
+    
     private boolean validarDatosCrearCuenta(){
         ArrayList<String> espacios = new ArrayList<>();
         espacios.add(this.crearCuenta.pinCrearCuenta.getText());
