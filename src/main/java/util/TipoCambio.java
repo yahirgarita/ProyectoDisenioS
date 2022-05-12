@@ -70,7 +70,6 @@ public class TipoCambio {
     String params = "Indicador=" + this.indicador + "&FechaInicio=" + this.fechaInicio + "&FechaFinal=" + this.fechaFinal + ""
             + "&Nombre=" + this.nombre + "&SubNiveles=N&CorreoElectronico=jimmytsafg@gmail.com&Token=ME04SMSAMS";
     this.url = HOST+"?"+params;
-    //this.url = HOST;
   }
   
   private void setFecha(){
