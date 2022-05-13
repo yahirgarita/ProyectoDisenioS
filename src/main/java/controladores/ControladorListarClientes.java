@@ -18,6 +18,9 @@ import logicadenegocios.*;
 import logicadeaccesoadatos.PersonaBD;
 import validaciones.*;
 import controladores.*;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -45,12 +48,13 @@ public class ControladorListarClientes implements ActionListener{
         this.personasEnBD = new ArrayList<>();
         this.listarClientes.botonConsultarClientes.addActionListener(this);
         this.listarClientes.botonVolver.addActionListener(this);
+        convetirClientesAObj();
     }
     
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
-            case "Consultar clientes":consultarListaClientes();
+            case "Consultar clientes":consultarClientes();
                 break;
             case "Volver":
                 controladores.ControladoresGlobales.volver();
@@ -59,6 +63,21 @@ public class ControladorListarClientes implements ActionListener{
             default:
                 break;
        }        
+    }
+    private void convetirClientesAObj(){
+        ResultSet resultado = PersonaBD.cargarTodosLosClientes();
+        try{
+            while(resultado.next()){
+                Persona infoCliente = new Persona(resultado.getString("primerApellido"),
+                resultado.getString("segundoApellido"), resultado.getString("nombre"), Integer.parseInt(resultado.getString("identificacion")), LocalDate.parse(resultado.getString("fechaNacimiento"),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd")), Integer.parseInt(resultado.getString("telefono")), resultado.getString("correo"));
+                infoCliente.setCodigo(resultado.getString("codigo"));
+                personasEnBD.add(infoCliente);
+            }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error: " + e.toString());
+        }
     }
     public void consultarClientes(){
         String[] title = {"Primer apellido", "Segundo apellido", "Nombre", "Identificación"};
@@ -72,26 +91,24 @@ public class ControladorListarClientes implements ActionListener{
         //Tabla con todos los clientes
         
         this.listarClientes.modelo = new DefaultTableModel(null,title);
-        ListarClientes.tablaInfoCliente.setModel(this.listarClientes.modelo);
-        this.listarClientes.modelo.setColumnIdentifiers(new Object[]{"Primer apellido","Segundo apellido", "Nombre", "Identificacion"});
-        
+        ListarClientes.tablaClientes.setModel(this.listarClientes.modelo);
+
         //Tabla para mostrar toda la informacion de la persona
         
         this.listarClientes.modeloInfoCliente = new DefaultTableModel(null, title2);
-       
-        ListarClientes.tablaInfoCliente.setModel(this.listarClientes.modeloInfoCliente);
+        ListarClientes.tablaInfoCliente.setMode(this.listarClientes.modeloInfoCliente);
 
         //Table de las cuentas
         
         this.listarClientes.modeloCuenta = new DefaultTableModel(null,title3);
-        
         ListarClientes.tablaCuenta.setModel(this.listarClientes.modeloCuenta);
 
         for(Persona person: personasEnBD){
             Object[] msg = {person.getPrimerApellido(), person.getSegundoApellido(), person.getNombre(), person.getIdPersona()};
+             
+            this.listarClientes.modelo.addRow(msg);
         }
-        
-        this.listarClientes.setVisible(true);
+
         this.menuInicial.setVisible(false);
         
     }
@@ -119,4 +136,8 @@ public class ControladorListarClientes implements ActionListener{
             this.listarClientes.modeloCuenta.addRow(datoPersona2);
         } 
     }
+    /*
+    private void ordenarPersona(){
+        personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
+    }*/
 }

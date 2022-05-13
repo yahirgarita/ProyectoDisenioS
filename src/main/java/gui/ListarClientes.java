@@ -47,7 +47,7 @@ public class ListarClientes extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tablaClientes = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tabla6 = new javax.swing.JTable();
+        tablaCuenta = new javax.swing.JTable();
 
         tabla3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,13 +73,13 @@ public class ListarClientes extends javax.swing.JFrame {
 
         tablaInfoCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Primer apellido", "Segundo apellido", "Nombre", "Identificación"
+                "Nombre completo", "Identificación", "Fecha de nacimiento", "Teléfono", "Correo Electrónico", "Código"
             }
         ));
         jScrollPane1.setViewportView(tablaInfoCliente);
@@ -98,18 +98,18 @@ public class ListarClientes extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tablaClientes);
 
-        tabla6.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCuenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Primer apellido", "Segundo apellido", "Nombre", "Identificación"
+                "Número de cuenta"
             }
         ));
-        jScrollPane6.setViewportView(tabla6);
+        jScrollPane6.setViewportView(tablaCuenta);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,15 +128,15 @@ public class ListarClientes extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(625, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+                            .addComponent(jScrollPane6))))
+                .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(27, 27, 27)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(623, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(59, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +147,7 @@ public class ListarClientes extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(botonVolver)
@@ -159,7 +159,7 @@ public class ListarClientes extends javax.swing.JFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(52, 52, 52)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(543, Short.MAX_VALUE)))
+                    .addContainerGap(495, Short.MAX_VALUE)))
         );
 
         pack();
@@ -209,8 +209,8 @@ public class ListarClientes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     public static javax.swing.JTable tabla3;
-    public static javax.swing.JTable tabla6;
     public static javax.swing.JTable tablaClientes;
+    public static javax.swing.JTable tablaCuenta;
     public static javax.swing.JTable tablaInfoCliente;
     // End of variables declaration//GEN-END:variables
 }
