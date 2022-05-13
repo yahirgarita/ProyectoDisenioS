@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 /**
  *
  * @author Carlos Rojas Molina
@@ -37,5 +38,9 @@ public class PersonaBD {
         else{
             return false;
         }
+    }
+    public static ResultSet cargarTodosLosClientes(){
+        conexionBD.conexionDataBase();
+        return conexionBD.inquiry("select * from Persona");
     }
 }
