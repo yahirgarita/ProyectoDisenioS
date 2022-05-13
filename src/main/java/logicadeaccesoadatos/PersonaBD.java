@@ -12,6 +12,9 @@ import java.time.format.DateTimeFormatter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import logicadenegocios.CuentaBancaria;
+
+
 /**
  *
  * @author Carlos Rojas Molina
@@ -37,5 +40,44 @@ public class PersonaBD {
         else{
             return false;
         }
+    }
+    public static ResultSet cargarTodosLosClientes(){
+        conexionBD.conexionDataBase();
+        return conexionBD.inquiry("select * from Persona");
+    }
+    
+    public static Persona recuperarClientePorID(int id){
+        conexionBD.conexionDataBase();
+        ResultSet idClienteBuscar = conexionBD.inquiry("select * from Persona where identificacion = " + id);
+        System.out.println(id); 
+        try{
+            while(idClienteBuscar.next()){
+                Persona cliente = new Persona(idClienteBuscar.getString("primerApellido"), idClienteBuscar.getString("segundoApellido"),idClienteBuscar.getString("nombre"),
+                        Integer.parseInt(idClienteBuscar.getString("identificacion")),LocalDate.parse(idClienteBuscar.getString("fechaNacimiento"), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                        Integer.parseInt(idClienteBuscar.getString("telefono")), idClienteBuscar.getString("correo"));
+                       cliente.setCodigo(idClienteBuscar.getString("codigo"));
+                return cliente;
+            }
+            conexionBD.salirBD();
+            return null;
+        }
+        catch(SQLException e){
+            return null;
+        }
+    }
+    public static ArrayList<CuentaBancaria> recuperarCuentasClientes(String codigo){
+        ArrayList<CuentaBancaria> cuentaBancariaCadena = new ArrayList<>();
+        try{
+            conexionBD.conexionDataBase();
+            ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where codigoPesona = '" + codigo + "'");
+            while(resultado.next()){
+                CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(resultado.getString("numeroCuenta"));
+                cuentaBancariaCadena.add(cuentaBanc);
+            }
+        }
+        catch(SQLException e){
+            return new ArrayList<>();
+        }
+        return cuentaBancariaCadena;
     }
 }

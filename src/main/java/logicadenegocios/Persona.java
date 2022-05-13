@@ -111,6 +111,10 @@ public class Persona {
         return codigo;
     }
     
+    public void setCodigo(String pCodigo){
+        this.codigo = pCodigo;
+    } 
+    
     public ArrayList<CuentaBancaria> getMisCuentas(){
         return misCuentas;
     }
@@ -136,4 +140,6 @@ public class Persona {
     public String getNombreCompleto(){
         return this.nombre + " " + this.primerApellido + " " + this.segundoApellido;
     }
+    
+    
 }
