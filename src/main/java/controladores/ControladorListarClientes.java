@@ -66,9 +66,17 @@ public class ControladorListarClientes implements ActionListener{
         this.listarClientes.botonConsultarClientes.addActionListener(this);
         this.listarClientes.botonVolver.addActionListener(this);
         
-        //Tabla inicial
+        //Tabla con todos los clientes
+        
         this.listarClientes.modelo = new DefaultTableModel(null,title);
         JTable table = new JTable();
         this.listarClientes.
+    }
+    
+    private void consultarListaClientes(){
+        this.listarClientes.modeloInfoCliente.setRowCount(0);
+        this.listarClientes.modeloCuenta.setRowCount(0);
+        int linea = this.listarClientes.tablePersonas.getSelectedRow();
+        PersonaBD person1 = recuperarClientePorID(Integer.parseInt(this.listarClientes.tablePersonas.getModel().getValueAt(linea,3).toString()));
     }
 }

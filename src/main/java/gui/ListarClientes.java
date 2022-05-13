@@ -1,5 +1,8 @@
 package gui;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  * @author Carlos Rojas Molina
  * @author Jimmy Tsang Feng
@@ -8,7 +11,14 @@ package gui;
  * @version 1.0
  */
 public class ListarClientes extends javax.swing.JFrame {
-
+    
+    public DefaultTableModel modelo;
+    public DefaultTableModel modeloCuenta;
+    public DefaultTableModel modeloInfoCliente;
+    
+    public JTable tablePersonas;
+    public JTable tableCuentas;
+    public JTable tableTodaInforPersona;
     /**
      * Creates new form ListarClientes
      */
@@ -73,7 +83,7 @@ public class ListarClientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +92,7 @@ public class ListarClientes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonConsultarClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonVolver, javax.swing.GroupLayout.Alignment.TRAILING))
