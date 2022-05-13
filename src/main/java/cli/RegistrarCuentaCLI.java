@@ -5,10 +5,42 @@
  */
 package cli;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import validaciones.*;
+
 /**
  *
  * @author Jimmy
  */
 public class RegistrarCuentaCLI {
     
+    public String[] registrarCuenta() throws IOException{
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String codigo="";
+        String pin;
+        String montoInicial;
+        
+        System.out.println("Por favor ingresar el codigo del cliente: "); 
+      /*  while(Validar.existeCliente(codigo = reader.readLine()) != true){
+            System.out.println("Por favor ingresar un codigo de cliente valido: ");
+        }*/
+        codigo = reader.readLine();
+        
+        System.out.println("Por favor ingrese un nuevo PIN para la cuenta: "); 
+        while(ValidarTipoDeDato.validarFormatoPIN(pin = reader.readLine())!= true){
+            System.out.println("Por favor ingresar un formato de PIN valido: ");
+        }
+        
+        System.out.println("Por favor deposite un monto inicial sin decimales (Ejemplo: 2000) : "); 
+        while(ValidarTipoDeDato.validarEsEntero(montoInicial = reader.readLine())!= true){
+            System.out.println("Por favor ingresar monto inicial sin decimales valido: ");
+        }
+        
+        String informacion[] = {codigo,pin,montoInicial};
+        return informacion;
+    }
+   
 }
