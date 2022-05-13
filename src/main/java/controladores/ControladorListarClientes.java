@@ -18,6 +18,7 @@ import logicadenegocios.Persona;
 import logicadeaccesoadatos.PersonaBD;
 import validaciones.*;
 import controladores.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author Carlos Rojas Molina
@@ -57,6 +58,17 @@ public class ControladorListarClientes implements ActionListener{
        }        
     }
     public void consultarClientes(){
+        String[] title = {"Primer Apellido", "Segundo Apellido", "Nombre", "Identificación"};
+        String[] title2 = {"Nombre completo", "Identificación", "Fecha de nacimiento", "Teléfono", "Correo electrónico", "Código"};
+        String[] title3 = {"Número de cuenta"};
         
+        this.listarClientes = new ListarClientes();
+        this.listarClientes.botonConsultarClientes.addActionListener(this);
+        this.listarClientes.botonVolver.addActionListener(this);
+        
+        //Tabla inicial
+        this.listarClientes.modelo = new DefaultTableModel(null,title);
+        JTable table = new JTable();
+        this.listarClientes.
     }
 }

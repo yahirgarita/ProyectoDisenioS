@@ -13,12 +13,12 @@ import util.Encriptar;
 public class CuentaBD {
     private static final ConexionBD conexionBD = new ConexionBD();
     
-    public static void registrarCuentaEnBD(CuentaBancaria pCuenta){
+    public static void registrarCuentaEnBD(CuentaBancaria pCuenta, String pCodigo){
         conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("insert into Cuenta values (" + "'" + Encriptar.cifrar(Integer.toString(pCuenta.getNumCuenta()))
+        conexionBD.ejecutarSentSQL("INSERT INTO Cuenta values (" + "'" + Encriptar.cifrar(Integer.toString(pCuenta.getNumCuenta()))
             + "','"+ pCuenta.getFechaCreacion().toString() + "','" + Encriptar.cifrar(Double.toString(pCuenta.getSaldo())) + "','" 
             + pCuenta.getEstatus() + "','" + Encriptar.cifrar(pCuenta.getPin()) + "')" );
-        conexionBD.ejecutarSentSQL("inset into PersonaCuenta values (" + "'" + pCuenta.getDuenio().getCodigo() + "','" 
+        conexionBD.ejecutarSentSQL("insert into PersonaCuenta values (" + "'" + pCodigo + "','" 
                 + Encriptar.cifrar(Integer.toString(pCuenta.getNumCuenta())) + "')");
         conexionBD.salirBD();
     }

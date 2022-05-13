@@ -29,7 +29,7 @@ public class ListarClientes extends javax.swing.JFrame {
         botonConsultarClientes = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,7 +40,7 @@ public class ListarClientes extends javax.swing.JFrame {
 
         botonVolver.setText("Volver");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -51,8 +51,8 @@ public class ListarClientes extends javax.swing.JFrame {
                 "Primer apellido", "Segundo apellido", "Nombre", "Identificación"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getAccessibleContext().setAccessibleDescription("");
+        jScrollPane1.setViewportView(tabla1);
+        tabla1.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +132,6 @@ public class ListarClientes extends javax.swing.JFrame {
     public javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla1;
     // End of variables declaration//GEN-END:variables
 }

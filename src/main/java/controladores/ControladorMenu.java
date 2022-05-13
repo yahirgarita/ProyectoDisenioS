@@ -63,7 +63,7 @@ public class ControladorMenu implements ActionListener{
      }
      private void crearCuentaBancaria(){
          CreacionCuenta nuevaCuenta = new CreacionCuenta();
-         ControladorCrearCuenta controlNuevaCuenta = new ControladorCrearCuenta(nuevaCuenta); 
+         ControladorCrearCuenta controlNuevaCuenta = new ControladorCrearCuenta(nuevaCuenta,menuInicial); 
          controlNuevaCuenta.crearCuenta.setVisible(true);
          this.menuInicial.setVisible(false);
      }

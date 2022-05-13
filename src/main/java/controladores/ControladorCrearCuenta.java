@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import logicadeaccesoadatos.CuentaBD;
+import validaciones.*;
 
 import logicadenegocios.*;
 import logicadeaccesoadatos.*;
@@ -36,6 +37,7 @@ public class ControladorCrearCuenta implements ActionListener{
     private ArrayList<CuentaBancaria> cuentasEnBD;
     private Persona clienteActual;
     private ArrayList<Persona> personasSistema;
+    
 
     
     
@@ -44,14 +46,16 @@ public class ControladorCrearCuenta implements ActionListener{
      * 
      * @param pCrearCuenta
      */
-    public ControladorCrearCuenta(CreacionCuenta pCrearCuenta){
+    public ControladorCrearCuenta(CreacionCuenta pCrearCuenta, Menu pMenuInicial){
         this.crearCuenta = pCrearCuenta;
-        this.menuInicial = null;
+        this.menuInicial = pMenuInicial;
         this.clienteActual = null;
         this.cuentasEnBD = new ArrayList<>();
         this.personasSistema = new ArrayList<>();
         this.crearCuenta.botonRegistrarC.addActionListener(this);
         this.crearCuenta.botonVolverC.addActionListener(this);
+        cargarInfoPersonas();
+        
     }
     
     @Override
@@ -69,19 +73,18 @@ public class ControladorCrearCuenta implements ActionListener{
     }
     private void crearCuenta(){
         int numRandomCuenta = CuentaBancaria.generarNumCuenta();
-        System.out.println("p"); 
+        clienteActual = PersonaBD.recuperarClientePorID(Integer.parseInt(crearCuenta.idClienteCrear.getText()));
         if(validarDatosCrearCuenta()){
             CuentaBancaria newCuenta = new CuentaBancaria(numRandomCuenta, Double.parseDouble(this.crearCuenta.montoInicialCrearCuenta.getText()),
-                    this.crearCuenta.pinCrearCuenta.getText(), LocalDate.now());
-            System.out.println("ada"); 
+                    this.crearCuenta.pinCrearCuenta1.getText(), LocalDate.now()); 
 
             newCuenta.afiliarDuenio(this.clienteActual);
             this.clienteActual.aniadirCuentaBancariaCliente(newCuenta);
-            CuentaBD.registrarCuentaEnBD(newCuenta);
+            CuentaBD.registrarCuentaEnBD(newCuenta, clienteActual.getCodigo());
             cuentasEnBD.add(newCuenta);
             JOptionPane.showMessageDialog(null, newCuenta.msgCreacion());
             this.crearCuenta.setVisible(false);
-            this.menuInicial.setVisible(true);
+            menuInicial.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null, "Error, revise los datos ingresados");
         }
@@ -90,14 +93,17 @@ public class ControladorCrearCuenta implements ActionListener{
     
     private boolean validarDatosCrearCuenta(){
         ArrayList<String> espacios = new ArrayList<>();
-        espacios.add(this.crearCuenta.pinCrearCuenta.getText());
-        espacios.add(this.crearCuenta.montoInicialCrearCuenta.getText());
-        System.out.println("p"); 
+        espacios.add(this.crearCuenta.pinCrearCuenta1.getText());
+        espacios.add(this.crearCuenta.pinCrearCuenta1.getText());
+        espacios.add(this.crearCuenta.montoInicialCrearCuenta.getText()); 
 
         ArrayList<Boolean> atributos = new ArrayList<>();
+        
         atributos.add(validaciones.ValidarTipoDeDato.validarEsEntero(this.crearCuenta.montoInicialCrearCuenta.getText()));
+        System.out.println("s"); 
         atributos.add(validaciones.Validar.espaciosVacios(espacios));
-        atributos.add(validaciones.ValidarTipoDeDato.validarFormatoPIN(this.crearCuenta.pinCrearCuenta.getText()));
+        System.out.println("a"); 
+        atributos.add(validaciones.ValidarTipoDeDato.validarFormatoPIN(this.crearCuenta.pinCrearCuenta1.getText()));
         
         for(boolean comprobar: atributos){
             if(!comprobar){
@@ -105,7 +111,7 @@ public class ControladorCrearCuenta implements ActionListener{
             }
         }
         return true;
-    
+    }
         
     private void cargarInfoPersonas(){
         ResultSet info = PersonaBD.cargarTodosLosClientes();
@@ -121,6 +127,5 @@ public class ControladorCrearCuenta implements ActionListener{
         catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         }
-        
     }
 }

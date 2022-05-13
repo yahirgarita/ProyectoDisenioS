@@ -48,7 +48,7 @@ public class ControladorRegistroClientes implements ActionListener{
     public void actionPerformed(ActionEvent evento){
         
         switch(evento.getActionCommand()){
-            case "Continuar": System.out.println("pinga"); {
+            case "Continuar": {
                 try {
                     hacerRegistro();
                 } catch (SQLException ex) {
@@ -71,7 +71,9 @@ public class ControladorRegistroClientes implements ActionListener{
             Integer.parseInt(this.registrarCliente.telRegistro1.getText()), this.registrarCliente.correoRegistro1.getText());
         if(PersonaBD.registrarClientesEnBD(nuevoCliente)){
             clientesSistema.add(nuevoCliente);
-            JOptionPane.showMessageDialog(null, "El usuario no puede ser creado.");
+            JOptionPane.showMessageDialog(null, "El usuario ha sido registrado");
+            controladores.ControladoresGlobales.volver();
+            this.registrarCliente.setVisible(false);
         }
     } 
     
