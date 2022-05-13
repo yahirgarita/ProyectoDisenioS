@@ -8,12 +8,12 @@ package gui;
  * 
  * @version 1.0
  */
-public class ModificarPIN extends javax.swing.JFrame {
+public class CambiarPinPaso2 extends javax.swing.JFrame {
 
     /**
      * Creates new form ModificarPIN
      */
-    public ModificarPIN() {
+    public CambiarPinPaso2() {
         initComponents();
     }
 
@@ -29,8 +29,8 @@ public class ModificarPIN extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         nombreRegistro = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonVolverPin2 = new javax.swing.JButton();
+        botonCambiarPin2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nombreRegistro1 = new javax.swing.JTextField();
 
@@ -41,25 +41,23 @@ public class ModificarPIN extends javax.swing.JFrame {
 
         jLabel1.setText("Nuevo Pin:");
 
-        nombreRegistro.setText("Digite el nuevo pin que desea");
         nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreRegistroActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Volver");
+        botonVolverPin2.setText("Volver");
 
-        jButton1.setText("Cambiar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonCambiarPin2.setText("Cambiar");
+        botonCambiarPin2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonCambiarPin2ActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Pin actual:");
 
-        nombreRegistro1.setText("Ingrese el pin actual de la cuenta");
         nombreRegistro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreRegistro1ActionPerformed(evt);
@@ -78,9 +76,9 @@ public class ModificarPIN extends javax.swing.JFrame {
                         .addGap(126, 126, 126))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jButton3)
+                        .addComponent(botonVolverPin2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonCambiarPin2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(41, 41, 41)
@@ -114,8 +112,8 @@ public class ModificarPIN extends javax.swing.JFrame {
                             .addComponent(nombreRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))))
+                            .addComponent(botonCambiarPin2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonVolverPin2))))
                 .addGap(14, 14, 14))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -136,9 +134,9 @@ public class ModificarPIN extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreRegistroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonCambiarPin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPin2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonCambiarPin2ActionPerformed
 
     private void nombreRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistro1ActionPerformed
         // TODO add your handling code here:
@@ -161,27 +159,28 @@ public class ModificarPIN extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarPIN().setVisible(true);
+                new CambiarPinPaso2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonCambiarPin2;
+    private javax.swing.JButton botonVolverPin2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -34,6 +34,9 @@ public class ListarClientes extends javax.swing.JFrame {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla3 = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         botonConsultarClientes = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
@@ -56,6 +59,12 @@ public class ListarClientes extends javax.swing.JFrame {
             }
         ));
         jScrollPane3.setViewportView(tabla3);
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,6 +208,9 @@ public class ListarClientes extends javax.swing.JFrame {
     public javax.swing.JButton botonConsultarClientes;
     public javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;

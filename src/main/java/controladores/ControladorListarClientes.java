@@ -89,6 +89,10 @@ public class ControladorListarClientes implements ActionListener{
         //Tabla con todos los clientes
         
         this.listarClientes.modelo = new DefaultTableModel();
+        this.listarClientes.modelo.addColumn("Primer apellido");
+        this.listarClientes.modelo.addColumn("Segundo apellido");
+        this.listarClientes.modelo.addColumn("Nombre");
+        this.listarClientes.modelo.addColumn("Identificación");
         this.listarClientes.tablaClientes.setModel(listarClientes.modelo);
 
         //Tabla para mostrar toda la informacion de la persona
@@ -110,7 +114,6 @@ public class ControladorListarClientes implements ActionListener{
         listarClientes.tablaClientes.setModel(listarClientes.modelo);
         System.out.println(personasEnBD.size());
         this.menuInicial.setVisible(false);
-        
     }
     private Persona verPersonaPorId(int pId){
         for(Persona persona: personasEnBD){

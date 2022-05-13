@@ -20,7 +20,7 @@ public class ControladorMenu implements ActionListener{
      private CreacionCuenta crearCuentaBanco;
      private ListarClientes listarClientes;
     /*private ListarCuenta listarCuentas;*/
-     private CambiarPIN cambiarPIN;
+     private CambiarPinPaso1 cambiarPIN;
      /**
       * Constructor de la clase controladorMenu
       * 
@@ -75,8 +75,12 @@ public class ControladorMenu implements ActionListener{
      }
      
      private void cambiarPIN(){
-         this.cambiarPIN.setVisible(true);
-         this.menuInicial.dispose();
+         
+         CambiarPinPaso1 cambiarP = new CambiarPinPaso1();
+         CambiarPinPaso2 cambiarP2 = new CambiarPinPaso2();
+         ControladorCambiarPin contro3 = new ControladorCambiarPin(cambiarP,cambiarP2);
+         contro3.cambiarPin1.setVisible(true);
+         this.menuInicial.setVisible(false);
      }
      
      private void volver(){

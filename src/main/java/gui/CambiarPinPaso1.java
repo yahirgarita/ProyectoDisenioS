@@ -7,12 +7,12 @@ package gui;
  * 
  * @version 1.0
  */
-public class CambiarPIN extends javax.swing.JFrame {
+public class CambiarPinPaso1 extends javax.swing.JFrame {
 
     /**
      * Creates new form CambiarPIN
      */
-    public CambiarPIN() {
+    public CambiarPinPaso1() {
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class CambiarPIN extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        nombreRegistro = new javax.swing.JTextField();
+        numCuentaPin = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -42,10 +42,9 @@ public class CambiarPIN extends javax.swing.JFrame {
 
         jLabel1.setText("Número de cuenta:");
 
-        nombreRegistro.setText("Ingrese el número de cuenta");
-        nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
+        numCuentaPin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreRegistroActionPerformed(evt);
+                numCuentaPinActionPerformed(evt);
             }
         });
 
@@ -72,7 +71,7 @@ public class CambiarPIN extends javax.swing.JFrame {
                             .addGap(42, 42, 42)
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
-                            .addComponent(nombreRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(numCuentaPin, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jButton3)
@@ -95,7 +94,7 @@ public class CambiarPIN extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(nombreRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(numCuentaPin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 98, Short.MAX_VALUE)))
                 .addGap(14, 14, 14))
         );
@@ -103,9 +102,9 @@ public class CambiarPIN extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed
+    private void numCuentaPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuentaPinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreRegistroActionPerformed
+    }//GEN-LAST:event_numCuentaPinActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -128,30 +127,31 @@ public class CambiarPIN extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CambiarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CambiarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CambiarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CambiarPIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambiarPinPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CambiarPIN().setVisible(true);
+                new CambiarPinPaso1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField nombreRegistro;
+    public javax.swing.JTextField numCuentaPin;
     // End of variables declaration//GEN-END:variables
 }

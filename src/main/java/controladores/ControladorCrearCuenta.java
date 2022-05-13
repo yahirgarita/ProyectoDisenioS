@@ -23,6 +23,7 @@ import logicadenegocios.*;
 import logicadeaccesoadatos.*;
 import java.time.format.DateTimeFormatter;
 import validaciones.*;
+
 /**
  * @author Carlos Rojas Molina
  * @author Jimmy Tsang Feng
@@ -37,9 +38,6 @@ public class ControladorCrearCuenta implements ActionListener{
     private ArrayList<CuentaBancaria> cuentasEnBD;
     private Persona clienteActual;
     private ArrayList<Persona> personasSistema;
-    
-
-    
     
     /**
      * ControladorListarClientes
