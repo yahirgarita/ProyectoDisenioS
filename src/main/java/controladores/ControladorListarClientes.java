@@ -50,7 +50,7 @@ public class ControladorListarClientes implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
-            case "Consultar clientes":consultarClientes();
+            case "Consultar clientes":consultarListaClientes();
                 break;
             case "Volver":
                 controladores.ControladoresGlobales.volver();
@@ -61,7 +61,7 @@ public class ControladorListarClientes implements ActionListener{
        }        
     }
     public void consultarClientes(){
-        String[] title = {"Primer Apellido", "Segundo Apellido", "Nombre", "Identificación"};
+        String[] title = {"Primer apellido", "Segundo apellido", "Nombre", "Identificación"};
         String[] title2 = {"Nombre completo", "Identificación", "Fecha de nacimiento", "Teléfono", "Correo electrónico", "Código"};
         String[] title3 = {"Número de cuenta"};
         
@@ -72,26 +72,21 @@ public class ControladorListarClientes implements ActionListener{
         //Tabla con todos los clientes
         
         this.listarClientes.modelo = new DefaultTableModel(null,title);
-        ListarClientes.tabla1.setModel(this.listarClientes.modelo);
-        this.listarClientes.tablaPersonas = ListarClientes.tabla1;
-        this.listarClientes.panelSecundario.setViewportView(this.listarClientes.tablaPersonas);
+        ListarClientes.tablaInfoCliente.setModel(this.listarClientes.modelo);
+        this.listarClientes.modelo.setColumnIdentifiers(new Object[]{"Primer apellido","Segundo apellido", "Nombre", "Identificacion"});
         
         //Tabla para mostrar toda la informacion de la persona
         
-        this.listarClientes.modelo = new DefaultTableModel(null, title2);
-        JTable lista1 = new JTable();
-        lista1.setModel(this.listarClientes.modeloInfoCliente);
-        this.listarClientes.tablaPersonas = lista1;
-        this.listarClientes.panelTablaCuentas.setViewportView(this.listarClientes.tablaPersonas);
-        
+        this.listarClientes.modeloInfoCliente = new DefaultTableModel(null, title2);
+       
+        ListarClientes.tablaInfoCliente.setModel(this.listarClientes.modeloInfoCliente);
+
         //Table de las cuentas
         
         this.listarClientes.modeloCuenta = new DefaultTableModel(null,title3);
-        JTable lista2 = new JTable();
-        lista2.setModel(this.listarClientes.modeloCuenta);
-        this.listarClientes.tablaCuentas = lista2;
-        this.listarClientes.panelTableInfoCliente.setViewportView(this.listarClientes.tablaCuentas);
         
+        ListarClientes.tablaCuenta.setModel(this.listarClientes.modeloCuenta);
+
         for(Persona person: personasEnBD){
             Object[] msg = {person.getPrimerApellido(), person.getSegundoApellido(), person.getNombre(), person.getIdPersona()};
         }
@@ -111,10 +106,12 @@ public class ControladorListarClientes implements ActionListener{
     private void consultarListaClientes(){
         this.listarClientes.modeloInfoCliente.setRowCount(0);
         this.listarClientes.modeloCuenta.setRowCount(0);
-        int linea = this.listarClientes.tablaPersonas.getSelectedRow();
-        Persona person1 = verPersonaPorId(Integer.parseInt(this.listarClientes.tablaPersonas.getModel().getValueAt(linea,3).toString()));
+        int linea = this.listarClientes.tablaInfoCliente.getSelectedRow();
+        
+        Persona person1 = verPersonaPorId(Integer.parseInt(this.listarClientes.tablaInfoCliente.getModel().getValueAt(linea,3).toString()));
         Object[] datoPersona = { person1.getNombreCompleto(),person1.getIdPersona(),person1.getFechaNacimiento(),person1.getNumTelefonico(),
             person1.getCorreoPersona(), person1.getCodigo()};
+        
         this.listarClientes.modeloInfoCliente.addRow(datoPersona);
         ArrayList<CuentaBancaria> cuentaBancariaCadena = PersonaBD.recuperarCuentasClientes(person1.getCodigo());
         for(CuentaBancaria cuentaBancaria: cuentaBancariaCadena){
