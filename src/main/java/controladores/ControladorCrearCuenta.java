@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.swing.*;
 import java.util.*;
 import controladores.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.logging.Level;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 import logicadeaccesoadatos.CuentaBD;
 
 import logicadenegocios.*;
-import logicadeaccesoadatos.PersonaBD;
+import logicadeaccesoadatos.*;
+import java.time.format.DateTimeFormatter;
 import validaciones.*;
 /**
  * @author Carlos Rojas Molina
@@ -33,6 +35,8 @@ public class ControladorCrearCuenta implements ActionListener{
     private Menu menuInicial;
     private ArrayList<CuentaBancaria> cuentasEnBD;
     private Persona clienteActual;
+    private ArrayList<Persona> personasSistema;
+
     
     
     /**
@@ -43,7 +47,9 @@ public class ControladorCrearCuenta implements ActionListener{
     public ControladorCrearCuenta(CreacionCuenta pCrearCuenta){
         this.crearCuenta = pCrearCuenta;
         this.menuInicial = null;
+        this.clienteActual = null;
         this.cuentasEnBD = new ArrayList<>();
+        this.personasSistema = new ArrayList<>();
         this.crearCuenta.botonRegistrarC.addActionListener(this);
         this.crearCuenta.botonVolverC.addActionListener(this);
     }
@@ -51,7 +57,7 @@ public class ControladorCrearCuenta implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
-            case "Consultar clientes":crearCuenta();
+            case "Registrar":crearCuenta();
                 break;
             case "Volver":
                 controladores.ControladoresGlobales.volver();
@@ -63,25 +69,31 @@ public class ControladorCrearCuenta implements ActionListener{
     }
     private void crearCuenta(){
         int numRandomCuenta = CuentaBancaria.generarNumCuenta();
+        System.out.println("p"); 
         if(validarDatosCrearCuenta()){
             CuentaBancaria newCuenta = new CuentaBancaria(numRandomCuenta, Double.parseDouble(this.crearCuenta.montoInicialCrearCuenta.getText()),
                     this.crearCuenta.pinCrearCuenta.getText(), LocalDate.now());
-        
-        newCuenta.afiliarDuenio(this.clienteActual);
-        this.clienteActual.aniadirCuentaBancariaCliente(newCuenta);
-        CuentaBD.registrarCuentaEnBD(newCuenta);
-        cuentasEnBD.add(newCuenta);
-        JOptionPane.showMessageDialog(null, newCuenta.msgCreacion());
-        this.crearCuenta.setVisible(false);
-        this.menuInicial.setVisible(true);
+            System.out.println("ada"); 
+
+            newCuenta.afiliarDuenio(this.clienteActual);
+            this.clienteActual.aniadirCuentaBancariaCliente(newCuenta);
+            CuentaBD.registrarCuentaEnBD(newCuenta);
+            cuentasEnBD.add(newCuenta);
+            JOptionPane.showMessageDialog(null, newCuenta.msgCreacion());
+            this.crearCuenta.setVisible(false);
+            this.menuInicial.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error, revise los datos ingresados");
         }
+        
     }
     
     private boolean validarDatosCrearCuenta(){
         ArrayList<String> espacios = new ArrayList<>();
         espacios.add(this.crearCuenta.pinCrearCuenta.getText());
         espacios.add(this.crearCuenta.montoInicialCrearCuenta.getText());
-        
+        System.out.println("p"); 
+
         ArrayList<Boolean> atributos = new ArrayList<>();
         atributos.add(validaciones.ValidarTipoDeDato.validarEsEntero(this.crearCuenta.montoInicialCrearCuenta.getText()));
         atributos.add(validaciones.Validar.espaciosVacios(espacios));
@@ -93,5 +105,22 @@ public class ControladorCrearCuenta implements ActionListener{
             }
         }
         return true;
+    
+        
+    private void cargarInfoPersonas(){
+        ResultSet info = PersonaBD.cargarTodosLosClientes();
+        try{
+            while(info.next()){
+                Persona infoCliente = new Persona(info.getString("primerApellido"),
+                info.getString("segundoApellido"), info.getString("nombre"), Integer.parseInt(info.getString("identificacion")), LocalDate.parse(info.getString("fechaNacimiento"),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd")), Integer.parseInt(info.getString("telefono")), info.getString("correo"));
+                infoCliente.setCodigo(info.getString("codigo"));
+                personasSistema.add(infoCliente);
+            }
+        }
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error: " + e.toString());
+        }
+        
     }
 }
