@@ -69,7 +69,7 @@ public class ControladorMenu implements ActionListener{
      }
      private void listarClientes(){
          ListarClientes listarCli = new ListarClientes();
-         ControladorListarClientes contro2 = new ControladorListarClientes(listarCli);
+         ControladorListarClientes contro2 = new ControladorListarClientes(listarCli, menuInicial);
          contro2.listarClientes.setVisible(true);
          this.menuInicial.setVisible(false);
      }

@@ -73,7 +73,7 @@ public class CuentaBancaria {
         msg += "\n Número de cuenta: " + this.getNumCuenta();
         msg += "\n Estatus de la cuenta: " + this.estatus;
         msg += "\n Salgo actual de la cuenta: " + this.saldo;
-        msg += "\n ---------------------------";
+        msg += "\n ------------o------------o------------o------------o------------o------------ ";
         msg += "\n Nombre del dueño de la cuenta: " + this.duenio.getNombreCompleto();
         msg += "\n Número de teléfono asociado a la cuenta: " + this.duenio.getNumTelefonico();
         msg += "\n Dirección de correo electrónico asociado a la cuenta: " + this.duenio.getCorreoPersona();

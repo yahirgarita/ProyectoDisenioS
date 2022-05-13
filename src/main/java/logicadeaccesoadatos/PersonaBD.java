@@ -12,6 +12,8 @@ import java.time.format.DateTimeFormatter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import logicadenegocios.CuentaBancaria;
+
 
 /**
  *
@@ -62,5 +64,20 @@ public class PersonaBD {
         catch(SQLException e){
             return null;
         }
+    }
+    public static ArrayList<CuentaBancaria> recuperarCuentasClientes(String codigo){
+        ArrayList<CuentaBancaria> cuentaBancariaCadena = new ArrayList<>();
+        try{
+            conexionBD.conexionDataBase();
+            ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where codigoPesona = '" + codigo + "'");
+            while(resultado.next()){
+                CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(resultado.getString("numeroCuenta"));
+                cuentaBancariaCadena.add(cuentaBanc);
+            }
+        }
+        catch(SQLException e){
+            return new ArrayList<>();
+        }
+        return cuentaBancariaCadena;
     }
 }

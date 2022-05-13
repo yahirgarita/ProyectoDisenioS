@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,9 +17,13 @@ public class ListarClientes extends javax.swing.JFrame {
     public DefaultTableModel modeloCuenta;
     public DefaultTableModel modeloInfoCliente;
     
-    public JTable tablePersonas;
-    public JTable tableCuentas;
-    public JTable tableTodaInforPersona;
+    public JTable tablaPersonas;
+    public JTable tablaCuentas;
+    public JTable tablaTodaInforPersona;
+    
+    public JScrollPane panelSecundario;
+    public JScrollPane panelTablaCuentas;
+    public JScrollPane panelTableInfoCliente;
     /**
      * Creates new form ListarClientes
      */
@@ -142,6 +147,6 @@ public class ListarClientes extends javax.swing.JFrame {
     public javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla1;
+    public javax.swing.JTable tabla1;
     // End of variables declaration//GEN-END:variables
 }
