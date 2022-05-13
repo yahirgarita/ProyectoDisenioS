@@ -18,6 +18,7 @@ import logicadenegocios.*;
 import logicadeaccesoadatos.PersonaBD;
 import validaciones.*;
 import controladores.*;
+import javax.swing.*;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -99,12 +100,14 @@ public class ControladorListarClientes implements ActionListener{
         
         this.listarClientes.modeloCuenta = new DefaultTableModel();
         this.listarClientes.tablaCuenta.setModel(this.listarClientes.modeloCuenta*/
-
+        
         for(Persona person: personasEnBD){
-            Object[] msg = {person.getPrimerApellido().toString(), person.getSegundoApellido().toString(), person.getNombre().toString(), person.getIdPersona()};
+            Object[] msg = {person.getPrimerApellido(), person.getSegundoApellido(), person.getNombre(), person.getIdPersona()};
             System.out.println(msg);
             this.listarClientes.modelo.addRow(msg);
+            System.out.println(this.listarClientes.modelo);
         }
+        listarClientes.tablaClientes.setModel(listarClientes.modelo);
         System.out.println(personasEnBD.size());
         this.menuInicial.setVisible(false);
         
