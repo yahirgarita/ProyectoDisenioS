@@ -16,10 +16,6 @@ public class ListarClientes extends javax.swing.JFrame {
     public DefaultTableModel modelo;
     public DefaultTableModel modeloCuenta;
     public DefaultTableModel modeloInfoCliente;
-    
-    public JTable tablaPersonas;
-    public JTable tablaCuentas;
-    public JTable tablaTodaInforPersona;
 
     /**
      * Creates new form ListarClientes
@@ -209,8 +205,8 @@ public class ListarClientes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     public static javax.swing.JTable tabla3;
-    public static javax.swing.JTable tablaClientes;
-    public static javax.swing.JTable tablaCuenta;
-    public static javax.swing.JTable tablaInfoCliente;
+    public javax.swing.JTable tablaClientes;
+    public javax.swing.JTable tablaCuenta;
+    public javax.swing.JTable tablaInfoCliente;
     // End of variables declaration//GEN-END:variables
 }

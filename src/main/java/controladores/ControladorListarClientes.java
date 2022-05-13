@@ -79,10 +79,7 @@ public class ControladorListarClientes implements ActionListener{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         }
     }
-    public void consultarClientes(){
-        String[] title = {"Primer apellido", "Segundo apellido", "Nombre", "Identificación"};
-        String[] title2 = {"Nombre completo", "Identificación", "Fecha de nacimiento", "Teléfono", "Correo electrónico", "Código"};
-        String[] title3 = {"Número de cuenta"};
+    private void consultarClientes(){
         
         this.listarClientes = new ListarClientes();
         this.listarClientes.botonConsultarClientes.addActionListener(this);
@@ -90,25 +87,25 @@ public class ControladorListarClientes implements ActionListener{
         
         //Tabla con todos los clientes
         
-        this.listarClientes.modelo = new DefaultTableModel(null,title);
-        ListarClientes.tablaClientes.setModel(this.listarClientes.modelo);
+        this.listarClientes.modelo = new DefaultTableModel();
+        this.listarClientes.tablaClientes.setModel(listarClientes.modelo);
 
         //Tabla para mostrar toda la informacion de la persona
-        
-        this.listarClientes.modeloInfoCliente = new DefaultTableModel(null, title2);
-        ListarClientes.tablaInfoCliente.setMode(this.listarClientes.modeloInfoCliente);
+        /*
+        this.listarClientes.modeloInfoCliente = new DefaultTableModel();
+        this.listarClientes.tablaInfoCliente.setModel(this.listarClientes.modeloInfoCliente);
 
         //Table de las cuentas
         
-        this.listarClientes.modeloCuenta = new DefaultTableModel(null,title3);
-        ListarClientes.tablaCuenta.setModel(this.listarClientes.modeloCuenta);
+        this.listarClientes.modeloCuenta = new DefaultTableModel();
+        this.listarClientes.tablaCuenta.setModel(this.listarClientes.modeloCuenta*/
 
         for(Persona person: personasEnBD){
-            Object[] msg = {person.getPrimerApellido(), person.getSegundoApellido(), person.getNombre(), person.getIdPersona()};
-             
+            Object[] msg = {person.getPrimerApellido().toString(), person.getSegundoApellido().toString(), person.getNombre().toString(), person.getIdPersona()};
+            System.out.println(msg);
             this.listarClientes.modelo.addRow(msg);
         }
-
+        System.out.println(personasEnBD.size());
         this.menuInicial.setVisible(false);
         
     }
