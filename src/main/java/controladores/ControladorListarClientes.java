@@ -73,7 +73,7 @@ public class ControladorListarClientes implements ActionListener{
         
         this.listarClientes.modelo = new DefaultTableModel(null,title);
         ListarClientes.tabla1.setModel(this.listarClientes.modelo);
-        this.listarClientes.tablaPersonas = tabla1;
+        this.listarClientes.tablaPersonas = ListarClientes.tabla1;
         this.listarClientes.panelSecundario.setViewportView(this.listarClientes.tablaPersonas);
         
         //Tabla para mostrar toda la informacion de la persona

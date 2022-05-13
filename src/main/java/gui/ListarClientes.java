@@ -147,6 +147,6 @@ public class ListarClientes extends javax.swing.JFrame {
     public javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tabla1;
+    public static javax.swing.JTable tabla1;
     // End of variables declaration//GEN-END:variables
 }
