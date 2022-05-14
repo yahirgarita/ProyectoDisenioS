@@ -31,7 +31,7 @@ public class ControladorCambiarPin implements ActionListener{
             this.cambiarPin2 = new CambiarPinPaso2();
             this.cambiarPin2.botonCambiarPin2.addActionListener(this);
             this.cambiarPin2.botonVolverPin2.addActionListener(this);
-            this.cambiarPin2.jLabel4.setText(String.valueOf(CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.cambiarPin1.getText()))));
+            this.cambiarPin2.jLabel4.setText(String.valueOf(CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.cambiarPin1.numCuentaPin.getText()))));
             this.cambiarPin2.setVisible(true);
             this.cambiarPin1.setVisible(false);
         }   

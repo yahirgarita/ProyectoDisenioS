@@ -28,11 +28,11 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        nombreRegistro = new javax.swing.JTextField();
+        nuevoPin = new javax.swing.JTextField();
         botonVolverPin2 = new javax.swing.JButton();
         botonCambiarPin2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        nombreRegistro1 = new javax.swing.JTextField();
+        pinActual = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,9 +42,9 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
 
         jLabel1.setText("Nuevo Pin:");
 
-        nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
+        nuevoPin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreRegistroActionPerformed(evt);
+                nuevoPinActionPerformed(evt);
             }
         });
 
@@ -59,9 +59,9 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
 
         jLabel2.setText("Pin actual:");
 
-        nombreRegistro1.addActionListener(new java.awt.event.ActionListener() {
+        pinActual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreRegistro1ActionPerformed(evt);
+                pinActualActionPerformed(evt);
             }
         });
 
@@ -89,7 +89,7 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel1))
                 .addGap(74, 74, 74)
-                .addComponent(nombreRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nuevoPin, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -99,7 +99,7 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(175, Short.MAX_VALUE)
-                    .addComponent(nombreRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pinActual, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(14, 14, 14)))
         );
         layout.setVerticalGroup(
@@ -116,7 +116,7 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
                         .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(nombreRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nuevoPin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonCambiarPin2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,24 +130,24 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(74, 74, 74)
-                    .addComponent(nombreRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pinActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(157, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed
+    private void nuevoPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoPinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreRegistroActionPerformed
+    }//GEN-LAST:event_nuevoPinActionPerformed
 
     private void botonCambiarPin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarPin2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonCambiarPin2ActionPerformed
 
-    private void nombreRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistro1ActionPerformed
+    private void pinActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinActualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreRegistro1ActionPerformed
+    }//GEN-LAST:event_pinActualActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,7 +192,7 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField nombreRegistro;
-    private javax.swing.JTextField nombreRegistro1;
+    private javax.swing.JTextField nuevoPin;
+    private javax.swing.JTextField pinActual;
     // End of variables declaration//GEN-END:variables
 }
