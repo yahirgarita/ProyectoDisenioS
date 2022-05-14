@@ -208,6 +208,6 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JTextField nuevoPin;
-    private javax.swing.JTextField pinActual;
+    public javax.swing.JTextField pinActual;
     // End of variables declaration//GEN-END:variables
 }
