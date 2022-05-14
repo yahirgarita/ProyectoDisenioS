@@ -114,7 +114,7 @@ public class ListarCuentas extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaCuentas);
 
-        botonConsultarInfoCliente.setText("Consultar información de un cuentas");
+        botonConsultarInfoCliente.setText("Consultar información de un cuenta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

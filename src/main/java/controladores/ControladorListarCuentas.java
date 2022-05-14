@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logicadeaccesoadatos.*;
@@ -38,15 +40,22 @@ public class ControladorListarCuentas implements ActionListener{
         this.listarCuentas.botonConsultarCuentas.addActionListener(this);
         this.listarCuentas.botonVolver.addActionListener(this);
         this.listarCuentas.botonConsultarInfoCliente.addActionListener(this);
-        //convetirClientesAObj();
+        recolectarInfoCuentas();
         organizarPersona();
     }  
     
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
-            case "Consultar cuentas":consultarCuentas();
+            case "Consultar cuentas":{
+                try {
+                    consultarCuentas();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorListarCuentas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Consultar información de un cuenta": consultarListarCuentas();
                 break;
             case "Volver":
@@ -62,7 +71,7 @@ public class ControladorListarCuentas implements ActionListener{
         personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
     }
     
-    private void consultarCuentas(){
+    private void consultarCuentas() throws SQLException{
         
         //Tabla con todos los clientes
         
@@ -104,11 +113,11 @@ public class ControladorListarCuentas implements ActionListener{
         this.listarCuentas.modeloCuenta.addColumn("Moneda");
         this.listarCuentas.tablaCuenta.setModel(this.listarCuentas.modeloCuenta);
         
-        ArrayList<CuentaBancaria> cuentaBancCadena = recolectarIndoCuentas();
+        ArrayList<CuentaBancaria> cuentaBancCadena = recolectarInfoCuentas();
         for(CuentaBancaria count: cuentaBancCadena){
             Object[] msg = {count.getNumCuenta(),count.getEstatus(),count.getSaldo(),
-            CuentaBD.saberClientePorCodigo(Encriptar.cifrar(String.valueOf(count.getNumCuenta()))).getNombreCompleto(),
-                    };
+            CuentaBD.saberDuenioCuenta(Encriptar.cifrar(String.valueOf(count.getNumCuenta()))).getNombreCompleto(),
+            CuentaBD.saberDuenioCuenta(Encriptar.cifrar(String.valueOf(count.getNumCuenta()))).getIdPersona()};
             this.listarCuentas.modelo.addRow(msg);
             
         }
@@ -119,25 +128,25 @@ public class ControladorListarCuentas implements ActionListener{
         this.listarCuentas.modeloInfoCuenta.setRowCount(0);
         this.listarCuentas.modeloCuenta.setRowCount(0);
         int filaSeleccionada = this.listarCuentas.tablaCuentas.getSelectedRow();
-        
-        Persona person = verPersonaPorId(Integer.parseInt(this.listarCuentas.tablaCuentas.getModel().getValueAt(filaSeleccionada,3).toString()));
+        CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.listarCuentas.tablaCuentas.getModel().getValueAt(filaSeleccionada,0).toString()));
 
-        Object[] cliente1 = {person.getNombreCompleto(),person.getIdPersona(), person.getFechaNacimiento(),
-            person.getNumTelefonico(), person.getCorreoPersona(), person.getCodigo()};
+        Object[] cliente1 = {cuentaBanc.getNumCuenta(),cuentaBanc.getFechaCreacion(), cuentaBanc.getSaldo(), cuentaBanc.getEstatus()};
         this.listarCuentas.modeloInfoCuenta.addRow(cliente1);
-        ArrayList<CuentaBancaria> cuentaBancariaArrayList = PersonaBD.recuperarCuentasClientes(person.getCodigo());
-        for(CuentaBancaria cuentaBanc:cuentaBancariaArrayList){
-            Object[] cliente2 = {cuentaBanc.getNumCuenta(),};
-            this.listarCuentas.modeloCuenta.addRow(cliente2);
+        ArrayList<Operacion> operacionCadena;
+        operacionCadena = CuentaBD.saberLasOperacionesDeCuentas(Encriptar.cifrar((Integer.toString(cuentaBanc.getNumCuenta()))));
+        
+        for(Operacion oper: operacionCadena){
+            Object[] cuentaBanc2 = {oper.getFechaOperacion(),oper.getTipo(),oper.getCargo(),oper.getMonto(),oper.getMoneda()};
+            this.listarCuentas.modeloCuenta.addRow(cuentaBanc2);
         }
     }
     
-    public ArrayList<CuentaBancaria>recolectarIndoCuentas() {
+    private ArrayList<CuentaBancaria> recolectarInfoCuentas() {
         ResultSet info = CuentaBD.recuperarTodaInfoCuenta();
         ArrayList<CuentaBancaria> cuentaBancCadena = new ArrayList<>();
         try{
             while(info.next()){
-                CuentaBancaria cuentaBanc = new CuentaBancaria(Integer.parseInt(Encriptar.cifrar(info.getString("numeroCuenta"))),
+                CuentaBancaria cuentaBanc = new CuentaBancaria(Integer.parseInt(Encriptar.descifrar(info.getString("numeroCuenta"))),
                         LocalDate.parse(info.getString("fecha")), Double.parseDouble(Encriptar.descifrar(info.getString("saldo"))), 
                         Encriptar.descifrar(info.getString("pin")), info.getString("estatus"));
                 cuentaBancCadena.add(cuentaBanc);

@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import logicadenegocios.*;
+import logicadenegocios.Operacion;
 import util.Encriptar;
 /**
  *
@@ -97,12 +99,37 @@ public class CuentaBD {
        return conexionBD.inquiry("select * from Cuenta");
    }   
    
-   public static Persona saberDuenioCuenta(String pNumCuenta){
+   public static Persona saberDuenioCuenta(String pNumCuenta) throws SQLException{
        conexionBD.conexionDataBase();
-       ResultSet resultado = conexionBD.inquiry("slect * from PersonaCuenta where numeroCuenta = '" + pNumCuenta + "'");
+
+       ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where numeroCuenta = '" + pNumCuenta + "'");
        while(resultado.next()){
-           return PersonaBD.registrarClientesEnBD(resultado.getString("codigoPersona"));
+           
+           return PersonaBD.saberClientePorCodigo(resultado.getString("codigoPersona"));
        }
-   }
+       return null;
+   
+    /**
+     * 
+     * @param pNumCuenta
+     * @return cadena
+     */
+    }
+    public static ArrayList<Operacion> saberLasOperacionesDeCuentas(String pNumCuenta){
+       conexionBD.conexionDataBase();
+        ArrayList<Operacion> cadena = new ArrayList<>();
+        ResultSet resultado = conexionBD.inquiry("select * from Operacion where cuenta = '" + pNumCuenta + "'");
+        try{
+            while(resultado.next()){
+                Operacion oper = new Operacion(resultado.getString("tipo"),resultado.getString("moneda"), Boolean.parseBoolean(resultado.getString("cargo")), 
+                    Double.parseDouble(resultado.getString("monto")), LocalDate.parse(resultado.getString("fecha")));
+                cadena.add(oper);
+            }
+        }
+        catch(SQLException e){
+            return new ArrayList<>();
+        }
+        return cadena;
+    }
 }
 
