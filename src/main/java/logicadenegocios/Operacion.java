@@ -17,7 +17,7 @@ public class Operacion {
     
     private String tipo;
     private String moneda;
-    
+
     private boolean cargo;
     private double monto;
     

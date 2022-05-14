@@ -12,14 +12,15 @@ import java.io.InputStreamReader;
  * @author Jimmy
  */
 public class MenuCLI {
-    public int menu() throws IOException{
+    
+    public int mostrarMenu() throws IOException{
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         
         System.out.println("Bienvenido al menu del banco");
         System.out.println("Por favor elija una opcion");
         System.out.println("1. Registrar Cliente");
-        System.out.println("2 Crear cuenta bancaria");
+        System.out.println("2. Crear cuenta bancaria");
         System.out.println("3. Listar Clientes");
         System.out.println("4. Listar Cuentas");
         System.out.println("5. Cambiar");
