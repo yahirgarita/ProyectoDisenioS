@@ -42,4 +42,16 @@ public class CuentaBD {
         }
         return null;
     }
+    public static void cambiarPinCuenta(String pNumCuenta, String pNewPin){
+        conexionBD.conexionDataBase();
+        conexionBD.ejecutarSentSQL("update Cuenta set pin = '" + pNewPin + "' where numeroCuenta = '" + pNumCuenta + "'");
+        conexionBD.salirBD();
+    }
+    
+    public static void modificarEstado(String pNumCuenta, String pEstatus){
+        conexionBD.conexionDataBase();
+        conexionBD.ejecutarSentSQL("update Cuenta set estatus = '" + pEstatus + "'where numeroCuenta = '" + pNumCuenta + "'");
+        conexionBD.salirBD();
+    }
+    
 }

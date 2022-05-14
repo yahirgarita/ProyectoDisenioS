@@ -66,6 +66,8 @@ public class PersonaBD {
             return null;
         }
     }
+    
+    
     public static ArrayList<CuentaBancaria> recuperarCuentasClientes(String codigo){
         ArrayList<CuentaBancaria> cuentaBancariaCadena = new ArrayList<>();
         try{
