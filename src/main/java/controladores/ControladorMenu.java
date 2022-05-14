@@ -21,6 +21,7 @@ public class ControladorMenu implements ActionListener{
      private ListarClientes listarClientes;
     /*private ListarCuenta listarCuentas;*/
      private CambiarPinPaso1 cambiarPIN;
+     private ConsultarSaldo consultaSaldo;
      /**
       * Constructor de la clase controladorMenu
       * 
@@ -33,12 +34,15 @@ public class ControladorMenu implements ActionListener{
         this.crearCuentaBanco = null;
         this.listarClientes = null;
         this.cambiarPIN = null;
+        this.consultaSaldo = null;
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.butonCrearCuenta.addActionListener(this);
         this.menuInicial.botonListarClientes.addActionListener(this);
         this.menuInicial.botonListarCuentas.addActionListener(this);
         this.menuInicial.botonCambiarPin.addActionListener(this);
-     }
+        this.menuInicial.btnConsultarSaldo.addActionListener(this);
+        
+    }
      
      @Override
      public void actionPerformed(ActionEvent opcion){

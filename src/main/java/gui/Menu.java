@@ -29,12 +29,12 @@ public class Menu extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         botonListarClientes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnConsultarSaldo = new javax.swing.JButton();
         botonCambiarPin = new javax.swing.JButton();
         botonListarCuentas = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         butonCrearCuenta = new javax.swing.JButton();
         botonRegistrarClienteMenu1 = new javax.swing.JButton();
+        btnConsultarSaldo = new javax.swing.JButton();
 
         jButton5.setText("Volver");
 
@@ -50,14 +50,6 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Menú de inicio");
-
-        btnConsultarSaldo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btnConsultarSaldo.setText("Consultar saldo actual");
-        btnConsultarSaldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarSaldoActionPerformed(evt);
-            }
-        });
 
         botonCambiarPin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         botonCambiarPin.setText("Cambiar PIN");
@@ -93,6 +85,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnConsultarSaldo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnConsultarSaldo.setText("Consultar saldo actual");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,12 +103,12 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(butonCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(77, 77, 77)
+                                .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton6)))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -159,10 +154,6 @@ public class Menu extends javax.swing.JFrame {
     private void butonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonCrearCuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_butonCrearCuentaActionPerformed
-
-    private void btnConsultarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarSaldoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarSaldoActionPerformed
 
     private void botonRegistrarClienteMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteMenu1ActionPerformed
         // TODO add your handling code here:
