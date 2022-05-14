@@ -82,39 +82,53 @@ public class ControladorListarClientes implements ActionListener{
     }
     private void consultarClientes(){
         
-        this.listarClientes = new ListarClientes();
-        this.listarClientes.botonConsultarClientes.addActionListener(this);
-        this.listarClientes.botonVolver.addActionListener(this);
-        
         //Tabla con todos los clientes
         
-        this.listarClientes.modelo = new DefaultTableModel();
+        this.listarClientes.modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int row,int column){
+            return false;
+            }
+        };
         this.listarClientes.modelo.addColumn("Primer apellido");
         this.listarClientes.modelo.addColumn("Segundo apellido");
         this.listarClientes.modelo.addColumn("Nombre");
         this.listarClientes.modelo.addColumn("Identificación");
-        this.listarClientes.tablaClientes.setModel(listarClientes.modelo);
 
         //Tabla para mostrar toda la informacion de la persona
-        /*
-        this.listarClientes.modeloInfoCliente = new DefaultTableModel();
+        
+        this.listarClientes.modeloInfoCliente = new DefaultTableModel(){
+            public boolean isCellEditable(int row,int column){
+            return false;
+            }
+        };
+        this.listarClientes.modeloInfoCliente.addColumn("Nombre completo");
+        this.listarClientes.modeloInfoCliente.addColumn("Identificación");
+        this.listarClientes.modeloInfoCliente.addColumn("Fecha de nacimiento");
+        this.listarClientes.modeloInfoCliente.addColumn("Teléfono");
+        this.listarClientes.modeloInfoCliente.addColumn("Correo electrónico");
+        this.listarClientes.modeloInfoCliente.addColumn("Código");        
         this.listarClientes.tablaInfoCliente.setModel(this.listarClientes.modeloInfoCliente);
 
         //Table de las cuentas
         
-        this.listarClientes.modeloCuenta = new DefaultTableModel();
-        this.listarClientes.tablaCuenta.setModel(this.listarClientes.modeloCuenta*/
+        this.listarClientes.modeloCuenta = new DefaultTableModel(){
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+        this.listarClientes.modeloCuenta.addColumn("Número de cuenta");
+        this.listarClientes.tablaCuenta.setModel(this.listarClientes.modeloCuenta);
         
         for(Persona person: personasEnBD){
             Object[] msg = {person.getPrimerApellido(), person.getSegundoApellido(), person.getNombre(), person.getIdPersona()};
-            System.out.println(msg);
             this.listarClientes.modelo.addRow(msg);
-            System.out.println(this.listarClientes.modelo);
+            
         }
-        listarClientes.tablaClientes.setModel(listarClientes.modelo);
-        System.out.println(personasEnBD.size());
+        this.listarClientes.tablaClientes.setModel(listarClientes.modelo);
         this.menuInicial.setVisible(false);
     }
+    
+    
     private Persona verPersonaPorId(int pId){
         for(Persona persona: personasEnBD){
             if(persona.getIdPersona() == pId){
@@ -139,8 +153,9 @@ public class ControladorListarClientes implements ActionListener{
             this.listarClientes.modeloCuenta.addRow(datoPersona2);
         } 
     }
-    /*
+    
+    
     private void ordenarPersona(){
         personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
-    }*/
+    }
 }
