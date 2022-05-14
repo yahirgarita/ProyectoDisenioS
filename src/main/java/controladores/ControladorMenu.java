@@ -56,6 +56,8 @@ public class ControladorMenu implements ActionListener{
                 break;
              case "Cambiar PIN": cambiarPIN();
                 break;
+             case "Listar cuentas": listarCuentas();
+                break;
              case "Consultar saldo actual": verSaldoActual();
              default: break;
          }
@@ -84,6 +86,13 @@ public class ControladorMenu implements ActionListener{
          CambiarPinPaso2 cambiarP2 = new CambiarPinPaso2();
          ControladorCambiarPin contro3 = new ControladorCambiarPin(cambiarP,cambiarP2);
          contro3.cambiarPin1.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void listarCuentas(){
+         ListarCuentas listarCuen = new ListarCuentas();
+         ControladorListarCuentas contro2 = new ControladorListarCuentas(listarCuen, menuInicial);
+         contro2.listarCuentas.setVisible(true);
          this.menuInicial.setVisible(false);
      }
      

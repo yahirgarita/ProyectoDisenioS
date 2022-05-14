@@ -92,6 +92,17 @@ public class CuentaBD {
         }
         return null;
     }
-             
+   public static ResultSet recuperarTodaInfoCuenta(){
+       conexionBD.conexionDataBase();
+       return conexionBD.inquiry("select * from Cuenta");
+   }   
+   
+   public static Persona saberDuenioCuenta(String pNumCuenta){
+       conexionBD.conexionDataBase();
+       ResultSet resultado = conexionBD.inquiry("slect * from PersonaCuenta where numeroCuenta = '" + pNumCuenta + "'");
+       while(resultado.next()){
+           return PersonaBD.registrarClientesEnBD(resultado.getString("codigoPersona"));
+       }
+   }
 }
 

@@ -83,4 +83,16 @@ public class PersonaBD {
         }
         return cuentaBancariaCadena;
     }
+    public static Persona saberClientePorCodigo(String pCodigo) throws SQLException{
+        conexionBD.conexionDataBase();
+        ResultSet resultado = conexionBD.inquiry("select * from Persona where codigo = '" + pCodigo + "'");
+        while(resultado.next()){
+            Persona person = new Persona(resultado.getString("primerApellido"), resultado.getString("segundoApellido"), resultado.getString("nombre"), 
+                Integer.parseInt(resultado.getString("identificacion")), LocalDate.parse(resultado.getString("fechaNacimiento"), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                Integer.parseInt(resultado.getString("telefono")), resultado.getString("correo"));
+            person.setCodigo(resultado.getString("codigo"));
+            return person;
+        }
+        return null;
+    }
 }
