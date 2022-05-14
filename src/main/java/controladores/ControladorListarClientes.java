@@ -49,13 +49,17 @@ public class ControladorListarClientes implements ActionListener{
         this.personasEnBD = new ArrayList<>();
         this.listarClientes.botonConsultarClientes.addActionListener(this);
         this.listarClientes.botonVolver.addActionListener(this);
+        this.listarClientes.botonConsultarInfoCliente.addActionListener(this);
         convetirClientesAObj();
+        organizarPersona();
     }
     
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
             case "Consultar clientes":consultarClientes();
+                break;
+            case "Consultar información de un cliente": consultarListarClientes();
                 break;
             case "Volver":
                 controladores.ControladoresGlobales.volver();
@@ -65,6 +69,11 @@ public class ControladorListarClientes implements ActionListener{
                 break;
        }        
     }
+    
+    private void organizarPersona(){
+        personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
+    }
+    
     private void convetirClientesAObj(){
         ResultSet resultado = PersonaBD.cargarTodosLosClientes();
         try{
@@ -154,8 +163,22 @@ public class ControladorListarClientes implements ActionListener{
         } 
     }
     
-    
-    private void ordenarPersona(){
-        personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
+    private void consultarListarClientes(){
+        this.listarClientes.modeloInfoCliente.setRowCount(0);
+        this.listarClientes.modeloCuenta.setRowCount(0);
+        int filaSeleccionada = this.listarClientes.tablaClientes.getSelectedRow();
+        System.out.print(filaSeleccionada);
+        Persona person = verPersonaPorId(Integer.parseInt(this.listarClientes.tablaClientes.getModel().getValueAt(filaSeleccionada,3).toString()));
+        System.out.print(person.getIdPersona());
+        Object[] cliente1 = {person.getNombreCompleto(),person.getIdPersona(), person.getFechaNacimiento(),
+            person.getNumTelefonico(), person.getCorreoPersona(), person.getCodigo()};
+        this.listarClientes.modeloInfoCliente.addRow(cliente1);
+        ArrayList<CuentaBancaria> cuentaBancariaArrayList = PersonaBD.recuperarCuentasClientes(person.getCodigo());
+        for(CuentaBancaria cuentaBanc:cuentaBancariaArrayList){
+            Object[] cliente2 = {cuentaBanc.getNumCuenta(),};
+            this.listarClientes.modeloCuenta.addRow(cliente2);
+        }
     }
+    
+    
 }

@@ -98,7 +98,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="botonVolver" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="352" max="32767" attributes="0"/>
+              <Component id="botonConsultarInfoCliente" min="-2" pref="259" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="botonConsultarClientes" min="-2" pref="197" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
@@ -139,7 +141,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="botonConsultarClientes" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="botonConsultarClientes" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="botonConsultarInfoCliente" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -325,5 +330,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="botonConsultarInfoCliente">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Consultar informaci&#xf3;n de un cliente"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </SubComponents>
 </Form>

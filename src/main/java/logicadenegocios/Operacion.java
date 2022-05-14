@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package logicadenegocios;
 
 import java.time.LocalDate;
@@ -17,7 +13,7 @@ public class Operacion {
     
     private String tipo;
     private String moneda;
-    
+
     private boolean cargo;
     private double monto;
     

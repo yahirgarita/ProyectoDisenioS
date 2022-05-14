@@ -39,6 +39,32 @@ public class ValidarTipoDeDato {
         return matcher.matches();
     }
     
+    public static boolean validarFormatoFechaCLI(String pFecha){
+        Date date = null;
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            date = formato.parse(pFecha);
+            if (!pFecha.equals(formato.format(date))) {
+                date = null;
+            }
+        } catch (Exception e) {
+        }
+        return date != null;
+    }
+    
+    public static LocalDate corregirFormatoFechaCLI(String pFecha){
+        Date date = null;
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            date = formato.parse(pFecha);
+            if (!pFecha.equals(formato.format(date))) {
+                date = null;
+            }
+        } catch (Exception ex) {
+        }
+        return corregirFormatoFecha(date);
+    }
+    
     public static LocalDate corregirFormatoFecha(Date fecha){
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         String fechaFormatoCorrecto = formato.format(fecha);

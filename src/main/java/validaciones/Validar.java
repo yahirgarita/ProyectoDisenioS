@@ -44,6 +44,20 @@ public class Validar{
         return false;        
     }
     
+    public static boolean existeCliente(String codigo){
+        coneccion.conexionDataBase();
+        ResultSet resultado = coneccion.inquiry("SELECT * FROM Persona WHERE codigo = '" + codigo + "'");
+        try{
+            while(resultado.next()){
+                return true;
+            }
+        }catch (SQLException e){
+            return true;
+        }
+        coneccion.salirBD();
+        return false;        
+    }
+    
     public static boolean espacioVacio(String texto){
         return texto.length() > 0;
     }

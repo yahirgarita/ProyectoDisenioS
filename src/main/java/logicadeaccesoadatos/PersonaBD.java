@@ -46,6 +46,7 @@ public class PersonaBD {
         return conexionBD.inquiry("select * from Persona");
     }
     
+    
     public static Persona recuperarClientePorID(int id){
         conexionBD.conexionDataBase();
         ResultSet idClienteBuscar = conexionBD.inquiry("select * from Persona where identificacion = " + id);
@@ -65,11 +66,13 @@ public class PersonaBD {
             return null;
         }
     }
+    
+    
     public static ArrayList<CuentaBancaria> recuperarCuentasClientes(String codigo){
         ArrayList<CuentaBancaria> cuentaBancariaCadena = new ArrayList<>();
         try{
             conexionBD.conexionDataBase();
-            ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where codigoPesona = '" + codigo + "'");
+            ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where codigoPersona = '" + codigo + "'");
             while(resultado.next()){
                 CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(resultado.getString("numeroCuenta"));
                 cuentaBancariaCadena.add(cuentaBanc);
