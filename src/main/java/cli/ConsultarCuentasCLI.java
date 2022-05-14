@@ -35,7 +35,8 @@ public class ConsultarCuentasCLI {
         return cuenta;
     }
     
-    public void mostrarCuenta(){
-        
+    public void mostrarCuenta(String informacion){
+        System.out.println("Informacion de la cuenta: ");
+        System.out.println(informacion);
     }
 }

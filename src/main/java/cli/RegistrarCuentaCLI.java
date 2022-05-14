@@ -23,11 +23,10 @@ public class RegistrarCuentaCLI {
         String pin;
         String montoInicial;
         
-        System.out.println("Por favor ingresar el codigo del cliente: "); 
-      /*  while(Validar.existeCliente(codigo = reader.readLine()) != true){
+        System.out.println("Por favor ingresar la identifiacaion cliente: "); 
+        while(Validar.existeCliente(codigo = reader.readLine()) != true){
             System.out.println("Por favor ingresar un codigo de cliente valido: ");
-        }*/
-        codigo = reader.readLine();
+        }
         
         System.out.println("Por favor ingrese un nuevo PIN para la cuenta: "); 
         while(ValidarTipoDeDato.validarFormatoPIN(pin = reader.readLine())!= true){

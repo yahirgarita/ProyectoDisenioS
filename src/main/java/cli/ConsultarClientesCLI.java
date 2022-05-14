@@ -8,6 +8,7 @@ package cli;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import validaciones.Validar;
 
 /**
  *
@@ -28,8 +29,10 @@ public class ConsultarClientesCLI {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String codigo;
         
-        System.out.println("Por favor digite el codigo del cliente que desea consultar: "); ;
-        codigo = reader.readLine();
+        System.out.println("Por favor digite la identificacion del cliente que desea consultar: "); ;
+        while(Validar.existeCliente(codigo = reader.readLine()) != true){
+            System.out.println("Por favor digite la identificacion de un cliente que valido: "); ;
+        }
         return codigo;
     }
 }

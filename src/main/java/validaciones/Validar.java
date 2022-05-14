@@ -44,9 +44,9 @@ public class Validar{
         return false;        
     }
     
-    public static boolean existeCliente(String codigo){
+    public static boolean existeCliente(String identificacion){
         coneccion.conexionDataBase();
-        ResultSet resultado = coneccion.inquiry("SELECT * FROM Persona WHERE codigo = '" + codigo + "'");
+        ResultSet resultado = coneccion.inquiry("SELECT * FROM Persona WHERE identificacion = '" + identificacion + "'");
         try{
             while(resultado.next()){
                 return true;
