@@ -41,6 +41,16 @@ public class CuentaBancaria {
         this.fechaCreacion = pFechaCreacion;
         this.registros = new ArrayList<>();
         }
+    
+    public CuentaBancaria(int pNumCuenta, LocalDate pFechaCreacion, double pSaldo, String pPin, String pEstatus){
+        this.numCuenta = pNumCuenta;
+        this.saldo = pSaldo;
+        this.estatus = "Activo";
+        this.pin = pPin;
+        this.duenio = null;
+        this.fechaCreacion = pFechaCreacion;
+        this.registros = new ArrayList<>();
+        }
 
     public double getSaldo() {
         return saldo;

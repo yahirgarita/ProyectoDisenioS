@@ -42,4 +42,19 @@ public class CuentaBD {
         }
         return null;
     }
+    public static CuentaBancaria recuperarCuentaPorNumPin(String numeroCuenta, String pin){
+       conexionBD.conexionDataBase();
+       ResultSet buscar = conexionBD.inquiry("SELECT * FROM Cuenta WHERE numeroCuenta = '" + numeroCuenta + "' and pin = '" + pin + "'");
+       try{
+          while (buscar.next()){
+              return new CuentaBancaria(Integer.parseInt(Encriptar.descifrar(buscar.getString("numeroCuenta"))),
+                      LocalDate.parse(buscar.getString("fecha")),
+                      Double.parseDouble(Encriptar.descifrar(buscar.getString("saldo"))),
+                      Encriptar.descifrar(buscar.getString("pin")), buscar.getString("estatus"));
+          }
+        }catch (SQLException e){
+            return null;
+        }
+        return null;
+    }
 }

@@ -33,7 +33,7 @@ public class ControladorMenu implements ActionListener{
         this.crearCuentaBanco = null;
         this.listarClientes = null;
         this.cambiarPIN = null;
-        this.menuInicial.botonRegistrarClienteMenu.addActionListener(this);
+        this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.butonCrearCuenta.addActionListener(this);
         this.menuInicial.botonListarClientes.addActionListener(this);
         this.menuInicial.botonListarCuentas.addActionListener(this);
@@ -51,6 +51,7 @@ public class ControladorMenu implements ActionListener{
                 break;
              case "Cambiar PIN": cambiarPIN();
                 break;
+             case "Consultar saldo actual": verSaldoActual();
              default: break;
          }
      }
@@ -75,11 +76,17 @@ public class ControladorMenu implements ActionListener{
      }
      
      private void cambiarPIN(){
-         
          CambiarPinPaso1 cambiarP = new CambiarPinPaso1();
          CambiarPinPaso2 cambiarP2 = new CambiarPinPaso2();
          ControladorCambiarPin contro3 = new ControladorCambiarPin(cambiarP,cambiarP2);
          contro3.cambiarPin1.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void verSaldoActual(){
+         ConsultarSaldo verSaldo = new ConsultarSaldo();
+         ControladorVerSaldo control4 = new ControladorVerSaldo(verSaldo);
+         control4.consultaSaldo.setVisible(true);
          this.menuInicial.setVisible(false);
      }
      

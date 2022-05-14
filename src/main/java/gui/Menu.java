@@ -29,11 +29,12 @@ public class Menu extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         botonListarClientes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        botonRegistrarClienteMenu = new javax.swing.JButton();
+        btnConsultarSaldo = new javax.swing.JButton();
         botonCambiarPin = new javax.swing.JButton();
         botonListarCuentas = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         butonCrearCuenta = new javax.swing.JButton();
+        botonRegistrarClienteMenu1 = new javax.swing.JButton();
 
         jButton5.setText("Volver");
 
@@ -50,11 +51,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Menú de inicio");
 
-        botonRegistrarClienteMenu.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        botonRegistrarClienteMenu.setText("Registrar cliente");
-        botonRegistrarClienteMenu.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultarSaldo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnConsultarSaldo.setText("Consultar saldo actual");
+        btnConsultarSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRegistrarClienteMenuActionPerformed(evt);
+                btnConsultarSaldoActionPerformed(evt);
             }
         });
 
@@ -84,6 +85,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        botonRegistrarClienteMenu1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        botonRegistrarClienteMenu1.setText("Registrar cliente");
+        botonRegistrarClienteMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarClienteMenu1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,12 +105,15 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonRegistrarClienteMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(butonCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(butonCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)
+                                .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton6)))
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -112,9 +124,11 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(19, 19, 19)
-                .addComponent(botonRegistrarClienteMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addComponent(butonCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botonListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,9 +160,13 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_butonCrearCuentaActionPerformed
 
-    private void botonRegistrarClienteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteMenuActionPerformed
+    private void btnConsultarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarSaldoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botonRegistrarClienteMenuActionPerformed
+    }//GEN-LAST:event_btnConsultarSaldoActionPerformed
+
+    private void botonRegistrarClienteMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonRegistrarClienteMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +207,8 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton botonCambiarPin;
     public javax.swing.JButton botonListarClientes;
     public javax.swing.JButton botonListarCuentas;
-    public javax.swing.JButton botonRegistrarClienteMenu;
+    public javax.swing.JButton botonRegistrarClienteMenu1;
+    public javax.swing.JButton btnConsultarSaldo;
     public javax.swing.JButton butonCrearCuenta;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

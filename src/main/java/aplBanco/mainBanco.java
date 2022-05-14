@@ -17,7 +17,6 @@ public class mainBanco {
         Menu inicio = new Menu();
         ControladorMenu controladorMenu = new ControladorMenu(inicio);
         controladorMenu.menuInicial.setVisible(true);
-        
-        
+
     }
 }
