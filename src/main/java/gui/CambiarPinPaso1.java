@@ -29,8 +29,8 @@ public class CambiarPinPaso1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         numCuentaPin = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        volverPin1 = new javax.swing.JButton();
+        continuarPin1 = new javax.swing.JButton();
 
         jButton2.setText("Volver");
 
@@ -38,7 +38,7 @@ public class CambiarPinPaso1 extends javax.swing.JFrame {
         setBackground(new java.awt.Color(51, 204, 255));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setText("Crear cuenta");
+        jLabel3.setText("Cambiar Pin");
 
         jLabel1.setText("Número de cuenta:");
 
@@ -48,12 +48,12 @@ public class CambiarPinPaso1 extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Volver");
+        volverPin1.setText("Volver");
 
-        jButton1.setText("Continuar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        continuarPin1.setText("Continuar proceso");
+        continuarPin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                continuarPin1ActionPerformed(evt);
             }
         });
 
@@ -72,11 +72,11 @@ public class CambiarPinPaso1 extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
                             .addComponent(numCuentaPin, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jButton3)
+                        .addComponent(volverPin1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(continuarPin1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,8 +87,8 @@ public class CambiarPinPaso1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3)))
+                            .addComponent(continuarPin1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(volverPin1)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
@@ -106,9 +106,9 @@ public class CambiarPinPaso1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numCuentaPinActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void continuarPin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarPin1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_continuarPin1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,11 +147,11 @@ public class CambiarPinPaso1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
+    public javax.swing.JButton continuarPin1;
     private javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JTextField numCuentaPin;
+    public javax.swing.JButton volverPin1;
     // End of variables declaration//GEN-END:variables
 }

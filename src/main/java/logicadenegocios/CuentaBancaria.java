@@ -105,7 +105,7 @@ public class CuentaBancaria {
         info += "\n Numero de la cuenta: " + this.numCuenta;
         info += "\n Saldo actual: " + this.saldo;
         info += "\n Estatus: " + this.estatus;
-        info += "\n Dueño:" + this.duenio.getNombreCompleto() + "\n";
+        info += "\n Fecha de creación" + this.fechaCreacion + "\n";
         return info;
      
     }
