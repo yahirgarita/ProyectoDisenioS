@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 public class Email {
    
-    public void enviarEmail(String correo,String mensaje) throws MessagingException {
+    public static void enviarEmail(String correo,String mensaje) throws MessagingException {
         String host = "smtp.gmail.com";
         String contrasena = "rapiexpress1234";
         String correoEmisor = "rapiexpressprueba@gmail.com";

@@ -3,7 +3,8 @@ package logicadeaccesoadatos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import logicadenegocios.CuentaBancaria;
+import java.time.format.DateTimeFormatter;
+import logicadenegocios.*;
 import util.Encriptar;
 /**
  *
@@ -70,8 +71,27 @@ public class CuentaBD {
         conexionBD.salirBD();
     }
     
-    
-        
-        
+    public static Persona compararPersonaConCuenta(String pNumCuenta){
+        conexionBD.conexionDataBase();
+        ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where numeroCuenta = '" + pNumCuenta + "'");
+        try{
+            
+            while(resultado.next()){
+                ResultSet resuPersona = conexionBD.inquiry("select * from Persona where codigo = '" + resultado.getString("codigoPersona") + "'");
+                while(resuPersona.next()){
+                    Persona cliente = new Persona(resuPersona.getString("primerApellido"), resuPersona.getString("segundoApellido"),resuPersona.getString("nombre"),
+                        Integer.parseInt(resuPersona.getString("identificacion")),LocalDate.parse(resuPersona.getString("fechaNacimiento"), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                        Integer.parseInt(resuPersona.getString("telefono")), resuPersona.getString("correo"));
+                       cliente.setCodigo(resuPersona.getString("codigo"));
+                    return cliente;
+                }
+            }
+        }
+        catch(SQLException e){
+            return null;
+        }
+        return null;
+    }
+             
 }
 

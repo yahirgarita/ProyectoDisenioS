@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import logicadenegocios.*;
@@ -23,7 +26,7 @@ public class ControladorCambiarPin implements ActionListener{
     public CambiarPinPaso1 cambiarPin1;
     public CambiarPinPaso2 cambiarPin2;
     private int attempt = 0;
-    private Cuenta clienteActual;
+    private CuentaBancaria clienteActual;
     
     public ControladorCambiarPin(CambiarPinPaso1 pCambiarPin1, CambiarPinPaso2 pCambiarPin2){
         this.cambiarPin1 = pCambiarPin1;
@@ -40,8 +43,15 @@ public class ControladorCambiarPin implements ActionListener{
         switch(evento.getActionCommand()){
             case "Continuar proceso":verificarPin();
                 break;
-            case "Continuar":
+            case "Cambiar":{
+                try {
+                    cambiarPinPaso2();
+                } catch (MessagingException ex) {
+                    Logger.getLogger(ControladorCambiarPin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             case "Volver":
                 controladores.ControladoresGlobales.volver();
                 this.cambiarPin1.setVisible(false);
@@ -66,9 +76,9 @@ public class ControladorCambiarPin implements ActionListener{
         }
     }
     
-    private void cambiarPinPaso2(){
+    private void cambiarPinPaso2() throws MessagingException{
         CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.cambiarPin2.jLabel4.getText()));
-        if(Objects.equals(this.cambiarPin2.jLabel4.getText(),cuentaBanc.getPin())){
+        if(Objects.equals(this.cambiarPin2.pinActual.getText(),cuentaBanc.getPin())){
             if(ValidarTipoDeDato.validarFormatoPIN(this.cambiarPin2.pinActual.getText())){
                 CuentaBD.cambiarPinCuenta(String.valueOf(cuentaBanc.getNumCuenta()), this.cambiarPin2.nuevoPin.getText());
                 Operacion operacion = new Operacion("modificación de Pin","Colones", false, 0, LocalDate.now());
@@ -83,19 +93,19 @@ public class ControladorCambiarPin implements ActionListener{
         }else{
             JOptionPane.showMessageDialog(null, "El Pin que ingreso es erroneo, revise los datos ingresados");
             attempt++;
-            comprobarIntentos(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta())),this.cambiarPin2);
+            comprobrarIntentos(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta())),this.cambiarPin2, "Su cuenta a pasado a esta Inactiva por fallar el PIN");
         }
     }
     
-    private void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg){
+    private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
         
+        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(pNumCuenta));
         clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(cambiarPin1.numCuentaPin.getText()));
-        Persona correoPersona = Persona(getCodigo().getText());
         if(attempt == 2){
             CuentaBD.modificarEstado(pNumCuenta, "Inactiva");
             attempt = 0;
             JOptionPane.showMessageDialog(null, pMsg);
-            Email.enviarEmail(clienteActual.getCorreoElectronico(), pMsg);
+            Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), pMsg);
             frame.dispose();
             controladores.ControladoresGlobales.volver();
         }

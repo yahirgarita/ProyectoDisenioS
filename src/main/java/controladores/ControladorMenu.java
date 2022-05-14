@@ -35,6 +35,7 @@ public class ControladorMenu implements ActionListener{
         this.listarClientes = null;
         this.cambiarPIN = null;
         this.consultaSaldo = null;
+        this.menuInicial.botonRegistrarClienteMenu1.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.butonCrearCuenta.addActionListener(this);
         this.menuInicial.botonListarClientes.addActionListener(this);
@@ -59,8 +60,7 @@ public class ControladorMenu implements ActionListener{
              default: break;
          }
      }
-
-     private void registrarCliente(){
+    private void registrarCliente(){
          RegistroCliente registroCli = new RegistroCliente();
          ControladorRegistroClientes contro = new ControladorRegistroClientes(registroCli);
          contro.registrarCliente.setVisible(true);

@@ -17,10 +17,10 @@ import util.Encriptar;
  *
  * @version 1.0
  */
-public class adda implements ActionListener{
+public class ControladorVerSaldo implements ActionListener{
     public ConsultarSaldo consultaSaldo;
     
-    public adda(ConsultarSaldo pConsultarSaldo){
+    public ControladorVerSaldo(ConsultarSaldo pConsultarSaldo){
     consultaSaldo = pConsultarSaldo;
     consultaSaldo.btnVerSaldo.addActionListener(this);
     consultaSaldo.btnVolver.addActionListener(this);
