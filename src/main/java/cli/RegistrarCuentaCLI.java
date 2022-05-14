@@ -19,13 +19,14 @@ public class RegistrarCuentaCLI {
     public String[] registrarCuenta() throws IOException{
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        
         String codigo="";
         String pin;
         String montoInicial;
         
         System.out.println("Por favor ingresar la identifiacaion cliente: "); 
         while(Validar.existeCliente(codigo = reader.readLine()) != true){
-            System.out.println("Por favor ingresar un codigo de cliente valido: ");
+            System.out.println("Por favor ingresar una indentificacion de cliente valido: ");
         }
         
         System.out.println("Por favor ingrese un nuevo PIN para la cuenta: "); 

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDate;
 import logicadeaccesoadatos.*;
+import util.Encriptar;
 
 /**
  * @author Carlos Rojas Molina
@@ -89,6 +90,30 @@ public class Validar{
         return true;
         
     }
+    public static boolean existeCuenta(String pNumero){
+        coneccion.conexionDataBase();
+        ResultSet resultado = coneccion.inquiry("select * from Cuenta where numeroCuenta = '" + Encriptar.cifrar(pNumero)+ "'");
+        try{
+            while(resultado.next()){
+                return true;
+            }
+        }
+        catch(SQLException e){
+            return false;
+        }
+        coneccion.salirBD();
+        return false;
+        
+    }
+    
+    public static boolean montoMenorQue(int saldo, int monto){
+        
+        if(saldo < monto){
+            return true;
+        }
+        return false;
+    }
+    
 
 }
 

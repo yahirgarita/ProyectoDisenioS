@@ -8,6 +8,7 @@ package cli;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import validaciones.Validar;
 
 /**
  *
@@ -23,15 +24,18 @@ public class ConsultarCuentasCLI {
         System.out.println("Saldo: " + saldo);
         System.out.println("Identificacion del duenio: " + identificacion);
         System.out.println("Nombre del duenio " + nombre);
+        System.out.println();
     }
     
-    public int seleccionarCuenta() throws IOException{
-        int cuenta;
+    public String seleccionarCuenta() throws IOException{
+        
+        String cuenta;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String codigo;
         
         System.out.println("Por favor digite el numero de cuenta que desea consultar: "); ;
-        cuenta = Integer.parseInt(reader.readLine());
+        while(Validar.existeCuenta(cuenta = reader.readLine())){
+            System.out.println("Por favor digite un numero de cuenta existente: "); ;
+        }
         return cuenta;
     }
     
