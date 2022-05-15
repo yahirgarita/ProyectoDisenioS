@@ -19,9 +19,10 @@ public class ControladorMenu implements ActionListener{
      private RegistroCliente registroCliente ;
      private CreacionCuenta crearCuentaBanco;
      private ListarClientes listarClientes;
-    /*private ListarCuenta listarCuentas;*/
+     private ListarCuentas listarCuentas;
      private CambiarPinPaso1 cambiarPIN;
      private ConsultarSaldo consultaSaldo;
+     private RealizarDepositoEnColones depositoColones;
      /**
       * Constructor de la clase controladorMenu
       * 
@@ -35,6 +36,7 @@ public class ControladorMenu implements ActionListener{
         this.listarClientes = null;
         this.cambiarPIN = null;
         this.consultaSaldo = null;
+        this.depositoColones = null;
         this.menuInicial.botonRegistrarClienteMenu1.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.butonCrearCuenta.addActionListener(this);
@@ -42,6 +44,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.botonListarCuentas.addActionListener(this);
         this.menuInicial.botonCambiarPin.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
+        this.menuInicial.btnDepositarColones.addActionListener(this);
         
     }
      
@@ -100,6 +103,14 @@ public class ControladorMenu implements ActionListener{
          ConsultarSaldo verSaldo = new ConsultarSaldo();
          ControladorVerSaldo control4 = new ControladorVerSaldo(verSaldo);
          control4.consultaSaldo.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void realizarDepositoEnColones(){
+         RealizarDepositoEnColones depositoEnColones = new RealizarDepositoEnColones();
+         RealizarDepositoEnColonesPaso2 depositoColones2 = new RealizarDepositoEnColonesPaso2();
+         ControladoDepositoColones controColones = new ControladoDepositoColones(depositoEnColones, depositoColones2);
+         controColones.realizarDepositoC.setVisible(true);
          this.menuInicial.setVisible(false);
      }
      

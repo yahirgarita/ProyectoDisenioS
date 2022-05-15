@@ -253,5 +253,10 @@ public class CuentaBD {
         conexionBD.salirBD();
     }
     
+    public static void actualizarEstatus(String pNumCuenta, String pEstatus){
+        conexionBD.conexionDataBase();
+        conexionBD.ejecutarSentSQL("update Cuenta ser estatus = '" + pEstatus + "'where numeroCuenta = '" + pNumCuenta + "'");
+        conexionBD.salirBD();
+    }
 }
 

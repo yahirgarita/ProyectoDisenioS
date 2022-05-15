@@ -3,6 +3,7 @@ package controladores;
 import gui.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.Objects;
 import javax.swing.JOptionPane;
 import logicadeaccesoadatos.*;
@@ -20,7 +21,7 @@ public class ControladoDepositoColones implements ActionListener{
    public RealizarDepositoEnColones realizarDepositoC;
    public RealizarDepositoEnColonesPaso2 realizarDepositoC2;
    
-   private ControladoDepositoColones(RealizarDepositoEnColones pRealizarDepositoC, RealizarDepositoEnColonesPaso2 pRealizarDepositoC2){
+   public ControladoDepositoColones(RealizarDepositoEnColones pRealizarDepositoC, RealizarDepositoEnColonesPaso2 pRealizarDepositoC2){
        this.realizarDepositoC = pRealizarDepositoC;
        this.realizarDepositoC2 = pRealizarDepositoC2;
        this.realizarDepositoC.continuarDepoColones.addActionListener(this);
@@ -48,12 +49,30 @@ public class ControladoDepositoColones implements ActionListener{
    private void hacerDepositoColones(){
        String monto = this.realizarDepositoC2.txtMonto.getText();
        if(ValidarTipoDeDato.validarEsEntero(monto)){
-           if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()))>= 3){}
+           if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()))>= 3){
            double montoConvDouble = Double.parseDouble(monto);
            double comision = montoConvDouble * 0.02;
-           CuentaBD.a(Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()),comision);
-           montoConvDouble = Operacion.c
            
+           CuentaBD.agregarComision(Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()),comision);
+           montoConvDouble = Operacion.calcularComision(montoConvDouble);
+           CuentaBD.actualizarEstatus(Encriptar.cifrar(String.valueOf(montoConvDouble)),Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
+           
+           Operacion oper = new Operacion("depósitos","Colones", true, Double.parseDouble(monto), LocalDate.now());
+           OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
+           JOptionPane.showMessageDialog(null, "Estimado usuario, se ha realizado correctamente el deposito" + monto + "colones\n" +
+                   "[El monto real deposito a su cuenta" + this.realizarDepositoC2.labelInfo.getText() + " es de" + montoConvDouble + " colones]\n" +
+                   "[El monto cobrado por concepto añadigo de comisión fue de " + comision + "colones, que fueron rebajados de forma automatica de su salgo actual]");
+           }else{
+                CuentaBD.actualizarEstatus(Encriptar.cifrar(String.valueOf(monto)),Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
+                Operacion oper = new Operacion("depósitos", "colones", false, Double.parseDouble(monto), LocalDate.now());
+                OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
+                JOptionPane.showMessageDialog(null, "Estimado usuario, se ha realizado correctamente el deposito" + monto + "colones\n" +
+                        "[El monto real deposito a su cuenta" + this.realizarDepositoC2.labelInfo.getText() + " es de" + monto + " colones]\n" +
+                        "[El monto cobrado por concepto añadigo de comisión fue de 0 colones, que fueron rebajados de forma automatica de su salgo actual]");
+            }
+        }
+       else{
+           JOptionPane.showMessageDialog(null,"Debe resivar los datos que ingreso");
        }
-   }
+    }
 }
