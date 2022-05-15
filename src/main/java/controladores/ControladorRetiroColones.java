@@ -30,7 +30,7 @@ public class ControladorRetiroColones implements ActionListener{
     public RetiroColonesPaso3 retiroColones3;
     public RetiroColonesPaso4 retiroColones4;
     private int attempt = 0;
-    private Cuenta clienteActual;
+    private CuentaBancaria clienteActual;
     private Menu menuInicial;
     
     public ControladorRetiroColones(RetiroColonesPaso1 pRetiroColones1, RetiroColonesPaso2 pRetiroColones2, RetiroColonesPaso3 pRetiroColones3, RetiroColonesPaso4 pRetiroColones4, Menu pMenuInicial){
@@ -141,7 +141,6 @@ public class ControladorRetiroColones implements ActionListener{
    }
    
    private void realizarRetiroColones(){
-       clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
        if(ValidarTipoDeDato.validarEsEntero(this.retiroColones4.montoRetiroColones.getText())){
            if(Validar.existeSaldoSuficiente(Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()), this.retiroColones4.jLabel1.getText())){
                if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.retiroColones4.jLabel1.getText())) >= 3){
@@ -154,9 +153,10 @@ public class ControladorRetiroColones implements ActionListener{
                    Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()),LocalDate.now());
                    OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
                    
-                   JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroColones4.jLabel1.getText() + " colones\n" +
-                           "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + "fueron rebajados automáticament de su saldo actual] \n");
-                           "[Su saldo actual es de: " + CuentaBD
+                   clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
+                   JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroColones4.montoRetiroColones.getText() + " colones\n" +
+                           "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + "fueron rebajados automáticament de su saldo actual] \n" +
+                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "']");
                    this.retiroColones4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }
@@ -165,8 +165,10 @@ public class ControladorRetiroColones implements ActionListener{
                    Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()),LocalDate.now());
                    OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
                    
-                   JOptionPane.showMessageDialog(null, "Estimado usuario, el monto de este retiro es " + this.retiroColones4.jLabel1.getText() + " colones \n" +
-                           "[El monto cobrado por concepto de comisión fue de 0 colones, que fueron rebajados automáticamente de su saldo actual");
+                   clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
+                   JOptionPane.showMessageDialog(null, "Estimado usuario, el monto de este retiro es " + this.retiroColones4.montoRetiroColones.getText() + " colones \n" +
+                           "[El monto cobrado por concepto de comisión fue de 0 colones, que fueron rebajados automáticamente de su saldo actual\n" +
+                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "']");
                    this.retiroColones4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }

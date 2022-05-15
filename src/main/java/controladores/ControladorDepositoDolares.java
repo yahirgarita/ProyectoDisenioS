@@ -88,7 +88,7 @@ public class ControladorDepositoDolares implements ActionListener{
            
            }else{
                 CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(montoColones)),Encriptar.cifrar(this.depositoDolares2.labelInfo.getText()));
-                Operacion oper = new Operacion("depósitos", "colones", false, Double.parseDouble(montoEnDolar), LocalDate.now());
+                Operacion oper = new Operacion("depósitos", "Dolares", false, Double.parseDouble(montoEnDolar), LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.depositoDolares2.labelInfo.getText()));
                 JOptionPane.showMessageDialog(null, 
                         "Estimado usuario, se ha realizado correctamente el deposito " + montoEnDolar + " dólares\n" +

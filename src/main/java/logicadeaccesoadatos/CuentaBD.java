@@ -285,9 +285,6 @@ public class CuentaBD {
                 double saldoAnterior = Double.parseDouble(Encriptar.descifrar(resultado.getString("saldo")));
                 double saldoQuitar = Double.parseDouble(Encriptar.descifrar(pSaldo));
                 double saldoNuevo = saldoAnterior - saldoQuitar;
-                System.out.println(saldoAnterior);
-                System.out.println(saldoQuitar);
-                System.out.println(saldoNuevo);
                 conexionBD.ejecutarSentSQL("update Cuenta set saldo = '" + Encriptar.cifrar(String.valueOf(saldoNuevo)) + "' where numeroCuenta = '" + pNumCuenta + "'");
             }
         }catch (SQLException e){
