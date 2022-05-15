@@ -132,7 +132,7 @@ public class ControladorMenu implements ActionListener{
         RetiroColonesPaso2 retiroColones2 = new RetiroColonesPaso2();
         RetiroColonesPaso3 retiroColones3 = new RetiroColonesPaso3();
         RetiroColonesPaso4 retiroColones4 = new RetiroColonesPaso4();
-        ControladorRetiroColones controRetiroC = new ControladorRetiroColones(retiroColones1,retiroColones2,retiroColones3,retiroColones4);
+        ControladorRetiroColones controRetiroC = new ControladorRetiroColones(retiroColones1,retiroColones2,retiroColones3,retiroColones4, menuInicial);
         controRetiroC.retiroColones1.setVisible(true);
         this.menuInicial.setVisible(false);
      }

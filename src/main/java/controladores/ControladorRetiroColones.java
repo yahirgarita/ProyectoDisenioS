@@ -30,16 +30,16 @@ public class ControladorRetiroColones implements ActionListener{
     public RetiroColonesPaso3 retiroColones3;
     public RetiroColonesPaso4 retiroColones4;
     private int attempt = 0;
-    private Persona clienteActual;
+    private Cuenta clienteActual;
     private Menu menuInicial;
     
-    public ControladorRetiroColones(RetiroColonesPaso1 pRetiroColones1, RetiroColonesPaso2 pRetiroColones2, RetiroColonesPaso3 pRetiroColones3, RetiroColonesPaso4 pRetiroColones4){
+    public ControladorRetiroColones(RetiroColonesPaso1 pRetiroColones1, RetiroColonesPaso2 pRetiroColones2, RetiroColonesPaso3 pRetiroColones3, RetiroColonesPaso4 pRetiroColones4, Menu pMenuInicial){
         this.retiroColones1 = pRetiroColones1;
         this.retiroColones2 = pRetiroColones2;
         this.retiroColones3 = pRetiroColones3;
         this.retiroColones4 = pRetiroColones4;
         this.clienteActual = null;
-        this.menuInicial = null;
+        this.menuInicial = pMenuInicial;
         this.retiroColones1.continuarRetiroColones.addActionListener(this);
         this.retiroColones1.volverRetiroColones1.addActionListener(this);
         this.retiroColones2.continuarRetiroColones2.addActionListener(this);
@@ -72,7 +72,7 @@ public class ControladorRetiroColones implements ActionListener{
            }
                 break;
 
-            case "RealizarRetiro": realizarRetiroColones();
+            case "Realizar retiro": realizarRetiroColones();
                 break;      
             case "Volver":
                 controladores.ControladoresGlobales.volver();
@@ -96,13 +96,14 @@ public class ControladorRetiroColones implements ActionListener{
            this.retiroColones1.setVisible(false);
        }
        else{
-           JOptionPane.showMessageDialog(null,"La cuenta que indico está inactiva o no existe, cambbie el número de cuenta");
+           JOptionPane.showMessageDialog(null,"La cuenta que indico está inactiva o no existe, cambie el número de cuenta");
        }
    }
    private void verificarPinCuentaRetiroColones() throws MessagingException{
        CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaPorNumPin(Encriptar.cifrar(this.retiroColones2.jLabel3.getText()), 
                Encriptar.cifrar(this.retiroColones2.pinCuentaRetiroColones.getText()));
        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
+
        if(cuentaBanc != null){
            this.retiroColones3 = new RetiroColonesPaso3();
            this.retiroColones3.continuarRetiroColones3.addActionListener(this);
@@ -122,7 +123,7 @@ public class ControladorRetiroColones implements ActionListener{
    
    private void verificarPalabraCorrectaRetiro() throws MessagingException{
        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
-       if(Objects.equals(this.retiroColones3.msgTelRetiroColones, this.retiroColones3.palabraMsgTelefono)){
+       if(Objects.equals(this.retiroColones3.msgTelRetiroColones.getText(), this.retiroColones3.palabraMsgTelefono)){
            this.retiroColones4 = new RetiroColonesPaso4();
            this.retiroColones4.continuarRetiroColones4.addActionListener(this);
            this.retiroColones4.volverRetiroColones4.addActionListener(this);
@@ -132,7 +133,7 @@ public class ControladorRetiroColones implements ActionListener{
            attempt =0;
        }
        else{
-           JOptionPane.showMessageDialog(null,"La palabra que ingreso es incorrecta, intente nuevametne");
+           JOptionPane.showMessageDialog(null,"La palabra que ingreso es incorrecta, intente nuevamente");
            attempt ++;
            comprobrarIntentos(Encriptar.cifrar(this.retiroColones2.jLabel3.getText()),this.retiroColones3,"Se ha inactivado la cuenta por fallar repetidamente la palabra clave");
            this.retiroColones3.palabraMsgTelefono = SMS.enviarSMS(String.valueOf(comparacionPersonaCuenta.getNumTelefonico()));
@@ -140,6 +141,7 @@ public class ControladorRetiroColones implements ActionListener{
    }
    
    private void realizarRetiroColones(){
+       clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
        if(ValidarTipoDeDato.validarEsEntero(this.retiroColones4.montoRetiroColones.getText())){
            if(Validar.existeSaldoSuficiente(Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()), this.retiroColones4.jLabel1.getText())){
                if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.retiroColones4.jLabel1.getText())) >= 3){
@@ -153,12 +155,9 @@ public class ControladorRetiroColones implements ActionListener{
                    OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
                    
                    JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroColones4.jLabel1.getText() + " colones\n" +
-                           "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + 
-                           "fueron rebajados automáticament de su saldo actual]");
-                   this.retiroColones4.dispose();
-                   this.retiroColones3.dispose();
-                   this.retiroColones2.dispose();
-                   this.retiroColones1.dispose();
+                           "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + "fueron rebajados automáticament de su saldo actual] \n");
+                           "[Su saldo actual es de: " + CuentaBD
+                   this.retiroColones4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }
                else{
@@ -167,11 +166,8 @@ public class ControladorRetiroColones implements ActionListener{
                    OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
                    
                    JOptionPane.showMessageDialog(null, "Estimado usuario, el monto de este retiro es " + this.retiroColones4.jLabel1.getText() + " colones \n" +
-                           "[El monto cobrado por concepto de comisión fue de 0 colones, que fueron rebajados automáticamente de su saldo actual+");
-                   this.retiroColones4.dispose();
-                   this.retiroColones3.dispose();
-                   this.retiroColones2.dispose();
-                   this.retiroColones1.dispose();
+                           "[El monto cobrado por concepto de comisión fue de 0 colones, que fueron rebajados automáticamente de su saldo actual");
+                   this.retiroColones4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }
            }
