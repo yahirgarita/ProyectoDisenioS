@@ -33,7 +33,7 @@ public class ConsultarCuentasCLI {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         
         System.out.println("Por favor digite el numero de cuenta que desea consultar: "); ;
-        while(Validar.existeCuenta(cuenta = reader.readLine())){
+        while(Validar.existeCuenta(cuenta = reader.readLine())!= true){
             System.out.println("Por favor digite un numero de cuenta existente: "); ;
         }
         return cuenta;

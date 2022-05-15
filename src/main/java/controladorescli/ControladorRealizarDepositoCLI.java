@@ -30,12 +30,23 @@ public class ControladorRealizarDepositoCLI {
         
         String[] informacion = this.vista.realizarDepositoColones();
         CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNumCLI(informacion[0]);
-        CuentaBD.depositarColones(informacion[1], cuenta);
+        String mensajeExito = CuentaBD.depositarColones(informacion[1], cuenta);
+        this.vista.depositoRealizado(mensajeExito);
     }
     
-    public static void main(String arg[]){
-        double monto = 17.12 * 0.02;
-        String montoS = String.valueOf(monto);
-        System.out.println(LocalDate.now());
+    public void realizarDepositoDolares() throws IOException{
+        
+        String[] informacion = this.vista.realizarDepositoDolares();
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNumCLI(informacion[0]);
+        String mensajeExito = CuentaBD.depositarDolares(informacion[1], cuenta);
+        this.vista.depositoRealizado(mensajeExito);
+    }
+    
+    public static void main(String arg[]) throws IOException{
+        ControladorRealizarDepositoCLI nuevo = new ControladorRealizarDepositoCLI();
+        nuevo.realizarDepositoDolares();
+        /*int cont = OperacionBD.numOperacionEnCuenta(Encriptar.cifrar("583542"));
+        System.out.println(cont);*/
+        
     }
 }

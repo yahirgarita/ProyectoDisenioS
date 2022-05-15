@@ -7,11 +7,15 @@ package controladorescli;
 
 import cli.ConsultarCuentasCLI;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+import logicadeaccesoadatos.ConexionBD;
 import logicadeaccesoadatos.CuentaBD;
 import logicadenegocios.CuentaBancaria;
 import logicadenegocios.Persona;
+import util.Encriptar;
 
 /**
  *
@@ -49,5 +53,14 @@ public class ControladorConsultarCuentasCLI {
         ControladorConsultarCuentasCLI nuevo = new ControladorConsultarCuentasCLI();
         nuevo.listarCuentas();
         nuevo.seleccionarCuenta();
+        /*ConexionBD conexionBD = new ConexionBD();
+        conexionBD.conexionDataBase();
+        conexionBD.ejecutarSentSQL("update Cuenta set saldo = " + Encriptar.cifrar(String.valueOf(2000.0)) + 
+                " where numeroCuenta = '" + ":=8:97" + "'");
+        conexionBD.salirBD();*/
+        /*LocalDate date = LocalDate.now();
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("MM/d/uuuu");
+        String text = date.format(formatters);
+        System.out.println(text);*/
     }
 }

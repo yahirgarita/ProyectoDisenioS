@@ -47,6 +47,7 @@ public class Validar{
     
     public static boolean existeCliente(String identificacion){
         coneccion.conexionDataBase();
+        
         ResultSet resultado = coneccion.inquiry("SELECT * FROM Persona WHERE identificacion = '" + identificacion + "'");
         try{
             while(resultado.next()){
@@ -92,7 +93,27 @@ public class Validar{
     }
     public static boolean existeCuenta(String pNumero){
         coneccion.conexionDataBase();
+        System.out.println("Aqui estoy " + Encriptar.cifrar(pNumero));
         ResultSet resultado = coneccion.inquiry("select * from Cuenta where numeroCuenta = '" + Encriptar.cifrar(pNumero)+ "'");
+        try{
+            while(resultado.next()){
+                System.out.println("Aqui estoy 2 " + Encriptar.cifrar(pNumero));
+                return true;
+            }
+        }
+        catch(SQLException e){
+            return false;
+        }
+        coneccion.salirBD();
+        return false;
+        
+    }
+    
+    public static boolean validarPin(String numeroCuenta, String pin){
+        
+        coneccion.conexionDataBase();
+        ResultSet resultado = coneccion.inquiry("select * from Cuenta where numeroCuenta = '" + Encriptar.cifrar(numeroCuenta) + "' AND "
+                + "pin = '"+ Encriptar.cifrar(pin) + "'");
         try{
             while(resultado.next()){
                 return true;
@@ -103,7 +124,6 @@ public class Validar{
         }
         coneccion.salirBD();
         return false;
-        
     }
     
     public static boolean montoMenorQue(int saldo, int monto){
