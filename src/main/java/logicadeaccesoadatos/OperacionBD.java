@@ -23,13 +23,13 @@ public class OperacionBD {
     public static void realizarOperacionEnBD(Operacion operacion, String pNumCuenta){
         conexionBD.conexionDataBase();
         conexionBD.ejecutarSentSQL("insert into Operacion values ('" + operacion.getTipo() + "','" + operacion.getCargo() + "','" + operacion.getMonto() 
-            + "','" + operacion.getMoneda() + "','" + operacion.getFechaOperacion().toString());
+            + "','" + operacion.getMoneda() + "','" + operacion.getFechaOperacion().toString() + "'");
     }
     
     public static int numOperacionEnCuenta(String pNumCuenta){
         conexionBD.conexionDataBase();
         int cont = 0;
-        ResultSet resultado = conexionBD.inquiry("select * from Operacion where cuenta = '" + pNumCuenta + "'and tipo = 'depósitos' or tipo = 'retiros");
+        ResultSet resultado = conexionBD.inquiry("select * from Operacion where cuenta = '" + pNumCuenta + "'and tipo = 'depósitos' or tipo = 'retiros'");
         try{
             while(resultado.next()){
                 cont ++;

@@ -5,10 +5,35 @@
  */
 package cli;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import validaciones.Validar;
+
 /**
  *
  * @author Jimmy
  */
 public class ConsultarSaldoActualCLI {
     
+    public String consultarSaldoActual() throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String cuenta;
+        String pin;
+        System.out.println("Por favor ingrese el numero de cuenta: ");
+        while(Validar.existeCuenta(cuenta = reader.readLine()) != true){
+            System.out.println("Por favor ingrese un numero de cuenta existente: ");
+        }
+        System.out.println("Por favor ingrese el pin de la cuenta: ");
+        while(Validar.validarPin(cuenta,pin = reader.readLine()) != true){
+            System.out.println("Por favor ingrese el pin correcto: ");
+        }
+        
+        return cuenta;
+    }
+    
+    public void mostrarSaldoActual(double saldo){
+        System.out.println("Estimado usuario el saldo actual de su cuenta es "+ saldo +" colones.");
+    }
 }
+

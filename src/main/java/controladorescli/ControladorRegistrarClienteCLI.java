@@ -17,7 +17,6 @@ import validaciones.ValidarTipoDeDato;
  * @author Jimmy
  */
 public class ControladorRegistrarClienteCLI {
-    private Persona usuario;
     private RegistrarClienteCLI ventana;
     
     public ControladorRegistrarClienteCLI(RegistrarClienteCLI ventana){
@@ -26,9 +25,12 @@ public class ControladorRegistrarClienteCLI {
     
     public void registrarCliente() throws IOException, SQLException{
         String[] informacion = this.ventana.registrarCliente();
-        usuario = new Persona(informacion[0],informacion[1],informacion[2],Integer.parseInt(informacion[3]),
+        Persona usuario = new Persona(informacion[0],informacion[1],informacion[2],Integer.parseInt(informacion[3]),
                 ValidarTipoDeDato.corregirFormatoFechaCLI(informacion[4]),Integer.parseInt(informacion[5]),informacion[6]);
-        System.out.println(usuario.toString());
+        if(PersonaBD.registrarClientesEnBD(usuario)){
+            System.out.println(usuario.mensajeCreacion());
+        }
+        
     }
     
     public static void main(String[] args) throws IOException, SQLException{
