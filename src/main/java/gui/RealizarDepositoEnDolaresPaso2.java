@@ -1,20 +1,19 @@
-package gui;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package gui;
 
 /**
  *
  * @author yahir
  */
-public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
+public class RealizarDepositoEnDolaresPaso2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form RealizarDepositoEnColonesPaso2
+     * Creates new form RealizarDepositoEnDolaresPaso2
      */
-    public RealizarDepositoEnColonesPaso2() {
+    public RealizarDepositoEnDolaresPaso2() {
         initComponents();
     }
 
@@ -30,13 +29,13 @@ public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtMonto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        volverDepoColones2 = new javax.swing.JButton();
+        volverDepoDolares2 = new javax.swing.JButton();
         realizarDeposito = new javax.swing.JButton();
         labelInfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Monto:");
+        jLabel1.setText("Digite monto en dolares:");
 
         txtMonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,9 +44,9 @@ public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Realizar deposito en colones");
+        jLabel2.setText("Realizar deposito en dolares");
 
-        volverDepoColones2.setText("Volver");
+        volverDepoDolares2.setText("Volver");
 
         realizarDeposito.setText("Depositar");
         realizarDeposito.addActionListener(new java.awt.event.ActionListener() {
@@ -64,15 +63,11 @@ public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 44, Short.MAX_VALUE)
+                .addGap(0, 22, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,10 +75,14 @@ public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
                         .addComponent(labelInfo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(volverDepoColones2)
+                        .addComponent(volverDepoDolares2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(realizarDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +90,7 @@ public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(volverDepoColones2))
+                        .addComponent(volverDepoDolares2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel2)
@@ -134,20 +133,21 @@ public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RealizarDepositoEnColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarDepositoEnDolaresPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RealizarDepositoEnColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarDepositoEnDolaresPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RealizarDepositoEnColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarDepositoEnDolaresPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RealizarDepositoEnColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RealizarDepositoEnDolaresPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RealizarDepositoEnColonesPaso2().setVisible(true);
+                new RealizarDepositoEnDolaresPaso2().setVisible(true);
             }
         });
     }
@@ -158,6 +158,6 @@ public class RealizarDepositoEnColonesPaso2 extends javax.swing.JFrame {
     public javax.swing.JLabel labelInfo;
     public javax.swing.JButton realizarDeposito;
     public javax.swing.JTextField txtMonto;
-    public javax.swing.JButton volverDepoColones2;
+    public javax.swing.JButton volverDepoDolares2;
     // End of variables declaration//GEN-END:variables
 }

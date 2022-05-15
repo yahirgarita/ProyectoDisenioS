@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import logicadenegocios.*;
 import logicadenegocios.Operacion;
 import util.Encriptar;
-import util.TipoCambio;
+import util.cambio;
 import static validaciones.Validar.coneccion;
 /**
  *
@@ -99,6 +99,24 @@ public class CuentaBD {
         conexionBD.conexionDataBase();
         conexionBD.ejecutarSentSQL("update Cuenta set estatus = '" + pEstatus + "'where numeroCuenta = '" + pNumCuenta + "'");
         conexionBD.salirBD();
+    }
+    
+    public static void actualizarSaldo(String pSaldo,String pNumCuenta){
+        conexionBD.conexionDataBase();
+        ResultSet resultado = conexionBD.inquiry("select * from Cuenta where numeroCuenta = '" + pNumCuenta + "'");
+        try{
+            while(resultado.next()){
+                double saldoAnterior = Double.parseDouble(Encriptar.descifrar(resultado.getString("saldo")));
+                double saldoAniadir = Double.parseDouble(Encriptar.descifrar(pSaldo));
+                double saldoActual = saldoAnterior + saldoAniadir;
+                conexionBD.ejecutarSentSQL("update Cuenta set saldo = '" + Encriptar.cifrar(String.valueOf(saldoActual)) + "'where numeroCuenta = '" + pNumCuenta + "'");
+            }
+        }
+        catch (SQLException e){
+            return;
+        }
+        conexionBD.salirBD();
+        
     }
     
     public static ArrayList<CuentaBancaria> recuperarCuentas(){
@@ -205,7 +223,7 @@ public class CuentaBD {
      }
     public static String depositarDolares(String monto,CuentaBancaria cuenta){
         
-        double precioDolar = new TipoCambio().getCompra();
+        double precioDolar = new cambio().getCompra();
         double montoTotal = Double.parseDouble(monto) * precioDolar;
         double cargo = 0;
         double saldoTotal = montoTotal + cuenta.getSaldo();
@@ -247,15 +265,15 @@ public class CuentaBD {
         conexionBD.salirBD();
     }
     
-    public static void agregarComision(String pNumCuenta, double pMonto){
+    public static void agregarComision(String pNumCuenta, double pMonto, String tipo){
         conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("inset into Comision values ('" + pNumCuenta + "','" + pMonto + "')");
+        conexionBD.ejecutarSentSQL("insert into Comision values ('" + pNumCuenta + "','" + pMonto + "','" + tipo + "')");
         conexionBD.salirBD();
     }
     
     public static void actualizarEstatus(String pNumCuenta, String pEstatus){
         conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("update Cuenta ser estatus = '" + pEstatus + "'where numeroCuenta = '" + pNumCuenta + "'");
+        conexionBD.ejecutarSentSQL("update Cuenta set estatus = '" + pEstatus + "'where numeroCuenta = '" + pNumCuenta + "'");
         conexionBD.salirBD();
     }
 }

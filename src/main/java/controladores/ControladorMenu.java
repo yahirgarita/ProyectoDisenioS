@@ -32,7 +32,9 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.botonCambiarPin.addActionListener(this);
         this.menuInicial.btnDepositarColones.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
-        this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);     
+        this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);  
+        this.menuInicial.btnDepositarDolares1.addActionListener(this);
+    
     }
      
      @Override
@@ -49,6 +51,8 @@ public class ControladorMenu implements ActionListener{
              case "Listar cuentas": listarCuentas();
                 break;
              case "Depositar en Colones": realizarDepositoEnColones();
+                break;
+             case "Depositar en Dolares": realizarDepositoEnDolares();
                 break;
              case "Consultar saldo actual": verSaldoActual();
                 break;
@@ -105,9 +109,18 @@ public class ControladorMenu implements ActionListener{
          controColones.realizarDepositoC.setVisible(true);
          this.menuInicial.setVisible(false);
      }
+     
+     private void realizarDepositoEnDolares(){
+         RealizarDepositoEnDolaresPaso1 depositoEnDolares = new RealizarDepositoEnDolaresPaso1();
+         RealizarDepositoEnDolaresPaso2 depositoDolares2 = new RealizarDepositoEnDolaresPaso2();
+         ControladorDepositoDolares controDolares = new ControladorDepositoDolares(depositoEnDolares, depositoDolares2);
+         controDolares.depositoDolares1.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
      private void verSaldoDolares(){
          ConsultarSaldoDolares verDolares = new ConsultarSaldoDolares();
-         ControladorVerSaldoDolares control5 = new ControladorVerSaldoDolares(verDolares);
+         ping control5 = new ping(verDolares);
          control5.consultaDolares.setVisible(true);
          System.out.println("Funciona puta");
          this.menuInicial.setVisible(false);
