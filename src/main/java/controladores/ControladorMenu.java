@@ -32,7 +32,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.botonCambiarPin.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.btnDepositarColones.addActionListener(this);
-        
+        this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);     
     }
      
      @Override
@@ -51,6 +51,9 @@ public class ControladorMenu implements ActionListener{
              case "Depositar en Colones": realizarDepositoEnColones();
                 break;
              case "Consultar saldo actual": verSaldoActual();
+                break;
+             case "Saldo actual en Dólares": verSaldoDolares();
+                break;
              default: break;
          }
      }
@@ -94,7 +97,7 @@ public class ControladorMenu implements ActionListener{
          control4.consultaSaldo.setVisible(true);
          this.menuInicial.setVisible(false);
      }
-     
+
      private void realizarDepositoEnColones(){
          RealizarDepositoEnColones depositoEnColones = new RealizarDepositoEnColones();
          RealizarDepositoEnColonesPaso2 depositoColones2 = new RealizarDepositoEnColonesPaso2();
@@ -102,6 +105,12 @@ public class ControladorMenu implements ActionListener{
          ControladoDepositoColones controColones = new ControladoDepositoColones(depositoEnColones, depositoColones2);
          System.out.println("hola");
          controColones.realizarDepositoC.setVisible(true);
+     }
+     private void verSaldoDolares(){
+         ConsultarSaldoDolares verDolares = new ConsultarSaldoDolares();
+         ControladorVerSaldoDolares control5 = new ControladorVerSaldoDolares(verDolares);
+         control5.consultaDolares.setVisible(true);
+         System.out.println("Funciona puta");
          this.menuInicial.setVisible(false);
      }
      
