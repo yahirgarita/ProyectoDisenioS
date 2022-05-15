@@ -51,8 +51,8 @@ public class ControladoDepositoColones implements ActionListener{
            if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()))>= 3){}
            double montoConvDouble = Double.parseDouble(monto);
            double comision = montoConvDouble * 0.02;
-           CuentaBD.
-           
+           CuentaBD.a(Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()),comision);
+           montoConvDouble = Operacion.c
            
        }
    }

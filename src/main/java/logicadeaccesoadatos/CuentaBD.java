@@ -202,38 +202,7 @@ public class CuentaBD {
             return null;
         }
         return null;
-    }
-    
-    public static String depositarColones(String monto,CuentaBancaria cuenta){
-        
-        double montoTotal = Double.parseDouble(monto);
-        double cargo = 0;
-        double saldoTotal = montoTotal + cuenta.getSaldo();
-        boolean huboCargo = false;
-        double montoMenosCargo = montoTotal;
-        
-        if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta()))) >= 3){
-            cargo = montoTotal * 0.02;
-            saldoTotal = saldoTotal - cargo;
-            huboCargo = true;
-            montoMenosCargo =- cargo; 
-        }
-        conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("update Cuenta set saldo = '" + Encriptar.cifrar(Double.toString(saldoTotal)) + "'"+
-                " where numeroCuenta = '" + Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())) + "'");
-        conexionBD.salirBD();
-        
-        //Operacion nuevo = new Operacion("depósitos","colones",huboCargo,montoTotal,LocalDate.now());
-        //OperacionBD.realizarOperacionEnBD(nuevo, Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())));
-        
-        String mensaje ="\n Estimado usuario, se han depositado correctamente " + monto + " colones \n"
-                + "[El monto real depositado a su cuenta "+ cuenta.getNumCuenta()+ " es de " + montoMenosCargo + " colones]\n"
-                + "[El monto cobrado por concepto de comisión fue de "+ cargo + " colones, que \n"
-                + "fueron rebajados automáticamente de su saldo actual]";
-        
-        return mensaje;                    
-    }
-    
+     }
     public static String depositarDolares(String monto,CuentaBancaria cuenta){
         
         double precioDolar = new TipoCambio().getCompra();
@@ -277,5 +246,12 @@ public class CuentaBD {
                 " where numeroCuenta = '" + Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())) + "'");
         conexionBD.salirBD();
     }
+    
+    public static void agregarComision(String pNumCuenta, double pMonto){
+        conexionBD.conexionDataBase();
+        conexionBD.ejecutarSentSQL("inset into Comision values ('" + pNumCuenta + "','" + pMonto + "')");
+        conexionBD.salirBD();
+    }
+    
 }
 

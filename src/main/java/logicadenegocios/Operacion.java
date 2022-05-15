@@ -69,6 +69,10 @@ public class Operacion {
         }
     }
     
+    public static double calcularComision(double pMonto){
+        return pMonto-(pMonto * 0.02);
+    };
+    
     /**
      * Método para conocer la información del objeto de tipo generación
      */
