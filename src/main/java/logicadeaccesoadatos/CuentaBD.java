@@ -101,7 +101,7 @@ public class CuentaBD {
             conexionBD.conexionDataBase();
             ResultSet buscar = conexionBD.inquiry("select * from Cuenta");
             while(buscar.next()){
-               System.out.println("la cuenta mala es :" + Encriptar.descifrar(buscar.getString("numeroCuenta"))+" igual a " + Encriptar.descifrar(buscar.getString("saldo")));
+               
                 CuentaBancaria cuentaBanc = new CuentaBancaria(Integer.parseInt(Encriptar.descifrar(buscar.getString("numeroCuenta"))),
                       LocalDate.parse(buscar.getString("fecha")),
                       Double.parseDouble(Encriptar.descifrar(buscar.getString("saldo"))),
@@ -175,28 +175,6 @@ public class CuentaBD {
         }
         return cadena;
     }
-    
-     public static Persona compararPersonaConCuentaCLI(String pNumCuenta){
-        conexionBD.conexionDataBase();
-        ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where numeroCuenta = '" + Encriptar.cifrar(pNumCuenta) + "'");
-        try{
-            
-            while(resultado.next()){
-                ResultSet resuPersona = conexionBD.inquiry("select * from Persona where codigo = '" + resultado.getString("codigoPersona") + "'");
-                while(resuPersona.next()){
-                    Persona cliente = new Persona(resuPersona.getString("primerApellido"), resuPersona.getString("segundoApellido"),resuPersona.getString("nombre"),
-                        Integer.parseInt(resuPersona.getString("identificacion")),LocalDate.parse(resuPersona.getString("fechaNacimiento"), DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                        Integer.parseInt(resuPersona.getString("telefono")), resuPersona.getString("correo"));
-                       cliente.setCodigo(resuPersona.getString("codigo"));
-                    return cliente;
-                }
-            }
-        }
-        catch(SQLException e){
-            return null;
-        }
-        return null;
-     }
     
     public static void retirarColones(String monto, CuentaBancaria cuenta){
         int saldoTotal = (int) (cuenta.getSaldo() - Integer.parseInt(monto));

@@ -7,9 +7,13 @@ package controladorescli;
 
 import cli.CambiarPinCLI;
 import java.io.IOException;
+import javax.mail.MessagingException;
 import logicadeaccesoadatos.CuentaBD;
 import logicadenegocios.CuentaBancaria;
+import logicadenegocios.Persona;
+import util.Email;
 import util.Encriptar;
+import validaciones.Validar;
 
 /**
  *
@@ -22,21 +26,36 @@ public class ControladorCambiarPINCLI {
     public ControladorCambiarPINCLI(){
         this.vista = new CambiarPinCLI();
     }
-    public void cambiarPinPedirCuenta() throws IOException{
+    public void cambiarPinPedirCuenta() throws IOException, MessagingException{
         String numeroCuenta = this.vista.cambiarPinPedirCuenta();
-        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
-        String pinActual = this.vista.cambiarPinPedirPinActual();
-        String pinNuevo ;
-        //System.out.println("el pin es " + pinActual + " y el otro es " + cuenta.getPin());
-        if(pinActual.equals(cuenta.getPin())){
-            pinNuevo = this.vista.cambiarPinPedirPinNuevo();
-            CuentaBD.cambiarPinCuenta(Encriptar.cifrar(numeroCuenta), Encriptar.cifrar(pinNuevo));
-            this.vista.cambiarPinCompletado(numeroCuenta);
+        if(Validar.validarEstatusInactivo(Encriptar.cifrar(numeroCuenta))){
+            this.vista.cuentaInactiva();
+            return;
         }
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
+        String pinActual;
+        String pinNuevo ;
+        int intentos = 0;
+        //System.out.println("el pin es " + pinActual + " y el otro es " + cuenta.getPin());
+        
+        while(intentos < 2){
+            pinActual = this.vista.cambiarPinPedirPinActual();
+            if(pinActual.equals(cuenta.getPin())){
+                pinNuevo = this.vista.cambiarPinPedirPinNuevo();
+                CuentaBD.cambiarPinCuenta(Encriptar.cifrar(numeroCuenta), Encriptar.cifrar(pinNuevo));
+                this.vista.cambiarPinCompletado(numeroCuenta);
+                return;
+            }
+            intentos++;
+        }
+        System.out.println("Su cuenta se inactivo");
+        CuentaBD.modificarEstado(Encriptar.cifrar(numeroCuenta), "Inactiva");
+        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(numeroCuenta));
+        Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), "Su cuenta a pasado a estar Inactiva por fallar el PIN");
         
     }
     
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException, MessagingException{
         ControladorCambiarPINCLI nuevo = new ControladorCambiarPINCLI();
         nuevo.cambiarPinPedirCuenta();
     }
