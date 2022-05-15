@@ -30,8 +30,8 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.botonListarClientes.addActionListener(this);
         this.menuInicial.botonListarCuentas.addActionListener(this);
         this.menuInicial.botonCambiarPin.addActionListener(this);
-        this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.btnDepositarColones.addActionListener(this);
+        this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);     
     }
      
@@ -101,10 +101,9 @@ public class ControladorMenu implements ActionListener{
      private void realizarDepositoEnColones(){
          RealizarDepositoEnColones depositoEnColones = new RealizarDepositoEnColones();
          RealizarDepositoEnColonesPaso2 depositoColones2 = new RealizarDepositoEnColonesPaso2();
-         System.out.println("hola");
          ControladoDepositoColones controColones = new ControladoDepositoColones(depositoEnColones, depositoColones2);
-         System.out.println("hola");
          controColones.realizarDepositoC.setVisible(true);
+         this.menuInicial.setVisible(false);
      }
      private void verSaldoDolares(){
          ConsultarSaldoDolares verDolares = new ConsultarSaldoDolares();

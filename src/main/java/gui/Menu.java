@@ -94,7 +94,12 @@ public class Menu extends javax.swing.JFrame {
         btnConsultarSaldoDolares.setText("Saldo actual en Dólares");
 
         btnDepositarColones.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btnDepositarColones.setText("Saldo actual en Dólares");
+        btnDepositarColones.setText("Depositar en Colones");
+        btnDepositarColones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarColonesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,6 +180,10 @@ public class Menu extends javax.swing.JFrame {
     private void botonRegistrarClienteMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteMenu1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonRegistrarClienteMenu1ActionPerformed
+
+    private void btnDepositarColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarColonesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepositarColonesActionPerformed
 
     /**
      * @param args the command line arguments
