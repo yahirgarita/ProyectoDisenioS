@@ -126,6 +126,10 @@ public class Validar{
         return false;
     }
     
+    public static boolean existeSaldoSuficiente(double pSaldo, String pNumCuenta){
+        return pSaldo < CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(pNumCuenta)).getSaldo();
+    }
+    
     public static boolean montoMenorQue(int saldo, int monto){
         
         if(saldo < monto){

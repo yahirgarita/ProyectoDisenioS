@@ -276,5 +276,21 @@ public class CuentaBD {
         conexionBD.ejecutarSentSQL("update Cuenta set estatus = '" + pEstatus + "'where numeroCuenta = '" + pNumCuenta + "'");
         conexionBD.salirBD();
     }
+    
+    public static void quitarSaldoCuenta(String pSaldo, String pNumCuenta){
+        conexionBD.conexionDataBase();
+        ResultSet resultado = conexionBD.inquiry("select * from Cuenta where numeroCuenta = '" + pNumCuenta + "'");
+        try{
+            while(resultado.next()){
+                double saldoAnterior = Double.parseDouble(Encriptar.descifrar(resultado.getString("saldo")));
+                double saldoQuitar = Double.parseDouble(Encriptar.descifrar(pSaldo));
+                double saldoNuevo = saldoAnterior - saldoQuitar;
+                conexionBD.ejecutarSentSQL("update Cuenta SET saldo = '" + Encriptar.cifrar(String.valueOf(saldoNuevo)) + "where numeroCuenta = '" + pNumCuenta + "'");
+            }
+        }catch (SQLException e){
+            return;
+        }
+        conexionBD.salirBD();
+    }
 }
 

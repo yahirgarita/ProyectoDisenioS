@@ -123,8 +123,15 @@ public class ControladorRetiroColones implements ActionListener{
    
    private void realizarRetiroColones(){
        if(ValidarTipoDeDato.validarEsEntero(this.retiroColones4.montoRetiroColones.getText())){
-           if(Validar.(Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()), this.retiroColones4.jLabel1.getText())){
-               
+           if(Validar.existeSaldoSuficiente(Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()), this.retiroColones4.jLabel1.getText())){
+               if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.retiroColones4.jLabel1.getText())) >= 3){
+                   
+                   double comision = Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()) * 0.02;
+                   CuentaBD.agregarComision(Encriptar.cifrar(this.retiroColones4.jLabel1.getText()), comision, "retiros");
+                   Double monto = Operacion.calcularComision(Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()));
+                   CuentaBD
+                   
+               }
            }
        }
    }

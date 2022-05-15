@@ -67,9 +67,6 @@ public class ValidarTipoDeDato {
         return corregirFormatoFecha(date);
     }
     
-    public static boolean existeSaldoSuficiente(double pSaldo, String pNumCuenta){
-        return pSaldo < CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(pNumCuenta)).getSaldo();
-    }
     public static LocalDate corregirFormatoFecha(Date fecha){
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         String fechaFormatoCorrecto = formato.format(fecha);
