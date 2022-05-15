@@ -20,7 +20,7 @@ import validaciones.*;
 public class ControladoDepositoColones implements ActionListener{
    public RealizarDepositoEnColones realizarDepositoC;
    public RealizarDepositoEnColonesPaso2 realizarDepositoC2;
-   
+   private Menu menuInicial;
    public ControladoDepositoColones(RealizarDepositoEnColones pRealizarDepositoC, RealizarDepositoEnColonesPaso2 pRealizarDepositoC2){
        this.realizarDepositoC = pRealizarDepositoC;
        this.realizarDepositoC2 = pRealizarDepositoC2;

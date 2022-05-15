@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.MessagingException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,6 +31,7 @@ public class ControladorRetiroColones implements ActionListener{
     public RetiroColonesPaso4 retiroColones4;
     private int attempt = 0;
     private Persona clienteActual;
+    private Menu menuInicial;
     
     public ControladorRetiroColones(RetiroColonesPaso1 pRetiroColones1, RetiroColonesPaso2 pRetiroColones2, RetiroColonesPaso3 pRetiroColones3, RetiroColonesPaso4 pRetiroColones4){
         this.retiroColones1 = pRetiroColones1;
@@ -36,6 +39,7 @@ public class ControladorRetiroColones implements ActionListener{
         this.retiroColones3 = pRetiroColones3;
         this.retiroColones4 = pRetiroColones4;
         this.clienteActual = null;
+        this.menuInicial = null;
         this.retiroColones1.continuarRetiroColones.addActionListener(this);
         this.retiroColones1.volverRetiroColones1.addActionListener(this);
         this.retiroColones2.continuarRetiroColones2.addActionListener(this);
@@ -48,13 +52,27 @@ public class ControladorRetiroColones implements ActionListener{
    @Override
    public void actionPerformed(ActionEvent evento){
        switch(evento.getActionCommand()){
-            case "Continuar proceso": verificarDepositoColones();
+            case "Continuar proceso": verificarNumCuentaRetiroColones();
                 break;
-            case "Continuar": hacerDepositoColones();
+            case "Continuar": {
+               try {
+                   verificarPinCuentaRetiroColones();
+               } catch (MessagingException ex) {
+                   Logger.getLogger(ControladorRetiroColones.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           }
                 break;
-            case "Verificar": hacerDepositoColones();
+
+            case "Verificar": {
+               try {
+                   verificarPalabraCorrectaRetiro();
+               } catch (MessagingException ex) {
+                   Logger.getLogger(ControladorRetiroColones.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           }
                 break;
-            case "RealizarRetiro": hacerDepositoColones();
+
+            case "RealizarRetiro": realizarRetiroColones();
                 break;      
             case "Volver":
                 controladores.ControladoresGlobales.volver();
@@ -129,10 +147,40 @@ public class ControladorRetiroColones implements ActionListener{
                    double comision = Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()) * 0.02;
                    CuentaBD.agregarComision(Encriptar.cifrar(this.retiroColones4.jLabel1.getText()), comision, "retiros");
                    Double monto = Operacion.calcularComision(Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()));
-                   CuentaBD
                    
+                   CuentaBD.quitarSaldoCuenta(Encriptar.cifrar(String.valueOf(monto)), Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
+                   Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()),LocalDate.now());
+                   OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
+                   
+                   JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroColones4.jLabel1.getText() + " colones\n" +
+                           "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + 
+                           "fueron rebajados automáticament de su saldo actual]");
+                   this.retiroColones4.dispose();
+                   this.retiroColones3.dispose();
+                   this.retiroColones2.dispose();
+                   this.retiroColones1.dispose();
+                   this.menuInicial.setVisible(true);
+               }
+               else{
+                   CuentaBD.quitarSaldoCuenta(Encriptar.cifrar(this.retiroColones4.montoRetiroColones.getText()), Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
+                   Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()),LocalDate.now());
+                   OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
+                   
+                   JOptionPane.showMessageDialog(null, "Estimado usuario, el monto de este retiro es " + this.retiroColones4.jLabel1.getText() + " colones \n" +
+                           "[El monto cobrado por concepto de comisión fue de 0 colones, que fueron rebajados automáticamente de su saldo actual+");
+                   this.retiroColones4.dispose();
+                   this.retiroColones3.dispose();
+                   this.retiroColones2.dispose();
+                   this.retiroColones1.dispose();
+                   this.menuInicial.setVisible(true);
                }
            }
+           else{
+               JOptionPane.showMessageDialog(null,"No existe suficiente saldo en la cuenta");
+           }
+       }
+       else{
+           JOptionPane.showMessageDialog(null,"Debe ingresar un número en el monto ");
        }
    }
    

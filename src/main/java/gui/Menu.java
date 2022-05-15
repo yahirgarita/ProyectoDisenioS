@@ -38,6 +38,7 @@ public class Menu extends javax.swing.JFrame {
         btnConsultarSaldoDolares = new javax.swing.JButton();
         btnDepositarColones = new javax.swing.JButton();
         btnDepositarDolares1 = new javax.swing.JButton();
+        btnRetiroEnColones = new javax.swing.JButton();
 
         jButton5.setText("Volver");
 
@@ -110,6 +111,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnRetiroEnColones.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnRetiroEnColones.setText("Retiro en Colones");
+        btnRetiroEnColones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetiroEnColonesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +132,10 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(77, 77, 77)
                                 .addComponent(btnDepositarDolares1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77)
+                                .addComponent(btnRetiroEnColones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,8 +178,10 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDepositarDolares1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRetiroEnColones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addComponent(jButton6)
                 .addContainerGap())
         );
@@ -202,6 +216,10 @@ public class Menu extends javax.swing.JFrame {
     private void btnDepositarDolares1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarDolares1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDepositarDolares1ActionPerformed
+
+    private void btnRetiroEnColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetiroEnColonesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRetiroEnColonesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,6 +266,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton btnConsultarSaldoDolares;
     public javax.swing.JButton btnDepositarColones;
     public javax.swing.JButton btnDepositarDolares1;
+    public javax.swing.JButton btnRetiroEnColones;
     public javax.swing.JButton butonCrearCuenta;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

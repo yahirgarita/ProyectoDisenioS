@@ -34,7 +34,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);  
         this.menuInicial.btnDepositarDolares1.addActionListener(this);
-    
+        this.menuInicial.btnRetiroEnColones.addActionListener(this);
     }
      
      @Override
@@ -55,6 +55,8 @@ public class ControladorMenu implements ActionListener{
              case "Depositar en Dolares": realizarDepositoEnDolares();
                 break;
              case "Consultar saldo actual": verSaldoActual();
+                break;
+             case "Retiro en Colones":realizarRetiroColones();
                 break;
              case "Saldo actual en Dólares": verSaldoDolares();
                 break;
@@ -122,8 +124,17 @@ public class ControladorMenu implements ActionListener{
          ConsultarSaldoDolares verDolares = new ConsultarSaldoDolares();
          ping control5 = new ping(verDolares);
          control5.consultaDolares.setVisible(true);
-         System.out.println("Funciona puta");
          this.menuInicial.setVisible(false);
+     }
+     
+     private void realizarRetiroColones(){
+        RetiroColonesPaso1 retiroColones1 = new RetiroColonesPaso1();
+        RetiroColonesPaso2 retiroColones2 = new RetiroColonesPaso2();
+        RetiroColonesPaso3 retiroColones3 = new RetiroColonesPaso3();
+        RetiroColonesPaso4 retiroColones4 = new RetiroColonesPaso4();
+        ControladorRetiroColones controRetiroC = new ControladorRetiroColones(retiroColones1,retiroColones2,retiroColones3,retiroColones4);
+        controRetiroC.retiroColones1.setVisible(true);
+        this.menuInicial.setVisible(false);
      }
      
      private void volver(){
