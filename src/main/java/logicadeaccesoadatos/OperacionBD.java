@@ -22,8 +22,9 @@ public class OperacionBD {
     
     public static void realizarOperacionEnBD(Operacion operacion, String pNumCuenta){
         conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("insert into Operacion values ('" + operacion.getTipo() + "','" + operacion.getCargo() + "','" + operacion.getMonto() 
-            + "','" + operacion.getMoneda() + "','" + operacion.getFechaOperacion().toString() + "'");
+        conexionBD.ejecutarSentSQL("insert into Operacion values ('" + operacion.getFechaOperacion().toString() + "','" + operacion.getTipo() + "','" + operacion.getCargo() 
+                + "','" + operacion.getMonto() + "','" + operacion.getMoneda() + "','"+ pNumCuenta + "')");
+        conexionBD.salirBD();
     }
     
     public static int numOperacionEnCuenta(String pNumCuenta){

@@ -37,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
         btnConsultarSaldo = new javax.swing.JButton();
         btnConsultarSaldoDolares = new javax.swing.JButton();
         btnDepositarColones = new javax.swing.JButton();
+        btnDepositarDolares1 = new javax.swing.JButton();
 
         jButton5.setText("Volver");
 
@@ -94,7 +95,20 @@ public class Menu extends javax.swing.JFrame {
         btnConsultarSaldoDolares.setText("Saldo actual en Dólares");
 
         btnDepositarColones.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btnDepositarColones.setText("Saldo actual en Dólares");
+        btnDepositarColones.setText("Depositar en Colones");
+        btnDepositarColones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarColonesActionPerformed(evt);
+            }
+        });
+
+        btnDepositarDolares1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnDepositarDolares1.setText("Depositar en Dolares");
+        btnDepositarDolares1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarDolares1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +119,10 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(77, 77, 77)
+                                .addComponent(btnDepositarDolares1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +131,7 @@ public class Menu extends javax.swing.JFrame {
                                     .addComponent(botonListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(77, 77, 77)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnDepositarColones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnDepositarColones, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                                         .addComponent(btnConsultarSaldoDolares, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
@@ -145,7 +162,9 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(botonListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDepositarColones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDepositarDolares1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -175,6 +194,14 @@ public class Menu extends javax.swing.JFrame {
     private void botonRegistrarClienteMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteMenu1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonRegistrarClienteMenu1ActionPerformed
+
+    private void btnDepositarColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarColonesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepositarColonesActionPerformed
+
+    private void btnDepositarDolares1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarDolares1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepositarDolares1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +247,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton btnConsultarSaldo;
     public javax.swing.JButton btnConsultarSaldoDolares;
     public javax.swing.JButton btnDepositarColones;
+    public javax.swing.JButton btnDepositarDolares1;
     public javax.swing.JButton butonCrearCuenta;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

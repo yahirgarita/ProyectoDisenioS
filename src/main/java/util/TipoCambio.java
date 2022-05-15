@@ -10,7 +10,7 @@ import java.util.Date;
  * @author Jimmy 
  * @version 1.0
  */
-public class TipoCambio {
+public class TipoCambio{
 
   private int indicador = 0; //317: Compra, 318: Venta
   private String fechaInicio;
@@ -89,7 +89,7 @@ public class TipoCambio {
   }
   
   public static void main(String[] args){
-      TipoCambio nuevo = new TipoCambio();
+      cambio nuevo = new cambio();
       System.out.println(nuevo.getCompra());
       System.out.println(nuevo.getVenta());
   }
