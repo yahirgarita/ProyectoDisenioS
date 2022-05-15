@@ -48,10 +48,10 @@ public class ControladoDepositoColones implements ActionListener{
    private void hacerDepositoColones(){
        String monto = this.realizarDepositoC2.txtMonto.getText();
        if(ValidarTipoDeDato.validarEsEntero(monto)){
-           //if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.realizarDepositoC2)))>= 3){}
+           if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()))>= 3){}
            double montoConvDouble = Double.parseDouble(monto);
            double comision = montoConvDouble * 0.02;
-           
+           CuentaBD.
            
            
        }
