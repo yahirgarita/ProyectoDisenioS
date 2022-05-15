@@ -76,7 +76,7 @@ public class ControladoDepositoColones implements ActionListener{
                 this.realizarDepositoC2.setVisible(false);
            
            }else{
-                CuentaBD.actualizarEstatus(Encriptar.cifrar(String.valueOf(monto)),Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
+                CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(monto)),Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
                 Operacion oper = new Operacion("depósitos", "colones", false, Double.parseDouble(monto), LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
                 JOptionPane.showMessageDialog(null, "Estimado usuario, se ha realizado correctamente el deposito " + monto + " colones\n" +

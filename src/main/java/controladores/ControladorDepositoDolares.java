@@ -81,13 +81,13 @@ public class ControladorDepositoDolares implements ActionListener{
                 JOptionPane.showMessageDialog(null, 
                         "Estimado usuario, se ha realizado correctamente el deposito " + montoEnDolar + " dólares\n" +
                         "[Según el BCCR, el tipo de cambio de compra del dólar de hoy " + LocalDate.now().toString() + " es de: " + dolar + "]\n" +
-                        "[El monto equivalente en colones es: " + Double.parseDouble(montoEnDolar) * dolar + "] \n"+
-                        "[El monto real depositado a su cuenta " + this.depositoDolares2.labelInfo.getText() + " es de" + montoColones + " colones]\n" +
-                        "[El monto cobrado por concepto añadigo de comisión fue de " + comision + " colones, que fueron rebajados de forma automatica de su saldo actual]");
+                        "[El monto equivalente en colones es: " + Math.round(((Double.parseDouble(montoEnDolar) * dolar))*100.0)/100.0 + "] \n"+
+                        "[El monto real depositado a su cuenta " + this.depositoDolares2.labelInfo.getText() + " es de " + Math.round(montoColones *100.0)+ " colones]\n" +
+                        "[El monto cobrado por concepto añadigo de comisión fue de " + Math.round(comision*100.0)/100.0 + " colones, que fueron rebajados de forma automatica de su saldo actual]");
                 this.depositoDolares2.setVisible(false);
            
            }else{
-                CuentaBD.actualizarEstatus(Encriptar.cifrar(String.valueOf(montoColones)),Encriptar.cifrar(this.depositoDolares2.labelInfo.getText()));
+                CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(montoColones)),Encriptar.cifrar(this.depositoDolares2.labelInfo.getText()));
                 Operacion oper = new Operacion("depósitos", "colones", false, Double.parseDouble(montoEnDolar), LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.depositoDolares2.labelInfo.getText()));
                 JOptionPane.showMessageDialog(null, 
