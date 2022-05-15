@@ -40,9 +40,10 @@ public class ControladorRealizarDepositoCLI {
             double montoConvDouble = Double.parseDouble(monto);
             double comision = montoConvDouble * 0.02;
 
-            CuentaBD.agregarComision(Encriptar.cifrar(numeroCuenta),comision);
+            CuentaBD.agregarComision(Encriptar.cifrar(numeroCuenta),comision,"depósitos");
             montoConvDouble = Operacion.calcularComision(montoConvDouble);
-            CuentaBD.actualizarEstatus(Encriptar.cifrar(String.valueOf(montoConvDouble)),Encriptar.cifrar(numeroCuenta));
+            CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(montoConvDouble)),Encriptar.cifrar(numeroCuenta));
+
 
             Operacion oper = new Operacion("depósitos","Colones", true, Double.parseDouble(monto), LocalDate.now());
             OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(numeroCuenta));
@@ -51,11 +52,12 @@ public class ControladorRealizarDepositoCLI {
                 "[El monto cobrado por concepto añadigo de comisión fue de " + comision + " colones, que fueron rebajados de forma automatica de su salgo actual]";
         }
         else{  
-            CuentaBD.actualizarEstatus(Encriptar.cifrar(String.valueOf(monto)),Encriptar.cifrar(numeroCuenta));
+            //CuentaBD.actualizarEstatus(Encriptar.cifrar(String.valueOf(monto)),Encriptar.cifrar(numeroCuenta));
+            CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(montoConvDouble)),Encriptar.cifrar(numeroCuenta));
             Operacion oper = new Operacion("depósitos", "colones", false, Double.parseDouble(monto), LocalDate.now());
             OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));
-            mensaje = "Estimado usuario, se ha realizado correctamente el deposito" + monto + "colones\n" +                   
-                "[El monto real deposito a su cuenta" + numeroCuenta + " es de" + monto + " colones]\n" +
+            mensaje = "Estimado usuario, se ha realizado correctamente el deposito " + monto + " colones\n" +                   
+                "[El monto real deposito a su cuenta " + numeroCuenta + " es de " + monto + " colones]\n" +
                 "[El monto cobrado por concepto añadigo de comisión fue de 0 colones, que fueron rebajados de forma automatica de su salgo actual]";
             }
         this.vista.depositoRealizado(mensaje);
