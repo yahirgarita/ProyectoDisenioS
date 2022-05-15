@@ -30,7 +30,7 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         volverRetiroColones4 = new javax.swing.JButton();
         continuarRetiroColones4 = new javax.swing.JButton();
-        pinCuentaRetiroColones = new javax.swing.JTextField();
+        montoRetiroColones = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -54,9 +54,9 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
             }
         });
 
-        pinCuentaRetiroColones.addActionListener(new java.awt.event.ActionListener() {
+        montoRetiroColones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pinCuentaRetiroColonesActionPerformed(evt);
+                montoRetiroColonesActionPerformed(evt);
             }
         });
 
@@ -83,7 +83,7 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(pinCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(montoRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -96,7 +96,7 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pinCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(montoRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -119,9 +119,9 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_continuarRetiroColones4ActionPerformed
 
-    private void pinCuentaRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinCuentaRetiroColonesActionPerformed
+    private void montoRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoRetiroColonesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pinCuentaRetiroColonesActionPerformed
+    }//GEN-LAST:event_montoRetiroColonesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,7 +164,7 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    public javax.swing.JTextField pinCuentaRetiroColones;
+    public javax.swing.JTextField montoRetiroColones;
     public javax.swing.JButton volverRetiroColones4;
     // End of variables declaration//GEN-END:variables
 }

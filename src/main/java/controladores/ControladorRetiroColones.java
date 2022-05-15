@@ -14,6 +14,7 @@ import util.Email;
 import util.Encriptar;
 import validaciones.*;
 import util.SMS;
+import validaciones.*;
 /**
  * @author Carlos Rojas Molina
  * @author Jimmy Tsang Feng
@@ -101,18 +102,35 @@ public class ControladorRetiroColones implements ActionListener{
        
    }
    
-   private void verificarPalabraCorrectaRetiro(){
+   private void verificarPalabraCorrectaRetiro() throws MessagingException{
+       Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
        if(Objects.equals(this.retiroColones3.msgTelRetiroColones, this.retiroColones3.palabraMsgTelefono)){
            this.retiroColones4 = new RetiroColonesPaso4();
            this.retiroColones4.continuarRetiroColones4.addActionListener(this);
            this.retiroColones4.volverRetiroColones4.addActionListener(this);
            this.retiroColones4.jLabel1.setText(this.retiroColones2.jLabel3.getText());
-           
+           this.retiroColones4.setVisible(true);
+           this.retiroColones3.setVisible(false);
+           attempt =0;
+       }
+       else{
+           JOptionPane.showMessageDialog(null,"La palabra que ingreso es incorrecta, intente nuevametne");
+           attempt ++;
+           comprobrarIntentos(Encriptar.cifrar(this.retiroColones2.jLabel3.getText()),this.retiroColones3,"Se ha inactivado la cuenta por fallar repetidamente la palabra clave");
+           this.retiroColones3.palabraMsgTelefono = SMS.enviarSMS(String.valueOf(comparacionPersonaCuenta.getNumTelefonico()));
        }
    }
    
+   private void realizarRetiroColones(){
+       if(ValidarTipoDeDato.validarEsEntero(this.retiroColones4.montoRetiroColones.getText())){
+           if(Validar.(Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()), this.retiroColones4.jLabel1.getText())){
+               
+           }
+       }
+   }
+   
+   
    private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
-        
         Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(this.retiroColones2.jLabel3.getText()));
         if(attempt == 2){
             CuentaBD.modificarEstado(pNumCuenta, "Inactiva");
