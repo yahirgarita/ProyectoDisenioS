@@ -7,23 +7,33 @@ package util;
  
 import com.twilio.Twilio; 
 import com.twilio.rest.api.v2010.account.Message; 
+import com.twilio.type.PhoneNumber;
+import java.util.Random;
 /**
  *
  * @author Jimmy
  */
 public class SMS {
     
-    private static final String ACCOUNT_SID = "AC6ae52385045589d885e786247b2b2634"; 
-    private static final String AUTH_TOKEN = "1060dd966cdc4b16522992c3d0052e03"; 
+    private static final String ACCOUNT_SID = "AC7322a8cae254e2177d28f29cb19bf7be"; 
+    private static final String AUTH_TOKEN = "d637752ec7a56dddc0a0dba8696eb2e0"; 
+    private static final String numYAbecedario = "abcdefghijklmnopqrstuvwxyz1234567890";
  
-    public void enviarSMS(String destinario, String mensaje) { 
+    public static String enviarSMS(String destinario) { 
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN); 
-        Message message = Message.creator( 
-                new com.twilio.type.PhoneNumber("+506" + destinario),  
-                "MGbda8d6e4be5c75bc732e620fc50d7cb1", 
-                mensaje)      
-            .create(); 
- 
-        System.out.println(message.getSid()); 
+        String palabraMsgTel = crearPalabra();
+        Message message = Message.creator(new PhoneNumber("+506" + destinario), 
+                new PhoneNumber("+19704504353"), palabraMsgTel).create();
+        return palabraMsgTel;
     } 
+    private static String crearPalabra(){
+        Random random = new Random();
+            StringBuilder palabra = new StringBuilder();
+            for(int i = 0; i<7; i++){
+                int numRandom = random.nextInt(numYAbecedario.length());
+                char cadenaRandom = numYAbecedario.charAt(numRandom );
+                palabra.append(cadenaRandom);
+            }
+            return palabra.toString();
+    }
 }

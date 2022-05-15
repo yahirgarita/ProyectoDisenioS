@@ -62,33 +62,4 @@ public class ConexionBD {
         }
             
     }
-    /*
-    public static void importarBD(){
-      try {
-        String SQL = "SELECT * FROM Cuenta";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(SQL);
-        while (rs.next()) {
-            Cuenta escuela = new Cuenta(rs.getString("nombre"),rs.getString("codigo"));
-            escuelas.add(escuela);
-        }
-        SQL = "SELECT * FROM Operacion";
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery(SQL); 
-        while (rs.next()) {
-            Curso curso = new Curso(rs.getString("nombre"),rs.getString("codigoUnico"),rs.getString("codigoEscuela"),parseInt(rs.getString("cantidadCreditos")),parseInt(rs.getString("cantidadHoras")),rs.getString("numSemestre"));
-            cursos.add(curso);
-        }
-         SQL = "SELECT * FROM Persona";
-         stmt = conn.createStatement();
-         rs = stmt.executeQuery(SQL);
-         while (rs.next()) {
-            PlanDeEstudio planDeEstudio = new PlanDeEstudio(Integer.parseInt(rs.getString("numeroDePlan")),rs.getString("fechaDeVigencia"), rs.getString("codigoEscuela"));
-            planesDeEstudios.add(planDeEstudio);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-      }
-    }*/
 }

@@ -9,7 +9,9 @@ package gui;
  * @author yahir
  */
 public class RetiroColonesPaso3 extends javax.swing.JFrame {
-
+    
+    public String palabraMsgTelefono;
+    
     /**
      * Creates new form RetiroColonesPaso3
      */
@@ -30,7 +32,7 @@ public class RetiroColonesPaso3 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        pinCuentaRetiroColones = new javax.swing.JTextField();
+        msgTelRetiroColones = new javax.swing.JTextField();
         volverRetiroColones3 = new javax.swing.JButton();
         continuarRetiroColones3 = new javax.swing.JButton();
 
@@ -50,9 +52,9 @@ public class RetiroColonesPaso3 extends javax.swing.JFrame {
 
         jLabel3.setText("Porfavor revise sus mensajes e ingrese la palabra que se le envio");
 
-        pinCuentaRetiroColones.addActionListener(new java.awt.event.ActionListener() {
+        msgTelRetiroColones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pinCuentaRetiroColonesActionPerformed(evt);
+                msgTelRetiroColonesActionPerformed(evt);
             }
         });
 
@@ -76,7 +78,7 @@ public class RetiroColonesPaso3 extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(pinCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(msgTelRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addContainerGap()
@@ -100,7 +102,7 @@ public class RetiroColonesPaso3 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(pinCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(msgTelRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -114,9 +116,9 @@ public class RetiroColonesPaso3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pinCuentaRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinCuentaRetiroColonesActionPerformed
+    private void msgTelRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msgTelRetiroColonesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pinCuentaRetiroColonesActionPerformed
+    }//GEN-LAST:event_msgTelRetiroColonesActionPerformed
 
     private void continuarRetiroColones2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroColones2ActionPerformed
         // TODO add your handling code here:
@@ -167,7 +169,7 @@ public class RetiroColonesPaso3 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    public javax.swing.JTextField pinCuentaRetiroColones;
+    public javax.swing.JTextField msgTelRetiroColones;
     public javax.swing.JButton volverRetiroColones3;
     // End of variables declaration//GEN-END:variables
 }

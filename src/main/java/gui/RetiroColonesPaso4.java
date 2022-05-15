@@ -161,7 +161,7 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton continuarRetiroColones3;
     public javax.swing.JButton continuarRetiroColones4;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JTextField pinCuentaRetiroColones;
