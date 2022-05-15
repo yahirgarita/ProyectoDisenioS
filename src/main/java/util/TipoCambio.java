@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ipoCambio es una clase que se comunica con el WebService del BCCR para obtener
+ * TipoCambio es una clase que se comunica con el WebService del BCCR para obtener
  * el tipo de cambio en tiempo real. Se comunica mediante el protocolo HTTP GET
  * Sólo funciona con la moneda USD
  * @author Jimmy 

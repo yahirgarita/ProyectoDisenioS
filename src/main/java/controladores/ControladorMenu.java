@@ -42,6 +42,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.botonListarCuentas.addActionListener(this);
         this.menuInicial.botonCambiarPin.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
+        this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);
         
     }
      
@@ -59,6 +60,9 @@ public class ControladorMenu implements ActionListener{
              case "Listar cuentas": listarCuentas();
                 break;
              case "Consultar saldo actual": verSaldoActual();
+                break;
+             case "Saldo actual en Dólares": verSaldoDolares();
+                break;
              default: break;
          }
      }
@@ -100,6 +104,14 @@ public class ControladorMenu implements ActionListener{
          ConsultarSaldo verSaldo = new ConsultarSaldo();
          ControladorVerSaldo control4 = new ControladorVerSaldo(verSaldo);
          control4.consultaSaldo.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void verSaldoDolares(){
+         ConsultarSaldoDolares verDolares = new ConsultarSaldoDolares();
+         ControladorVerSaldoDolares control5 = new ControladorVerSaldoDolares(verDolares);
+         control5.consultaDolares.setVisible(true);
+         System.out.println("Funciona puta");
          this.menuInicial.setVisible(false);
      }
      
