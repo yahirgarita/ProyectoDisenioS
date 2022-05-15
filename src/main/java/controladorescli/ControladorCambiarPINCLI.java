@@ -9,6 +9,7 @@ import cli.CambiarPinCLI;
 import java.io.IOException;
 import logicadeaccesoadatos.CuentaBD;
 import logicadenegocios.CuentaBancaria;
+import util.Encriptar;
 
 /**
  *
@@ -23,13 +24,13 @@ public class ControladorCambiarPINCLI {
     }
     public void cambiarPinPedirCuenta() throws IOException{
         String numeroCuenta = this.vista.cambiarPinPedirCuenta();
-        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNumCLI(numeroCuenta);
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         String pinActual = this.vista.cambiarPinPedirPinActual();
         String pinNuevo ;
         //System.out.println("el pin es " + pinActual + " y el otro es " + cuenta.getPin());
         if(pinActual.equals(cuenta.getPin())){
             pinNuevo = this.vista.cambiarPinPedirPinNuevo();
-            CuentaBD.cambiarPinCuentaCLI(numeroCuenta, pinNuevo);
+            CuentaBD.cambiarPinCuenta(Encriptar.cifrar(numeroCuenta), Encriptar.cifrar(pinNuevo));
             this.vista.cambiarPinCompletado(numeroCuenta);
         }
         
