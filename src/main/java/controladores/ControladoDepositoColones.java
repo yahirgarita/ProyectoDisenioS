@@ -31,7 +31,15 @@ public class ControladoDepositoColones implements ActionListener{
    @Override
    public void actionPerformed(ActionEvent evento){
        switch(evento.getActionCommand()){
-           case "Continuar proceso":}
+            case "Continuar proceso": verificarDepositoColones();
+                break;
+            case "Volver":
+                controladores.ControladoresGlobales.volver();
+                this.realizarDepositoC.setVisible(false);
+                this.realizarDepositoC2.setVisible(false);
+            default:
+                break;
+        }
    }
    private void verificarDepositoColones(){
        CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.realizarDepositoC.numCuentaDepocitoColones.getText()));

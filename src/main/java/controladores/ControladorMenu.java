@@ -16,13 +16,6 @@ import javax.swing.*;
  */
 public class ControladorMenu implements ActionListener{
      public Menu menuInicial;
-     private RegistroCliente registroCliente ;
-     private CreacionCuenta crearCuentaBanco;
-     private ListarClientes listarClientes;
-     private ListarCuentas listarCuentas;
-     private CambiarPinPaso1 cambiarPIN;
-     private ConsultarSaldo consultaSaldo;
-     private RealizarDepositoEnColones depositoColones;
      /**
       * Constructor de la clase controladorMenu
       * 
@@ -31,12 +24,6 @@ public class ControladorMenu implements ActionListener{
      
      public ControladorMenu(Menu pMenuInicial){
         this.menuInicial = pMenuInicial;
-        this.registroCliente = null;
-        this.crearCuentaBanco = null;
-        this.listarClientes = null;
-        this.cambiarPIN = null;
-        this.consultaSaldo = null;
-        this.depositoColones = null;
         this.menuInicial.botonRegistrarClienteMenu1.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.butonCrearCuenta.addActionListener(this);
@@ -60,6 +47,8 @@ public class ControladorMenu implements ActionListener{
              case "Cambiar PIN": cambiarPIN();
                 break;
              case "Listar cuentas": listarCuentas();
+                break;
+             case "Depositar en Colones": realizarDepositoEnColones();
                 break;
              case "Consultar saldo actual": verSaldoActual();
              default: break;
@@ -109,7 +98,9 @@ public class ControladorMenu implements ActionListener{
      private void realizarDepositoEnColones(){
          RealizarDepositoEnColones depositoEnColones = new RealizarDepositoEnColones();
          RealizarDepositoEnColonesPaso2 depositoColones2 = new RealizarDepositoEnColonesPaso2();
+         System.out.println("hola");
          ControladoDepositoColones controColones = new ControladoDepositoColones(depositoEnColones, depositoColones2);
+         System.out.println("hola");
          controColones.realizarDepositoC.setVisible(true);
          this.menuInicial.setVisible(false);
      }
