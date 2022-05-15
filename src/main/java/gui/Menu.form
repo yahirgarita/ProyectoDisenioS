@@ -36,13 +36,21 @@
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="botonListarCuentas" min="-2" pref="218" max="-2" attributes="0"/>
-                          <Component id="botonListarClientes" min="-2" pref="218" max="-2" attributes="0"/>
                           <Component id="botonCambiarPin" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                          <Component id="butonCrearCuenta" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="botonRegistrarClienteMenu1" min="-2" pref="218" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="botonRegistrarClienteMenu1" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="butonCrearCuenta" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="botonListarClientes" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="btnConsultarSaldo" min="-2" pref="254" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnDepositarColones" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnConsultarSaldo" pref="254" max="32767" attributes="0"/>
+                                      <Component id="btnConsultarSaldoDolares" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -65,15 +73,21 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botonRegistrarClienteMenu1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="btnConsultarSaldo" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="butonCrearCuenta" min="-2" pref="39" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="butonCrearCuenta" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnConsultarSaldoDolares" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="botonListarClientes" min="-2" pref="39" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonListarClientes" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnDepositarColones" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="botonListarCuentas" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -175,6 +189,28 @@
           <Font name="Dialog" size="18" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Consultar saldo actual"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnConsultarSaldoDolares">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Saldo actual en D&#xf3;lares"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDepositarColones">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Saldo actual en D&#xf3;lares"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

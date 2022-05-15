@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import logicadenegocios.*;
+import logicadenegocios.Operacion;
 import util.Encriptar;
 import util.TipoCambio;
 import static validaciones.Validar.coneccion;
@@ -143,8 +144,45 @@ public class CuentaBD {
         }
         return null;
     }
+   public static ResultSet recuperarTodaInfoCuenta(){
+       conexionBD.conexionDataBase();
+       return conexionBD.inquiry("select * from Cuenta");
+   }   
+   
+   public static Persona saberDuenioCuenta(String pNumCuenta) throws SQLException{
+       conexionBD.conexionDataBase();
+
+       ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where numeroCuenta = '" + pNumCuenta + "'");
+       while(resultado.next()){
+           
+           return PersonaBD.saberClientePorCodigo(resultado.getString("codigoPersona"));
+       }
+       return null;
+   
+    /**
+     * 
+     * @param pNumCuenta
+     * @return cadena
+     */
+    }
+    public static ArrayList<Operacion> saberLasOperacionesDeCuentas(String pNumCuenta){
+       conexionBD.conexionDataBase();
+        ArrayList<Operacion> cadena = new ArrayList<>();
+        ResultSet resultado = conexionBD.inquiry("select * from Operacion where cuenta = '" + pNumCuenta + "'");
+        try{
+            while(resultado.next()){
+                Operacion oper = new Operacion(resultado.getString("tipo"),resultado.getString("moneda"), Boolean.parseBoolean(resultado.getString("cargo")), 
+                    Double.parseDouble(resultado.getString("monto")), LocalDate.parse(resultado.getString("fecha")));
+                cadena.add(oper);
+            }
+        }
+        catch(SQLException e){
+            return new ArrayList<>();
+        }
+        return cadena;
+    }
     
-    public static Persona compararPersonaConCuentaCLI(String pNumCuenta){
+     public static Persona compararPersonaConCuentaCLI(String pNumCuenta){
         conexionBD.conexionDataBase();
         ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where numeroCuenta = '" + Encriptar.cifrar(pNumCuenta) + "'");
         try{
@@ -164,38 +202,7 @@ public class CuentaBD {
             return null;
         }
         return null;
-    }
-    
-    public static String depositarColones(String monto,CuentaBancaria cuenta){
-        
-        double montoTotal = Double.parseDouble(monto);
-        double cargo = 0;
-        double saldoTotal = montoTotal + cuenta.getSaldo();
-        boolean huboCargo = false;
-        double montoMenosCargo = montoTotal;
-        
-        if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta()))) >= 3){
-            cargo = montoTotal * 0.02;
-            saldoTotal = saldoTotal - cargo;
-            huboCargo = true;
-            montoMenosCargo =- cargo; 
-        }
-        conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("update Cuenta set saldo = '" + Encriptar.cifrar(Double.toString(saldoTotal)) + "'"+
-                " where numeroCuenta = '" + Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())) + "'");
-        conexionBD.salirBD();
-        
-        //Operacion nuevo = new Operacion("depósitos","colones",huboCargo,montoTotal,LocalDate.now());
-        //OperacionBD.realizarOperacionEnBD(nuevo, Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())));
-        
-        String mensaje ="\n Estimado usuario, se han depositado correctamente " + monto + " colones \n"
-                + "[El monto real depositado a su cuenta "+ cuenta.getNumCuenta()+ " es de " + montoMenosCargo + " colones]\n"
-                + "[El monto cobrado por concepto de comisión fue de "+ cargo + " colones, que \n"
-                + "fueron rebajados automáticamente de su saldo actual]";
-        
-        return mensaje;                    
-    }
-    
+     }
     public static String depositarDolares(String monto,CuentaBancaria cuenta){
         
         double precioDolar = new TipoCambio().getCompra();
@@ -239,7 +246,17 @@ public class CuentaBD {
                 " where numeroCuenta = '" + Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())) + "'");
         conexionBD.salirBD();
     }
-
-             
+    
+    public static void agregarComision(String pNumCuenta, double pMonto){
+        conexionBD.conexionDataBase();
+        conexionBD.ejecutarSentSQL("inset into Comision values ('" + pNumCuenta + "','" + pMonto + "')");
+        conexionBD.salirBD();
+    }
+    
+    public static void actualizarEstatus(String pNumCuenta, String pEstatus){
+        conexionBD.conexionDataBase();
+        conexionBD.ejecutarSentSQL("update Cuenta ser estatus = '" + pEstatus + "'where numeroCuenta = '" + pNumCuenta + "'");
+        conexionBD.salirBD();
+    }
 }
 

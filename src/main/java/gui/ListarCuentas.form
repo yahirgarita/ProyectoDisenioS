@@ -29,7 +29,7 @@
               <EmptySpace pref="304" max="32767" attributes="0"/>
               <Component id="botonConsultarInfoCliente" min="-2" pref="259" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="botonConsultarClientes" min="-2" pref="197" max="-2" attributes="0"/>
+              <Component id="botonConsultarCuentas" min="-2" pref="197" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -70,7 +70,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="botonConsultarClientes" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="botonConsultarCuentas" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="botonConsultarInfoCliente" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
@@ -89,9 +89,9 @@
         <Property name="text" type="java.lang.String" value="Lista de los Cuentas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="botonConsultarClientes">
+    <Component class="javax.swing.JButton" name="botonConsultarCuentas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consultar clientes"/>
+        <Property name="text" type="java.lang.String" value="Consultar cuentas"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -275,7 +275,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="botonConsultarInfoCliente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consultar informaci&#xf3;n de un cliente"/>
+        <Property name="text" type="java.lang.String" value="Consultar informaci&#xf3;n de un cuenta"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

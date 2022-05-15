@@ -32,7 +32,7 @@ public class ListarCuentas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        botonConsultarClientes = new javax.swing.JButton();
+        botonConsultarCuentas = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaInfoCuenta = new javax.swing.JTable();
@@ -47,7 +47,7 @@ public class ListarCuentas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Lista de los Cuentas");
 
-        botonConsultarClientes.setText("Consultar clientes");
+        botonConsultarCuentas.setText("Consultar cuentas");
 
         botonVolver.setText("Volver");
 
@@ -114,7 +114,7 @@ public class ListarCuentas extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaCuentas);
 
-        botonConsultarInfoCliente.setText("Consultar información de un cliente");
+        botonConsultarInfoCliente.setText("Consultar información de un cuenta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,7 +126,7 @@ public class ListarCuentas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
                 .addComponent(botonConsultarInfoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonConsultarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonConsultarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +159,7 @@ public class ListarCuentas extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonConsultarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonConsultarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonConsultarInfoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(16, 16, 16))))
         );
@@ -204,7 +204,7 @@ public class ListarCuentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton botonConsultarClientes;
+    public javax.swing.JButton botonConsultarCuentas;
     public javax.swing.JButton botonConsultarInfoCliente;
     public javax.swing.JButton botonVolver;
     private javax.swing.JLabel jLabel1;

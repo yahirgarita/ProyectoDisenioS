@@ -38,6 +38,7 @@ public class ControladorListarClientes implements ActionListener{
     private ArrayList<Persona> personasEnBD;
     
     
+    
     /**
      * ControladorListarClientes
      * 
@@ -146,30 +147,14 @@ public class ControladorListarClientes implements ActionListener{
         }
         return null;
     }
-    private void consultarListaClientes(){
-        this.listarClientes.modeloInfoCliente.setRowCount(0);
-        this.listarClientes.modeloCuenta.setRowCount(0);
-        int linea = this.listarClientes.tablaInfoCliente.getSelectedRow();
-        
-        Persona person1 = verPersonaPorId(Integer.parseInt(this.listarClientes.tablaInfoCliente.getModel().getValueAt(linea,3).toString()));
-        Object[] datoPersona = { person1.getNombreCompleto(),person1.getIdPersona(),person1.getFechaNacimiento(),person1.getNumTelefonico(),
-            person1.getCorreoPersona(), person1.getCodigo()};
-        
-        this.listarClientes.modeloInfoCliente.addRow(datoPersona);
-        ArrayList<CuentaBancaria> cuentaBancariaCadena = PersonaBD.recuperarCuentasClientes(person1.getCodigo());
-        for(CuentaBancaria cuentaBancaria: cuentaBancariaCadena){
-            Object[] datoPersona2 = {cuentaBancaria.getNumCuenta(),};
-            this.listarClientes.modeloCuenta.addRow(datoPersona2);
-        } 
-    }
     
     private void consultarListarClientes(){
         this.listarClientes.modeloInfoCliente.setRowCount(0);
         this.listarClientes.modeloCuenta.setRowCount(0);
         int filaSeleccionada = this.listarClientes.tablaClientes.getSelectedRow();
-        System.out.print(filaSeleccionada);
+        
         Persona person = verPersonaPorId(Integer.parseInt(this.listarClientes.tablaClientes.getModel().getValueAt(filaSeleccionada,3).toString()));
-        System.out.print(person.getIdPersona());
+
         Object[] cliente1 = {person.getNombreCompleto(),person.getIdPersona(), person.getFechaNacimiento(),
             person.getNumTelefonico(), person.getCorreoPersona(), person.getCodigo()};
         this.listarClientes.modeloInfoCliente.addRow(cliente1);

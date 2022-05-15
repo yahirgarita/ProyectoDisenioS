@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controladores;
-import gui.ConsultarSaldo;
+import gui.ConsultarSaldoDolares;
 import logicadeaccesoadatos.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import util.Encriptar;
+import util.TipoCambio;
 
 /**
  * @author Carlos Rojas Molina
@@ -17,37 +18,38 @@ import util.Encriptar;
  *
  * @version 1.0
  */
-public class adda implements ActionListener{
-    public ConsultarSaldo consultaSaldo;
+
+public class ControladorVerSaldoDolares implements ActionListener{
+    public ConsultarSaldoDolares consultaDolares;
+    private TipoCambio tipoCambio = new TipoCambio();
     
-    public adda(ConsultarSaldo pConsultarSaldo){
-    consultaSaldo = pConsultarSaldo;
-    consultaSaldo.btnVerSaldo.addActionListener(this);
-    consultaSaldo.btnVolver.addActionListener(this);
+    public ControladorVerSaldoDolares(ConsultarSaldoDolares pConsultarSaldoDolares){
+        consultaDolares = pConsultarSaldoDolares;
+        consultaDolares.btnVerSaldo.addActionListener(this);
+        consultaDolares.btnVolver.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch(e.getActionCommand()){
-            case "Ver Saldo": verSaldo();
+            case "Ver Saldo Dolares": verSaldo();
                 break;
             case "Volver":
                 controladores.ControladoresGlobales.volver();
-                this.consultaSaldo.setVisible(false);
+                this.consultaDolares.setVisible(false);
                 break;
             default:
                 break;
        }        
     }
+    
     private void verSaldo(){
-       String cuenta = this.consultaSaldo.numCuenta.getText();
-       String pin = this.consultaSaldo.pinUsuario.getText();
+       String cuenta = this.consultaDolares.numCuenta.getText();
+       String pin = this.consultaDolares.pinUsuario.getText();
        if(CuentaBD.recuperarCuentaPorNumPin(Encriptar.cifrar(cuenta), Encriptar.cifrar(pin)) != null){
-           JOptionPane.showMessageDialog(null, "Estimado usuario el saldo actual de su cuenta es " + CuentaBD.recuperarCuentaPorNumPin(Encriptar.cifrar(cuenta), Encriptar.cifrar(pin)).getSaldo() + " colones.");
+           JOptionPane.showMessageDialog(null, "Estimado usuario el saldo actual de su cuenta es " + CuentaBD.recuperarCuentaPorNumPin(Encriptar.cifrar(cuenta), Encriptar.cifrar(pin)).getSaldo() / tipoCambio.getCompra() + " dólares.");
        }else{
            JOptionPane.showMessageDialog(null, "Error: Datos inválidos");
        } 
     } 
 }
-
-
