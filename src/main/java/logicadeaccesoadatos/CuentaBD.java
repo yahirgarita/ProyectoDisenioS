@@ -48,25 +48,6 @@ public class CuentaBD {
         return null;
     }
     
-    public static CuentaBancaria recuperarCuentaXNumCLI(String pNumCuenta){
-        conexionBD.conexionDataBase();
-        System.out.println("el cifrado es "+ pNumCuenta);
-        ResultSet averiguar = conexionBD.inquiry("select * from Cuenta where numeroCuenta = '" + Encriptar.cifrar(pNumCuenta)+"'");
-        try{
-            while(averiguar.next()){
-                System.out.println("el saldo es "+averiguar.getString("saldo"));
-                CuentaBancaria newCuenta = new CuentaBancaria(Integer.parseInt(Encriptar.descifrar(averiguar.getString("numeroCuenta"))),
-                        Double.parseDouble(Encriptar.descifrar(averiguar.getString("saldo"))), Encriptar.descifrar(averiguar.getString("pin")), 
-                        LocalDate.parse(averiguar.getString("fecha")));
-                newCuenta.setEstatus(averiguar.getString("estatus"));
-                return newCuenta;
-            }
-        }
-        catch(SQLException e){
-            return null;
-        }
-        return null;
-    }
     public static CuentaBancaria recuperarCuentaPorNumPin(String numeroCuenta, String pin){
        conexionBD.conexionDataBase();
        ResultSet buscar = conexionBD.inquiry("SELECT * FROM Cuenta WHERE numeroCuenta = '" + numeroCuenta + "' and pin = '" + pin + "'");
@@ -89,11 +70,6 @@ public class CuentaBD {
         conexionBD.salirBD();
     }
     
-    public static void cambiarPinCuentaCLI(String pNumCuenta, String pNewPin){
-        conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("update Cuenta set pin = '" + Encriptar.cifrar(pNewPin)+ "' where numeroCuenta = '" + Encriptar.cifrar(pNumCuenta) + "'");
-        conexionBD.salirBD();
-    }
     
     public static void modificarEstado(String pNumCuenta, String pEstatus){
         conexionBD.conexionDataBase();
@@ -221,41 +197,6 @@ public class CuentaBD {
         }
         return null;
      }
-    public static String depositarDolares(String monto,CuentaBancaria cuenta){
-        
-        double precioDolar = new cambio().getCompra();
-        double montoTotal = Double.parseDouble(monto) * precioDolar;
-        double cargo = 0;
-        double saldoTotal = montoTotal + cuenta.getSaldo();
-        boolean huboCargo = false;
-        double montoMenosCargo = montoTotal;
-        LocalDate fechaActual = LocalDate.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("MM/d/uuuu");
-        String fechaCorrecta = fechaActual.format(formato);
- 
-        if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta()))) >= 3){
-            cargo = montoTotal * 0.02;
-            saldoTotal = saldoTotal - cargo;
-            huboCargo = true;
-            montoMenosCargo =- cargo; 
-        }
-        conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("update Cuenta set saldo = '" + Encriptar.cifrar(Double.toString(saldoTotal)) + "'"+
-                " where numeroCuenta = '" + Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())) + "'");
-        conexionBD.salirBD();
-        
-        //Operacion nuevo = new Operacion("depósitos","colones",huboCargo,montoTotal,LocalDate.now());
-        //OperacionBD.realizarOperacionEnBD(nuevo, Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())));
-        
-        String mensaje ="\n Estimado usuario, se han recibido correctamente " + monto + " dolares \n"
-                + "[Según el BCCR, el tipo de cambio de compra del dólar de "+ fechaCorrecta + " es: " + precioDolar +"\n"
-                + "[El monto equivalente en colones es "+ Double.parseDouble(monto) * precioDolar + "]\n"                
-                + "[El monto real depositado a su cuenta "+ cuenta.getNumCuenta()+ " es de " + montoMenosCargo + " colones]\n"
-                + "[El monto cobrado por concepto de comisión fue de "+ cargo + " colones, que \n"
-                + "fueron rebajados automáticamente de su saldo actual]";
-        
-        return mensaje;                    
-    }
     
     public static void retirarColones(String monto, CuentaBancaria cuenta){
         int saldoTotal = (int) (cuenta.getSaldo() - Integer.parseInt(monto));

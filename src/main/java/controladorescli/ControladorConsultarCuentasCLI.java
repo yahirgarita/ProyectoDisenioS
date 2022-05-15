@@ -41,7 +41,7 @@ public class ControladorConsultarCuentasCLI {
     
     public void seleccionarCuenta() throws IOException{
         String numeroCuenta = this.vista.seleccionarCuenta();
-        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNumCLI(numeroCuenta);
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         this.vista.mostrarCuenta(cuenta.toString());
     }
     

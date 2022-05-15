@@ -9,6 +9,7 @@ import cli.ConsultarSaldoActualCLI;
 import java.io.IOException;
 import logicadeaccesoadatos.CuentaBD;
 import logicadenegocios.CuentaBancaria;
+import util.Encriptar;
 import util.TipoCambio;
 
 /**
@@ -25,13 +26,13 @@ public class ControladorConsultarSaldoActualCLI {
     
     public void consultarSaldoActual() throws IOException{
         String numeroCuenta = this.vista.consultarSaldoActual();
-        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNumCLI(numeroCuenta);
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         this.vista.mostrarSaldoActualColones(cuenta.getSaldo());
     }
     
     public void consultarSaldoActualDolares() throws IOException{
         String numeroCuenta = this.vista.consultarSaldoActual();
-        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNumCLI(numeroCuenta);
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         double precioDolar = new TipoCambio().getCompra();
         double saldoDolar = cuenta.getSaldo() * precioDolar;
         this.vista.mostrarSaldoActualDolares(saldoDolar, precioDolar);
