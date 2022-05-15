@@ -32,8 +32,14 @@ public class ConsultarSaldoActualCLI {
         return cuenta;
     }
     
-    public void mostrarSaldoActual(double saldo){
+    public void mostrarSaldoActualColones(double saldo){
         System.out.println("Estimado usuario el saldo actual de su cuenta es "+ saldo +" colones.");
+    }
+    
+    public void mostrarSaldoActualDolares(double saldo, double precioDolar){
+        System.out.println("Estimado usuario el saldo actual de su cuenta es "+ saldo +" dolares.");
+        System.out.println("Para esta conversión se utilizó el tipo de cambio del dólar, precio de compra.");
+        System.out.println("[Según el BCCR, el tipo de cambio de compra del dólar de hoy es: " + precioDolar +"]");
     }
 }
 
