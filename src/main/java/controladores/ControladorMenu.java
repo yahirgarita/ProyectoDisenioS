@@ -35,6 +35,8 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);  
         this.menuInicial.btnDepositarDolares1.addActionListener(this);
         this.menuInicial.btnRetiroEnColones.addActionListener(this);
+        this.menuInicial.btnCompraDolar.addActionListener(this);
+        this.menuInicial.btnVentaDolar.addActionListener(this);
     }
      
      @Override
@@ -59,6 +61,10 @@ public class ControladorMenu implements ActionListener{
              case "Retiro en Colones":realizarRetiroColones();
                 break;
              case "Saldo actual en Dólares": verSaldoDolares();
+                break;
+             case "Tipo de Cambio Venta": consultarTipoCambioVenta();
+                break;
+             case "Tipo de Cambio Compra": consultarTipoCambioCompra();
                 break;
              default: break;
          }
@@ -134,6 +140,20 @@ public class ControladorMenu implements ActionListener{
         RetiroColonesPaso4 retiroColones4 = new RetiroColonesPaso4();
         ControladorRetiroColones controRetiroC = new ControladorRetiroColones(retiroColones1,retiroColones2,retiroColones3,retiroColones4, menuInicial);
         controRetiroC.retiroColones1.setVisible(true);
+        this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarTipoCambioCompra(){
+        ConsultarCompraDolar vista = new ConsultarCompraDolar();
+        ControladorCompraDolar nuevo = new ControladorCompraDolar(vista);
+        vista.setVisible(true);
+        this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarTipoCambioVenta(){
+        ConsultarVentaDolar vista = new ConsultarVentaDolar();
+        ControladorVentaDolar nuevo = new ControladorVentaDolar(vista);
+        vista.setVisible(true);
         this.menuInicial.setVisible(false);
      }
      
