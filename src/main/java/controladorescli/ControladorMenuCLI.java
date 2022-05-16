@@ -5,11 +5,10 @@
  */
 package controladorescli;
 
-import cli.MenuCLI;
-import cli.RegistrarClienteCLI;
-import cli.RegistrarCuentaCLI;
+import cli.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.mail.MessagingException;
 
 /**
  *
@@ -22,25 +21,25 @@ public class ControladorMenuCLI {
     public ControladorMenuCLI(MenuCLI menu){
         this.menu = menu;
     }
-    public void listarMenu() throws IOException, SQLException{
+    public void listarMenu() throws IOException, SQLException, MessagingException{
        
-        int opcion;
+        String opcion;
         while((opcion = menu.mostrarMenu()) < 21 ){
            switch(opcion){
                case 1:
-                   new ControladorRegistrarClienteCLI(new RegistrarClienteCLI()).registrarCliente();
+                   registrarCliente();
                case 2:
-                   new ControladorRegistrarCuentaCLI(new RegistrarCuentaCLI()).registrarCuenta();
+                   crearCuentaBancaria();
                case 3:
-                   
+                   listarClientes();
                case 4:
-                   break;
+                   listarCuentas();
                case 5:
-                   break;
+                   cambiarPIN();
                case 6:
-                   break;
+                   realizarDepositoEnColones();
                case 7:
-                   break;
+                   realizarDepositoEnDolares();
                case 8:
                    break;
                case 9:
@@ -48,13 +47,13 @@ public class ControladorMenuCLI {
                case 10:
                    break;
                case 11:
-                   break;
+                   consultarTipoCambioCompra();
                case 12:
-                   break;
+                   consultarTipoCambioVenta();
                case 13:
-                   break;
+                   verSaldoActual();
                case 14:
-                   break;
+                   verSaldoDolares();
                case 15:
                    break;
                case 16:
@@ -66,15 +65,86 @@ public class ControladorMenuCLI {
                case 19:
                    break;
                case 20:
-                   break;
+                   System.out.println("Saliendo del sistema");
+                   return;
 
            }
         }
-        
-      
+
     }
     
-    public static void main(String[] args) throws IOException, SQLException{
+    private void registrarCliente() throws IOException, SQLException{
+        
+        RegistrarClienteCLI vista = new RegistrarClienteCLI();
+        ControladorRegistrarClienteCLI controlador = new ControladorRegistrarClienteCLI(vista);
+        controlador.registrarCliente();
+    }
+    private void crearCuentaBancaria() throws IOException{
+        RegistrarCuentaCLI vista = new RegistrarCuentaCLI();
+        ControladorRegistrarCuentaCLI controlador = new ControladorRegistrarCuentaCLI(vista);
+        controlador.registrarCuenta();
+    }
+    private void listarClientes() throws IOException{
+        ConsultarClientesCLI vistaLista = new ConsultarClientesCLI();
+        SeleccionarClienteCLI vistaConsultar = new SeleccionarClienteCLI();
+        ControladorConsultarClientesCLI controlador = new ControladorConsultarClientesCLI(vistaLista,vistaConsultar);
+        controlador.listarClientes();  
+    }
+     
+    private void cambiarPIN() throws IOException, MessagingException{
+        CambiarPinCLI vista = new CambiarPinCLI();
+        ControladorCambiarPINCLI controlador = new ControladorCambiarPINCLI(vista);
+        controlador.cambiarPinPedirCuenta();
+        
+    }
+     
+    private void listarCuentas() throws IOException{
+        ConsultarCuentasCLI vista = new ConsultarCuentasCLI();
+        ControladorConsultarCuentasCLI controlador = new ControladorConsultarCuentasCLI(vista);
+        controlador.listarCuentas();
+    }
+     
+    private void verSaldoActual() throws IOException{
+        ConsultarSaldoActualCLI vista = new ConsultarSaldoActualCLI();
+        ControladorConsultarSaldoActualCLI controlador = new ControladorConsultarSaldoActualCLI(vista);
+        controlador.consultarSaldoActual();
+    }
+
+    private void realizarDepositoEnColones() throws IOException{
+        RealizarDepositoCLI vista = new RealizarDepositoCLI();
+        ControladorRealizarDepositoCLI controlador = new ControladorRealizarDepositoCLI(vista);
+        controlador.realizarDepositoColones();
+    }
+     
+    private void realizarDepositoEnDolares() throws IOException{
+        RealizarDepositoCLI vista = new RealizarDepositoCLI();
+        ControladorRealizarDepositoCLI controlador = new ControladorRealizarDepositoCLI(vista);
+        controlador.realizarDepositoDolares();
+    }
+     
+    private void verSaldoDolares() throws IOException{
+        ConsultarSaldoActualCLI vista = new ConsultarSaldoActualCLI();
+        ControladorConsultarSaldoActualCLI controlador = new ControladorConsultarSaldoActualCLI(vista);
+        controlador.consultarSaldoActualDolares();
+    }
+     
+    private void realizarRetiroColones(){
+      
+    }
+     
+    private void consultarTipoCambioCompra(){
+        ConsultarTipoCambioCLI vista = new ConsultarTipoCambioCLI();
+        ControladorTipoCambioCLI controlador = new ControladorTipoCambioCLI(vista);
+        controlador.consultarCompra();
+    }
+     
+    private void consultarTipoCambioVenta(){
+        ConsultarTipoCambioCLI vista = new ConsultarTipoCambioCLI();
+        ControladorTipoCambioCLI controlador = new ControladorTipoCambioCLI(vista);
+        controlador.consultarVenta();
+    }
+    
+    public static void main(String[] args) throws IOException, SQLException, MessagingException{
         MenuCLI vista = new MenuCLI();
         ControladorMenuCLI nuevo =  new ControladorMenuCLI(vista);
         nuevo.listarMenu();

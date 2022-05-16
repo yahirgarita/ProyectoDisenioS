@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  */
 public class MenuCLI {
     
-    public int mostrarMenu() throws IOException{
+    public String mostrarMenu() throws IOException{
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         
@@ -38,9 +38,9 @@ public class MenuCLI {
         System.out.println("17. Consultar estatus de una cuenta");
         System.out.println("18. Consultar ganancias del banco TOTALIZADO");
         System.out.println("19. Consultar ganancias del banco de una cuenta especifico");
-        System.out.println("20. Salir");
+        System.out.println("20. Salir, Digite cualquie otra tecla para salir del programa");
         
-        int opcion = Integer.parseInt(reader.readLine());
+        String opcion = reader.readLine();
         
         return opcion;
     }

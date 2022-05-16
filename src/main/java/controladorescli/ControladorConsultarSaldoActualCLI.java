@@ -11,6 +11,7 @@ import logicadeaccesoadatos.CuentaBD;
 import logicadenegocios.CuentaBancaria;
 import util.Encriptar;
 import util.TipoCambio;
+import validaciones.Validar;
 
 /**
  *
@@ -20,26 +21,30 @@ public class ControladorConsultarSaldoActualCLI {
     
     private ConsultarSaldoActualCLI vista;
     
-    public ControladorConsultarSaldoActualCLI(){
-        vista = new ConsultarSaldoActualCLI();
+    public ControladorConsultarSaldoActualCLI(ConsultarSaldoActualCLI vista){
+        this.vista = vista;
     }
     
     public void consultarSaldoActual() throws IOException{
         String numeroCuenta = this.vista.consultarSaldoActual();
+        if(Validar.validarEstatusInactivo(Encriptar.cifrar(numeroCuenta))){
+            this.vista.cuentaInactiva();
+            return;
+        }
         CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         this.vista.mostrarSaldoActualColones(cuenta.getSaldo());
     }
     
     public void consultarSaldoActualDolares() throws IOException{
         String numeroCuenta = this.vista.consultarSaldoActual();
+        if(Validar.validarEstatusInactivo(Encriptar.cifrar(numeroCuenta))){
+            this.vista.cuentaInactiva();
+            return;
+        }
         CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         double precioDolar = new TipoCambio().getCompra();
         double saldoDolar = cuenta.getSaldo() * precioDolar;
         this.vista.mostrarSaldoActualDolares(saldoDolar, precioDolar);
     }
     
-    public static void main (String [] args) throws IOException{
-        ControladorConsultarSaldoActualCLI nuevo = new ControladorConsultarSaldoActualCLI();
-        nuevo.consultarSaldoActual();
-    }
 }

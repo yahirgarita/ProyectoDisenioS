@@ -26,10 +26,10 @@ public class ControladorRealizarDepositoCLI {
     private RealizarDepositoCLI vista;
     private TipoCambio tipoCambio;
     
-    public ControladorRealizarDepositoCLI(){
+    public ControladorRealizarDepositoCLI(RealizarDepositoCLI vista){
         
         tipoCambio = new TipoCambio();
-        vista = new RealizarDepositoCLI();
+        this.vista = vista;
     }
     
     public void realizarDepositoColones() throws IOException{
@@ -113,15 +113,5 @@ public class ControladorRealizarDepositoCLI {
             }
         this.vista.depositoRealizado(mensaje);
     }
-       
-        
-    
-    
-    public static void main(String arg[]) throws IOException{
-        ControladorRealizarDepositoCLI nuevo = new ControladorRealizarDepositoCLI();
-        nuevo.realizarDepositoDolares();
-        /*int cont = OperacionBD.numOperacionEnCuenta(Encriptar.cifrar("583542"));
-        System.out.println(cont);*/
-        
-    }
+
 }

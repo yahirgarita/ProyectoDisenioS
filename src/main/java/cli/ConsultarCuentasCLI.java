@@ -27,6 +27,14 @@ public class ConsultarCuentasCLI {
         System.out.println();
     }
     
+    public String consultarCuenta() throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String opcion;
+        System.out.println("Digite 1 si desea consultar una cuenta o digite cualquier otra tecla para salir");
+        opcion = reader.readLine();
+        return opcion;
+    }
+    
     public String seleccionarCuenta() throws IOException{
         
         String cuenta;
