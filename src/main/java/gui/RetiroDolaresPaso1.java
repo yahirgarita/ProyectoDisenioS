@@ -1,19 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui;
 
 /**
  *
  * @author yahir
  */
-public class RetiroColonesPaso2 extends javax.swing.JFrame {
+public class RetiroDolaresPaso1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form RetiroColonesPaso2
+     * Creates new form RetiroColonesPaso1
      */
-    public RetiroColonesPaso2() {
+    public RetiroDolaresPaso1() {
         initComponents();
     }
 
@@ -27,59 +23,55 @@ public class RetiroColonesPaso2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        pinCuentaRetiroColones = new javax.swing.JTextField();
+        numCuentaRetiroDolares = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        volverRetiroColones2 = new javax.swing.JButton();
-        continuarRetiroColones2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        volverRetiroDolares1 = new javax.swing.JButton();
+        continuarRetiroDolares = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Pin asociado a la cuenta:");
+        jLabel1.setText("Número de cuenta:");
 
-        pinCuentaRetiroColones.addActionListener(new java.awt.event.ActionListener() {
+        numCuentaRetiroDolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pinCuentaRetiroColonesActionPerformed(evt);
+                numCuentaRetiroDolaresActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Realizar retiro en colones");
+        jLabel2.setText("Realizar retiro en dolares");
 
-        volverRetiroColones2.setText("Volver");
+        volverRetiroDolares1.setText("Volver");
 
-        continuarRetiroColones2.setText("Continuar");
-        continuarRetiroColones2.addActionListener(new java.awt.event.ActionListener() {
+        continuarRetiroDolares.setText("Continuar proceso");
+        continuarRetiroDolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarRetiroColones2ActionPerformed(evt);
+                continuarRetiroDolaresActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(volverRetiroColones2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(continuarRetiroColones2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(numCuentaRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(41, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
-                        .addGap(26, 26, 26)
-                        .addComponent(pinCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(volverRetiroDolares1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(continuarRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,29 +81,27 @@ public class RetiroColonesPaso2 extends javax.swing.JFrame {
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(pinCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(16, 16, 16)
+                    .addComponent(numCuentaRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(volverRetiroColones2)
+                        .addComponent(volverRetiroDolares1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(continuarRetiroColones2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(continuarRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pinCuentaRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinCuentaRetiroColonesActionPerformed
+    private void numCuentaRetiroDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuentaRetiroDolaresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pinCuentaRetiroColonesActionPerformed
+    }//GEN-LAST:event_numCuentaRetiroDolaresActionPerformed
 
-    private void continuarRetiroColones2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroColones2ActionPerformed
+    private void continuarRetiroDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroDolaresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_continuarRetiroColones2ActionPerformed
+    }//GEN-LAST:event_continuarRetiroDolaresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,14 +120,22 @@ public class RetiroColonesPaso2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -150,17 +148,16 @@ public class RetiroColonesPaso2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RetiroColonesPaso2().setVisible(true);
+                new RetiroDolaresPaso1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton continuarRetiroColones2;
+    public javax.swing.JButton continuarRetiroDolares;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
-    public javax.swing.JTextField pinCuentaRetiroColones;
-    public javax.swing.JButton volverRetiroColones2;
+    public javax.swing.JTextField numCuentaRetiroDolares;
+    public javax.swing.JButton volverRetiroDolares1;
     // End of variables declaration//GEN-END:variables
 }

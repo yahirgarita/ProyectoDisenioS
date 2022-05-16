@@ -37,6 +37,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnRetiroEnColones.addActionListener(this);
         this.menuInicial.btnCompraDolar.addActionListener(this);
         this.menuInicial.btnVentaDolar.addActionListener(this);
+        this.menuInicial.btnRetiroEnDolares1.addActionListener(this);
     }
      
      @Override
@@ -59,6 +60,8 @@ public class ControladorMenu implements ActionListener{
              case "Consultar saldo actual": verSaldoActual();
                 break;
              case "Retiro en Colones":realizarRetiroColones();
+                break;
+             case "Retiro en Dolares": realizarRetiroDolares();
                 break;
              case "Saldo actual en Dólares": verSaldoDolares();
                 break;
@@ -140,6 +143,16 @@ public class ControladorMenu implements ActionListener{
         RetiroColonesPaso4 retiroColones4 = new RetiroColonesPaso4();
         ControladorRetiroColones controRetiroC = new ControladorRetiroColones(retiroColones1,retiroColones2,retiroColones3,retiroColones4, menuInicial);
         controRetiroC.retiroColones1.setVisible(true);
+        this.menuInicial.setVisible(false);
+     }
+     
+     private void realizarRetiroDolares(){
+        RetiroDolaresPaso1 retiroDolares1 = new RetiroDolaresPaso1();
+        RetiroDolaresPaso2 retiroDolares2 = new RetiroDolaresPaso2();
+        RetiroDolaresPaso3 retiroDolares3 = new RetiroDolaresPaso3();
+        RetiroDolaresPaso4 retiroDolares4 = new RetiroDolaresPaso4();
+        ControladorRetiroDolares controRetiroD = new ControladorRetiroDolares(retiroDolares1,retiroDolares2,retiroDolares3,retiroDolares4, menuInicial);
+        controRetiroD.retiroDolares1.setVisible(true);
         this.menuInicial.setVisible(false);
      }
      

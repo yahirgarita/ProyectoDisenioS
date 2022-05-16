@@ -41,6 +41,7 @@ public class Menu extends javax.swing.JFrame {
         btnRetiroEnColones = new javax.swing.JButton();
         btnCompraDolar = new javax.swing.JButton();
         botonCambiarPin = new javax.swing.JButton();
+        btnRetiroEnDolares1 = new javax.swing.JButton();
 
         jButton5.setText("Volver");
 
@@ -137,6 +138,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnRetiroEnDolares1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnRetiroEnDolares1.setText("Retiro en Dolares");
+        btnRetiroEnDolares1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetiroEnDolares1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,61 +155,64 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(265, 265, 265))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
-                                .addComponent(btnDepositarDolares1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(295, 295, 295)
-                                .addComponent(btnRetiroEnColones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(butonCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(botonListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnDepositarColones, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                        .addComponent(btnConsultarSaldoDolares, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton6)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnVentaDolar, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(75, 75, 75)
-                                .addComponent(btnCompraDolar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addComponent(botonCambiarPin, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRetiroEnColones, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(77, 77, 77)
+                                    .addComponent(btnDepositarDolares1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(butonCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botonListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(77, 77, 77)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                        .addComponent(btnConsultarSaldoDolares, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnDepositarColones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnVentaDolar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCompraDolar, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                            .addComponent(btnRetiroEnDolares1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(botonRegistrarClienteMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(16, 16, 16))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnRetiroEnDolares1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(butonCrearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultarSaldoDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnConsultarSaldoDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVentaDolar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDepositarColones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnDepositarColones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCompraDolar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,15 +220,8 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnRetiroEnColones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(botonCambiarPin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCompraDolar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVentaDolar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(37, 37, 37)
+                .addComponent(jButton6)
                 .addContainerGap())
         );
 
@@ -263,6 +268,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonCambiarPinActionPerformed
 
+    private void btnRetiroEnDolares1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetiroEnDolares1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRetiroEnDolares1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +299,8 @@ public class Menu extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -310,6 +321,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton btnDepositarColones;
     public javax.swing.JButton btnDepositarDolares1;
     public javax.swing.JButton btnRetiroEnColones;
+    public javax.swing.JButton btnRetiroEnDolares1;
     public javax.swing.JButton btnVentaDolar;
     public javax.swing.JButton butonCrearCuenta;
     private javax.swing.JButton jButton5;

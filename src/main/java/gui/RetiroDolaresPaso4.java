@@ -8,12 +8,12 @@ package gui;
  *
  * @author yahir
  */
-public class RetiroColonesPaso4 extends javax.swing.JFrame {
+public class RetiroDolaresPaso4 extends javax.swing.JFrame {
 
     /**
      * Creates new form RetiroColonesPaso4
      */
-    public RetiroColonesPaso4() {
+    public RetiroDolaresPaso4() {
         initComponents();
     }
 
@@ -28,11 +28,11 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
 
         continuarRetiroColones3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        volverRetiroColones4 = new javax.swing.JButton();
-        continuarRetiroColones4 = new javax.swing.JButton();
-        montoRetiroColones = new javax.swing.JTextField();
+        volverRetiroDolaers4 = new javax.swing.JButton();
+        continuarRetiroDolares4 = new javax.swing.JButton();
+        montoRetiroDolares = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         continuarRetiroColones3.setText("Verificar");
         continuarRetiroColones3.addActionListener(new java.awt.event.ActionListener() {
@@ -45,25 +45,25 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
 
         jLabel1.setText("jLabel1");
 
-        volverRetiroColones4.setText("Volver");
+        volverRetiroDolaers4.setText("Volver");
 
-        continuarRetiroColones4.setText("Realizar retiro");
-        continuarRetiroColones4.addActionListener(new java.awt.event.ActionListener() {
+        continuarRetiroDolares4.setText("Realizar retiro");
+        continuarRetiroDolares4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarRetiroColones4ActionPerformed(evt);
+                continuarRetiroDolares4ActionPerformed(evt);
             }
         });
 
-        montoRetiroColones.addActionListener(new java.awt.event.ActionListener() {
+        montoRetiroDolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                montoRetiroColonesActionPerformed(evt);
+                montoRetiroDolaresActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Monto que desea retirar:");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Realizar retiro en colones");
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setText("Realizar retiro en dolares");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,10 +72,10 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(volverRetiroColones4)
+                    .addComponent(volverRetiroDolaers4)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(continuarRetiroColones4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(continuarRetiroDolares4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
@@ -83,28 +83,28 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(montoRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(montoRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(97, 97, 97))))
+                        .addComponent(jLabel5)
+                        .addGap(99, 99, 99))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(montoRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(montoRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(continuarRetiroColones4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(continuarRetiroDolares4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(volverRetiroColones4)))
+                        .addComponent(volverRetiroDolaers4)))
                 .addGap(13, 13, 13))
         );
 
@@ -115,13 +115,13 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_continuarRetiroColones3ActionPerformed
 
-    private void continuarRetiroColones4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroColones4ActionPerformed
+    private void continuarRetiroDolares4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroDolares4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_continuarRetiroColones4ActionPerformed
+    }//GEN-LAST:event_continuarRetiroDolares4ActionPerformed
 
-    private void montoRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoRetiroColonesActionPerformed
+    private void montoRetiroDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoRetiroDolaresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_montoRetiroColonesActionPerformed
+    }//GEN-LAST:event_montoRetiroDolaresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,13 +140,13 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -160,18 +160,18 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RetiroColonesPaso4().setVisible(true);
+                new RetiroDolaresPaso4().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton continuarRetiroColones3;
-    public javax.swing.JButton continuarRetiroColones4;
+    public javax.swing.JButton continuarRetiroDolares4;
     public javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    public javax.swing.JTextField montoRetiroColones;
-    public javax.swing.JButton volverRetiroColones4;
+    private javax.swing.JLabel jLabel5;
+    public javax.swing.JTextField montoRetiroDolares;
+    public javax.swing.JButton volverRetiroDolaers4;
     // End of variables declaration//GEN-END:variables
 }
