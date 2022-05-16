@@ -7,18 +7,19 @@ package cli;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import validaciones.ValidarTipoDeDato;
 /**
  *
  * @author Jimmy
  */
 public class MenuCLI {
     
-    public String mostrarMenu() throws IOException{
+    public int mostrarMenu() throws IOException{
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        
+        String opcion;
         System.out.println("Bienvenido al menu del banco");
-        System.out.println("Por favor elija una opcion");
+        System.out.println("Por favor elija una opcion (1-20)");
         System.out.println("1. Registrar Cliente");
         System.out.println("2. Crear cuenta bancaria");
         System.out.println("3. Listar Clientes");
@@ -38,11 +39,11 @@ public class MenuCLI {
         System.out.println("17. Consultar estatus de una cuenta");
         System.out.println("18. Consultar ganancias del banco TOTALIZADO");
         System.out.println("19. Consultar ganancias del banco de una cuenta especifico");
-        System.out.println("20. Salir, Digite cualquie otra tecla para salir del programa");
-        
-        String opcion = reader.readLine();
-        
-        return opcion;
+        System.out.println("20. Salir");
+        while(!ValidarTipoDeDato.validarEsEntero(opcion = reader.readLine())){
+            System.out.println("Por favor elija una opcion correcta (1-20)");
+        }
+        return Integer.parseInt(opcion);
     }
     
 }

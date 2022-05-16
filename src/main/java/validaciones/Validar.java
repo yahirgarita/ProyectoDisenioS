@@ -12,6 +12,7 @@ import java.util.Date;
 import java.time.LocalDate;
 import logicadeaccesoadatos.*;
 import util.Encriptar;
+import util.TipoCambio;
 
 /**
  * @author Carlos Rojas Molina
@@ -146,14 +147,10 @@ public class Validar{
         return pSaldo < CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(pNumCuenta)).getSaldo();
     }
     
-    public static boolean montoMenorQue(int saldo, int monto){
-        
-        if(saldo < monto){
-            return true;
-        }
-        return false;
+    public static boolean existeSaldoSuficienteEnTipoCambio(double pSaldo, String pNumCuenta){
+        TipoCambio dolar = new TipoCambio();
+        return pSaldo*dolar.getVenta() < CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(pNumCuenta)).getSaldo();
     }
     
-
 }
 

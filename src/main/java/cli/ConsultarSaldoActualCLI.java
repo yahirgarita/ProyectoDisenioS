@@ -24,12 +24,18 @@ public class ConsultarSaldoActualCLI {
         while(Validar.existeCuenta(cuenta = reader.readLine()) != true){
             System.out.println("Por favor ingrese un numero de cuenta existente: ");
         }
-        System.out.println("Por favor ingrese el pin de la cuenta: ");
-        while(Validar.validarPin(cuenta,pin = reader.readLine()) != true){
-            System.out.println("Por favor ingrese el pin correcto: ");
-        }
-        
         return cuenta;
+    }
+    
+    public String consultarSaldoActualPedirPin() throws IOException{
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Por favor ingrese el numero de PIN de la cuenta: ");
+        String pin;
+        pin = reader.readLine();
+        return pin;
+        
     }
     
     public void mostrarSaldoActualColones(double saldo){
@@ -37,7 +43,7 @@ public class ConsultarSaldoActualCLI {
     }
     
     public void mostrarSaldoActualDolares(double saldo, double precioDolar){
-        System.out.println("Estimado usuario el saldo actual de su cuenta es "+ saldo +" dolares.");
+        System.out.printf("Estimado usuario el saldo actual de su cuenta es %.2f\n dolares.", saldo);
         System.out.println("Para esta conversión se utilizó el tipo de cambio del dólar, precio de compra.");
         System.out.println("[Según el BCCR, el tipo de cambio de compra del dólar de hoy es: " + precioDolar +"]");
     }

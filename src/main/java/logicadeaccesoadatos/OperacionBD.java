@@ -6,6 +6,9 @@ import logicadenegocios.Operacion;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import util.Encriptar;
 
 
 /**
@@ -42,4 +45,67 @@ public class OperacionBD {
         return cont;
     }
     
+    public static Double obtenerComisionOperacionesDepositos(){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'depósitos'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
+    }
+    
+    public static Double obtenerComisionOperacionesRetiros(){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'retiros'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
+    }
+    
+    public static Double obtenerComisionOperacionesDepositosPorCuenta(String numeroCuenta){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'depósitos' AND cuenta = '"+ numeroCuenta + "'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
+    }
+    
+    public static Double obtenerComisionOperacionesRetirosPorCuenta(String numeroCuenta){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'retiros' AND cuenta = '"+ numeroCuenta + "'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
+    }
 }

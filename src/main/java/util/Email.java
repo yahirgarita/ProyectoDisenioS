@@ -34,7 +34,7 @@ public class Email {
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(correoEmisor));
         message.setRecipients(Message.RecipientType.TO, correoDestinatario);
-        message.setSubject("Imformación inportante del banco");
+        message.setSubject("Información inportante del banco");
    
         message.setText(mensaje);
         try {
