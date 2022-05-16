@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package controladores;
 import gui.ConsultarSaldoDolares;
 import logicadeaccesoadatos.*;
@@ -15,11 +19,11 @@ import util.cambio;
  * @version 1.0
  */
 
-public class ControladorVerSaldoDolares implements ActionListener{
+public class ping implements ActionListener{
     public ConsultarSaldoDolares consultaDolares;
     private cambio tipoCambio = new cambio();
     
-    public ControladorVerSaldoDolares(ConsultarSaldoDolares pConsultarSaldoDolares){
+    public ping(ConsultarSaldoDolares pConsultarSaldoDolares){
         consultaDolares = pConsultarSaldoDolares;
         consultaDolares.btnVerSaldo.addActionListener(this);
         consultaDolares.btnVolver.addActionListener(this);

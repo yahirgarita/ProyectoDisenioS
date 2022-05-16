@@ -16,12 +16,6 @@ import javax.swing.*;
  */
 public class ControladorMenu implements ActionListener{
      public Menu menuInicial;
-     private RegistroCliente registroCliente ;
-     private CreacionCuenta crearCuentaBanco;
-     private ListarClientes listarClientes;
-    /*private ListarCuenta listarCuentas;*/
-     private CambiarPinPaso1 cambiarPIN;
-     private ConsultarSaldo consultaSaldo;
      /**
       * Constructor de la clase controladorMenu
       * 
@@ -30,20 +24,19 @@ public class ControladorMenu implements ActionListener{
      
      public ControladorMenu(Menu pMenuInicial){
         this.menuInicial = pMenuInicial;
-        this.registroCliente = null;
-        this.crearCuentaBanco = null;
-        this.listarClientes = null;
-        this.cambiarPIN = null;
-        this.consultaSaldo = null;
         this.menuInicial.botonRegistrarClienteMenu1.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.butonCrearCuenta.addActionListener(this);
         this.menuInicial.botonListarClientes.addActionListener(this);
         this.menuInicial.botonListarCuentas.addActionListener(this);
         this.menuInicial.botonCambiarPin.addActionListener(this);
+        this.menuInicial.btnDepositarColones.addActionListener(this);
         this.menuInicial.btnConsultarSaldo.addActionListener(this);
-        this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);
-        
+        this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);  
+        this.menuInicial.btnDepositarDolares1.addActionListener(this);
+        this.menuInicial.btnRetiroEnColones.addActionListener(this);
+        this.menuInicial.btnCompraDolar.addActionListener(this);
+        this.menuInicial.btnVentaDolar.addActionListener(this);
     }
      
      @Override
@@ -59,9 +52,19 @@ public class ControladorMenu implements ActionListener{
                 break;
              case "Listar cuentas": listarCuentas();
                 break;
+             case "Depositar en Colones": realizarDepositoEnColones();
+                break;
+             case "Depositar en Dolares": realizarDepositoEnDolares();
+                break;
              case "Consultar saldo actual": verSaldoActual();
                 break;
+             case "Retiro en Colones":realizarRetiroColones();
+                break;
              case "Saldo actual en Dólares": verSaldoDolares();
+                break;
+             case "Tipo de Cambio Venta": consultarTipoCambioVenta();
+                break;
+             case "Tipo de Cambio Compra": consultarTipoCambioCompra();
                 break;
              default: break;
          }
@@ -106,13 +109,52 @@ public class ControladorMenu implements ActionListener{
          control4.consultaSaldo.setVisible(true);
          this.menuInicial.setVisible(false);
      }
+
+     private void realizarDepositoEnColones(){
+         RealizarDepositoEnColones depositoEnColones = new RealizarDepositoEnColones();
+         RealizarDepositoEnColonesPaso2 depositoColones2 = new RealizarDepositoEnColonesPaso2();
+         ControladoDepositoColones controColones = new ControladoDepositoColones(depositoEnColones, depositoColones2);
+         controColones.realizarDepositoC.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void realizarDepositoEnDolares(){
+         RealizarDepositoEnDolaresPaso1 depositoEnDolares = new RealizarDepositoEnDolaresPaso1();
+         RealizarDepositoEnDolaresPaso2 depositoDolares2 = new RealizarDepositoEnDolaresPaso2();
+         ControladorDepositoDolares controDolares = new ControladorDepositoDolares(depositoEnDolares, depositoDolares2);
+         controDolares.depositoDolares1.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
      
      private void verSaldoDolares(){
          ConsultarSaldoDolares verDolares = new ConsultarSaldoDolares();
-         ControladorVerSaldoDolares control5 = new ControladorVerSaldoDolares(verDolares);
+         ping control5 = new ping(verDolares);
          control5.consultaDolares.setVisible(true);
-         System.out.println("Funciona puta");
          this.menuInicial.setVisible(false);
+     }
+     
+     private void realizarRetiroColones(){
+        RetiroColonesPaso1 retiroColones1 = new RetiroColonesPaso1();
+        RetiroColonesPaso2 retiroColones2 = new RetiroColonesPaso2();
+        RetiroColonesPaso3 retiroColones3 = new RetiroColonesPaso3();
+        RetiroColonesPaso4 retiroColones4 = new RetiroColonesPaso4();
+        ControladorRetiroColones controRetiroC = new ControladorRetiroColones(retiroColones1,retiroColones2,retiroColones3,retiroColones4, menuInicial);
+        controRetiroC.retiroColones1.setVisible(true);
+        this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarTipoCambioCompra(){
+        ConsultarCompraDolar vista = new ConsultarCompraDolar();
+        ControladorCompraDolar nuevo = new ControladorCompraDolar(vista);
+        vista.setVisible(true);
+        this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarTipoCambioVenta(){
+        ConsultarVentaDolar vista = new ConsultarVentaDolar();
+        ControladorVentaDolar nuevo = new ControladorVentaDolar(vista);
+        vista.setVisible(true);
+        this.menuInicial.setVisible(false);
      }
      
      private void volver(){

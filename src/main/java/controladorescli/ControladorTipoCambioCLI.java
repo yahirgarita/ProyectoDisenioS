@@ -6,7 +6,7 @@
 package controladorescli;
 
 import cli.ConsultarTipoCambioCLI;
-import util.TipoCambio;
+import util.cambio;
 
 /**
  *
@@ -14,12 +14,12 @@ import util.TipoCambio;
  */
 public class ControladorTipoCambioCLI {
     
-    private TipoCambio precio;  
+    private cambio precio;  
     
     private ConsultarTipoCambioCLI vista;
     
     public ControladorTipoCambioCLI(){
-        precio = new TipoCambio();
+        precio = new cambio();
         vista = new ConsultarTipoCambioCLI();   
     }
     

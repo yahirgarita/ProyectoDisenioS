@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.time.format.DateTimeFormatter;
+import logicadeaccesoadatos.CuentaBD;
+import util.Encriptar;
 
 /**
  *

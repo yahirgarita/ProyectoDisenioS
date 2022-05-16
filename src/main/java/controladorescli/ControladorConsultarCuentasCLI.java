@@ -31,17 +31,18 @@ public class ControladorConsultarCuentasCLI {
         this.vista = new ConsultarCuentasCLI();
     }
     public void listarCuentas(){
-        organizarCuentas();
+        //organizarCuentas();
         for(int i = 0;i<this.cuentas.size();i++){
-            Persona duenio = CuentaBD.compararPersonaConCuentaCLI(String.valueOf(cuentas.get(i).getNumCuenta()));
+            Persona duenio = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(String.valueOf(cuentas.get(i).getNumCuenta())));
             this.vista.listarCuentas(cuentas.get(i).getNumCuenta(), cuentas.get(i).getEstatus(), cuentas.get(i).getSaldo(), 
                     duenio.getIdPersona(),duenio.getNombre()+ " " + duenio.getPrimerApellido() + " " + duenio.getSegundoApellido());
+            //System.out.println(cuentas.get(i).getEstatus());
         }      
     }
     
     public void seleccionarCuenta() throws IOException{
         String numeroCuenta = this.vista.seleccionarCuenta();
-        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNumCLI(numeroCuenta);
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         this.vista.mostrarCuenta(cuenta.toString());
     }
     
@@ -52,7 +53,7 @@ public class ControladorConsultarCuentasCLI {
     public static void main (String args[]) throws IOException{
         ControladorConsultarCuentasCLI nuevo = new ControladorConsultarCuentasCLI();
         nuevo.listarCuentas();
-        nuevo.seleccionarCuenta();
+        //nuevo.seleccionarCuenta();
         /*ConexionBD conexionBD = new ConexionBD();
         conexionBD.conexionDataBase();
         conexionBD.ejecutarSentSQL("update Cuenta set saldo = " + Encriptar.cifrar(String.valueOf(2000.0)) + 

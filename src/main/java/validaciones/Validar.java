@@ -93,11 +93,9 @@ public class Validar{
     }
     public static boolean existeCuenta(String pNumero){
         coneccion.conexionDataBase();
-        System.out.println("Aqui estoy " + Encriptar.cifrar(pNumero));
         ResultSet resultado = coneccion.inquiry("select * from Cuenta where numeroCuenta = '" + Encriptar.cifrar(pNumero)+ "'");
         try{
             while(resultado.next()){
-                System.out.println("Aqui estoy 2 " + Encriptar.cifrar(pNumero));
                 return true;
             }
         }
@@ -124,6 +122,28 @@ public class Validar{
         }
         coneccion.salirBD();
         return false;
+    }
+    
+    public static boolean validarEstatusInactivo(String numeroCuenta){
+        
+        coneccion.conexionDataBase();
+        ResultSet resultado = coneccion.inquiry("select estatus from Cuenta where numeroCuenta = '" + numeroCuenta + "' AND "
+                + "estatus = 'Inactiva'");
+        try{
+            while(resultado.next()){
+                return true;
+            }
+        }
+        catch(SQLException e){
+            return false;
+        }
+        coneccion.salirBD();
+        return false;
+    }
+    
+    
+    public static boolean existeSaldoSuficiente(double pSaldo, String pNumCuenta){
+        return pSaldo < CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(pNumCuenta)).getSaldo();
     }
     
     public static boolean montoMenorQue(int saldo, int monto){
