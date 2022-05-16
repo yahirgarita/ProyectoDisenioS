@@ -1,9 +1,5 @@
 package controladores;
 
-import newpackage.RetiroColonesPaso1;
-import newpackage.RetiroColonesPaso2;
-import newpackage.RetiroColonesPaso3;
-import newpackage.RetiroColonesPaso4;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
