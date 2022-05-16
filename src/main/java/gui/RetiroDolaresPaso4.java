@@ -8,12 +8,12 @@ package gui;
  *
  * @author yahir
  */
-public class RetiroColonesPaso4 extends javax.swing.JFrame {
+public class RetiroDolaresPaso4 extends javax.swing.JFrame {
 
     /**
      * Creates new form RetiroColonesPaso4
      */
-    public RetiroColonesPaso4() {
+    public RetiroDolaresPaso4() {
         initComponents();
     }
 
@@ -140,20 +140,23 @@ public class RetiroColonesPaso4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RetiroColonesPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetiroDolaresPaso4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RetiroColonesPaso4().setVisible(true);
+                new RetiroDolaresPaso4().setVisible(true);
             }
         });
     }
