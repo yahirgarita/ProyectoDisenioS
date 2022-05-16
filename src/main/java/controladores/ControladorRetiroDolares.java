@@ -16,6 +16,7 @@ import util.Email;
 import util.Encriptar;
 import validaciones.*;
 import util.SMS;
+import util.TipoCambio;
 import validaciones.*;
 
 /**
@@ -33,6 +34,7 @@ public class ControladorRetiroDolares implements ActionListener{
     private int attempt = 0;
     private CuentaBancaria clienteActual;
     private Menu menuInicial;
+    private TipoCambio tipoCambio = new TipoCambio();
     
     public ControladorRetiroDolares(RetiroDolaresPaso1 pRetiroDolares1, RetiroDolaresPaso2 pRetiroDolares2, RetiroDolaresPaso3 pRetiroDolares3, RetiroDolaresPaso4 pRetiroDolares4, Menu pMenuInicial){
         this.retiroDolares1 = pRetiroDolares1;
@@ -144,20 +146,24 @@ public class ControladorRetiroDolares implements ActionListener{
    private void realizarRetiroDolares(){ 
        String montoDolares = this.retiroDolares4.montoRetiroDolares.getText();
        CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
-       if(ValidarTipoDeDato.validarEsEntero(this.retiroDolares4.montoRetiroDolares.getText())){
-           if(Validar.existeSaldoSuficiente(Double.parseDouble(this.retiroDolares4.montoRetiroDolares.getText()), this.retiroDolares4.jLabel1.getText())){
+       double dolar = tipoCambio.getVenta();
+       double montoColones = Double.parseDouble(montoDolares) * dolar;
+       if(ValidarTipoDeDato.validarEsEntero(montoDolares)){
+           if(Validar.existeSaldoSuficiente(Double.parseDouble(montoDolares), this.retiroDolares4.jLabel1.getText())){
                if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(this.retiroDolares4.jLabel1.getText())) >= 3){
                    
-                   double comision = Double.parseDouble(this.retiroDolares4.montoRetiroDolares.getText()) * 0.02;
+                   double comision = montoColones * 0.02;
                    CuentaBD.agregarComision(Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()), comision, "retiros");
-                   Double monto = Operacion.calcularComision(Double.parseDouble(this.retiroDolares4.montoRetiroDolares.getText()));
+                   montoColones = Operacion.calcularComision(montoColones);
                    
-                   CuentaBD.quitarSaldoCuenta(Encriptar.cifrar(String.valueOf(monto)), Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
-                   Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(this.retiroDolares4.montoRetiroDolares.getText()),LocalDate.now());
+                   CuentaBD.quitarSaldoCuenta(Encriptar.cifrar(String.valueOf(montoColones)), Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
+                   Operacion oper = new Operacion("retiros", "Dólares", true,montoColones,LocalDate.now());
                    OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
                    
                    clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroDolares1.numCuentaRetiroDolares.getText()));
-                   JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroDolares4.montoRetiroDolares.getText() + " colones\n" +
+                   JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroDolares4.montoRetiroDolares.getText() + " dolares\n" +
+                           "[Según el BCCR, el tipo de cambio de venta del dólar de hoy: " + dolar +"]\n" +
+                           "[El monto equivalente de su retiro es " + montoColones + " colones]\n" +        
                            "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + "fueron rebajados automáticament de su saldo actual] \n" +
                            "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "']");
                    this.retiroDolares4.setVisible(false);

@@ -40,31 +40,31 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botonCambiarPin" min="-2" pref="218" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnRetiroEnColones" alignment="1" min="-2" pref="254" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="botonListarCuentas" min="-2" pref="218" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Component id="btnDepositarDolares1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="botonCambiarPin" min="-2" pref="218" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnRetiroEnColones" min="-2" pref="254" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="botonListarCuentas" min="-2" pref="218" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="btnDepositarDolares1" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="botonRegistrarClienteMenu1" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="butonCrearCuenta" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="botonListarClientes" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="botonRegistrarClienteMenu1" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                                      <Component id="butonCrearCuenta" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                                      <Component id="botonListarClientes" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnConsultarSaldo" pref="254" max="32767" attributes="0"/>
-                                      <Component id="btnConsultarSaldoDolares" max="32767" attributes="0"/>
-                                      <Component id="btnDepositarColones" max="32767" attributes="0"/>
-                                  </Group>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnConsultarSaldo" pref="254" max="32767" attributes="0"/>
+                                  <Component id="btnConsultarSaldoDolares" max="32767" attributes="0"/>
+                                  <Component id="btnDepositarColones" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -86,41 +86,39 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="65" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="botonRegistrarClienteMenu1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnConsultarSaldo" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnRetiroEnDolares1" min="-2" pref="42" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="butonCrearCuenta" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnConsultarSaldoDolares" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="btnVentaDolar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="botonRegistrarClienteMenu1" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="btnConsultarSaldo" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="botonListarClientes" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnDepositarColones" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="btnCompraDolar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="botonListarCuentas" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnDepositarDolares1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnRetiroEnColones" min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="botonCambiarPin" alignment="1" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnRetiroEnDolares1" min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="butonCrearCuenta" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnConsultarSaldoDolares" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="btnVentaDolar" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonListarClientes" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnDepositarColones" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="btnCompraDolar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonListarCuentas" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnDepositarDolares1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnRetiroEnColones" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="botonCambiarPin" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="jButton6" min="-2" max="-2" attributes="0"/>
