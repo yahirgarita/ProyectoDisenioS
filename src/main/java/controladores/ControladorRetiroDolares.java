@@ -164,8 +164,8 @@ public class ControladorRetiroDolares implements ActionListener{
                    JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroDolares4.montoRetiroDolares.getText() + " dolares\n" +
                            "[Según el BCCR, el tipo de cambio de venta del dólar de hoy: " + dolar +"]\n" +
                            "[El monto equivalente de su retiro es " + montoColones + " colones]\n" +        
-                           "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + "fueron rebajados automáticament de su saldo actual] \n" +
-                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "']");
+                           "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que" + "fueron rebajados automáticament de su saldo actual] \n" +
+                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "' colones]");
                    this.retiroDolares4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }
