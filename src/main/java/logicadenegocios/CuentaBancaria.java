@@ -45,7 +45,7 @@ public class CuentaBancaria {
     public CuentaBancaria(int pNumCuenta, LocalDate pFechaCreacion, double pSaldo, String pPin, String pEstatus){
         this.numCuenta = pNumCuenta;
         this.saldo = pSaldo;
-        this.estatus = "Activo";
+        this.estatus = pEstatus;
         this.pin = pPin;
         this.duenio = null;
         this.fechaCreacion = pFechaCreacion;

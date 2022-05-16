@@ -35,16 +35,15 @@ public class ControladorRealizarDepositoCLI {
     public void realizarDepositoColones() throws IOException{
         
         String numeroCuenta = this.vista.realizarDepositoPedirCuenta();
-        
-        String monto = this.vista.realizarDepositoPedirMonto();
-        
         String mensaje ="";
         CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         if(cuentaBanc != null && Objects.equals(cuentaBanc.getEstatus(), "Inactiva")){  
-            mensaje = "Cuenta se encuenta inactiva";
+            mensaje = "Cuenta se encuentra inactiva";
             this.vista.depositoRealizado(mensaje);
             return;
         }  
+        String monto = this.vista.realizarDepositoPedirMonto();
+        
         if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(numeroCuenta)) >= 3){
             System.out.println("cantidad " + OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(numeroCuenta)));
             double montoConvDouble = Double.parseDouble(monto);
@@ -76,16 +75,17 @@ public class ControladorRealizarDepositoCLI {
     public void realizarDepositoDolares() throws IOException{
         
         String numeroCuenta = this.vista.realizarDepositoPedirCuenta();
-        String montoEnDolar = this.vista.realizarDepositoPedirMonto();
-        double dolar = tipoCambio.getCompra();
-        double montoColones = Double.parseDouble(montoEnDolar) * dolar;
         String mensaje ="";
         CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         if(cuentaBanc != null && Objects.equals(cuentaBanc.getEstatus(), "Inactiva")){  
-            mensaje = "Cuenta se encuenta inactiva";
+            mensaje = "Cuenta se encuentra inactiva";
             this.vista.depositoRealizado(mensaje);
             return;
         }  
+        String montoEnDolar = this.vista.realizarDepositoPedirMonto();
+        double dolar = tipoCambio.getCompra();
+        double montoColones = Double.parseDouble(montoEnDolar) * dolar;
+
         if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(numeroCuenta))>= 3){
             double comision = montoColones * 0.02;
             CuentaBD.agregarComision(Encriptar.cifrar(numeroCuenta),comision,"depósitos");
@@ -119,7 +119,7 @@ public class ControladorRealizarDepositoCLI {
     
     public static void main(String arg[]) throws IOException{
         ControladorRealizarDepositoCLI nuevo = new ControladorRealizarDepositoCLI();
-        nuevo.realizarDepositoColones();
+        nuevo.realizarDepositoDolares();
         /*int cont = OperacionBD.numOperacionEnCuenta(Encriptar.cifrar("583542"));
         System.out.println(cont);*/
         

@@ -41,5 +41,9 @@ public class ConsultarSaldoActualCLI {
         System.out.println("Para esta conversión se utilizó el tipo de cambio del dólar, precio de compra.");
         System.out.println("[Según el BCCR, el tipo de cambio de compra del dólar de hoy es: " + precioDolar +"]");
     }
+    
+    public void mosstrarMensajeCuentaInactiva(){
+        System.out.println("Estimado usuario esta cuenta see encueentra ina ");
+    }
 }
 
