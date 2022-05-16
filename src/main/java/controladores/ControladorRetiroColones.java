@@ -157,19 +157,19 @@ public class ControladorRetiroColones implements ActionListener{
                    clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
                    JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroColones4.montoRetiroColones.getText() + " colones\n" +
                            "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que\n" + "fueron rebajados automáticament de su saldo actual] \n" +
-                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "']");
+                           "[Su saldo actual es de: '" + Math.round(clienteActual.getSaldo()*100)/100  + "']");
                    this.retiroColones4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }
                else{
                    CuentaBD.quitarSaldoCuenta(Encriptar.cifrar(this.retiroColones4.montoRetiroColones.getText()), Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
-                   Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()),LocalDate.now());
+                   Operacion oper = new Operacion("retiros", "Colones", false,Double.parseDouble(this.retiroColones4.montoRetiroColones.getText()),LocalDate.now());
                    OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.retiroColones4.jLabel1.getText()));
                    
                    clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroColones1.numCuentaRetiroColones.getText()));
                    JOptionPane.showMessageDialog(null, "Estimado usuario, el monto de este retiro es " + this.retiroColones4.montoRetiroColones.getText() + " colones \n" +
                            "[El monto cobrado por concepto de comisión fue de 0 colones, que fueron rebajados automáticamente de su saldo actual\n" +
-                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "']");
+                           "[Su saldo actual es de: '" + Math.round(clienteActual.getSaldo()*100)/100  + "']");
                    this.retiroColones4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }

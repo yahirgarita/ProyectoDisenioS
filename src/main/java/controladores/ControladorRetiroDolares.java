@@ -161,23 +161,25 @@ public class ControladorRetiroDolares implements ActionListener{
                    OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
                    
                    clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroDolares1.numCuentaRetiroDolares.getText()));
-                   JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroDolares4.montoRetiroDolares.getText() + " dolares\n" +
+                   JOptionPane.showMessageDialog(null,"Estimado usario, el monto de este retiro es "+ this.retiroDolares4.montoRetiroDolares.getText() + " dólares\n" +
                            "[Según el BCCR, el tipo de cambio de venta del dólar de hoy: " + dolar +"]\n" +
                            "[El monto equivalente de su retiro es " + montoColones + " colones]\n" +        
                            "[El monto cobrado por concepto de comisión fue de " + comision + " colones, que" + "fueron rebajados automáticament de su saldo actual] \n" +
-                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "' colones]");
+                           "[Su saldo actual es de: '" + Math.round(clienteActual.getSaldo()*100)/100  + "' colones]");
                    this.retiroDolares4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }
                else{
-                   CuentaBD.quitarSaldoCuenta(Encriptar.cifrar(this.retiroDolares4.montoRetiroDolares.getText()), Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
-                   Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(this.retiroDolares4.montoRetiroDolares.getText()),LocalDate.now());
-                   OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
+                   CuentaBD.quitarSaldoCuenta(Encriptar.cifrar(String.valueOf(montoColones)), Encriptar.cifrar(this.retiroDolares4.jLabel1.getText()));
+                   Operacion oper = new Operacion("retiros", "Dólares", false, montoColones,LocalDate.now());
+                   OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta())));
                    
                    clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(retiroDolares1.numCuentaRetiroDolares.getText()));
-                   JOptionPane.showMessageDialog(null, "Estimado usuario, el monto de este retiro es " + this.retiroDolares4.montoRetiroDolares.getText() + " colones \n" +
+                   JOptionPane.showMessageDialog(null, "Estimado usuario, el monto de este retiro es " + this.retiroDolares4.montoRetiroDolares.getText() + " dólares \n" +
+                           "[Según el BCCR, el tipo de cambio de venta del dólar de hoy:" + dolar + "]\n" +
+                           "[El monto equivalente de su retiro es " + montoColones + " colones ]\n" +        
                            "[El monto cobrado por concepto de comisión fue de 0 colones, que fueron rebajados automáticamente de su saldo actual\n" +
-                           "[Su saldo actual es de: '" + clienteActual.getSaldo()  + "']");
+                           "[Su saldo actual es de: '" + Math.round(clienteActual.getSaldo()*100)/100  + "']");
                    this.retiroDolares4.setVisible(false);
                    this.menuInicial.setVisible(true);
                }
