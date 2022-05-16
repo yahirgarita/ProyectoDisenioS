@@ -29,12 +29,13 @@ public class RetiroDolaresPaso3 extends javax.swing.JFrame {
     private void initComponents() {
 
         continuarRetiroColones2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        msgTelRetiroColones = new javax.swing.JTextField();
-        volverRetiroColones3 = new javax.swing.JButton();
-        continuarRetiroColones3 = new javax.swing.JButton();
+        msgTelRetiroDolares = new javax.swing.JTextField();
+        volverRetiroDolares3 = new javax.swing.JButton();
+        continuarRetiroDolares3 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         continuarRetiroColones2.setText("Continuar");
         continuarRetiroColones2.addActionListener(new java.awt.event.ActionListener() {
@@ -43,29 +44,32 @@ public class RetiroDolaresPaso3 extends javax.swing.JFrame {
             }
         });
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setText("Realizar retiro en dolores");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Realizar retiro en colones");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Se le ha enviado una palabra a su teléfono por mensaje de texto  ");
 
         jLabel3.setText("Porfavor revise sus mensajes e ingrese la palabra que se le envio");
 
-        msgTelRetiroColones.addActionListener(new java.awt.event.ActionListener() {
+        msgTelRetiroDolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                msgTelRetiroColonesActionPerformed(evt);
+                msgTelRetiroDolaresActionPerformed(evt);
             }
         });
 
-        volverRetiroColones3.setText("Volver");
+        volverRetiroDolares3.setText("Volver");
 
-        continuarRetiroColones3.setText("Verificar");
-        continuarRetiroColones3.addActionListener(new java.awt.event.ActionListener() {
+        continuarRetiroDolares3.setText("Verificar");
+        continuarRetiroDolares3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarRetiroColones3ActionPerformed(evt);
+                continuarRetiroDolares3ActionPerformed(evt);
             }
         });
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setText("Realizar retiro en dolores");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,59 +78,59 @@ public class RetiroDolaresPaso3 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(msgTelRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(msgTelRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(volverRetiroColones3)
+                            .addComponent(volverRetiroDolares3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(continuarRetiroColones3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(continuarRetiroDolares3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
-                                .addComponent(jLabel1)))))
+                                .addComponent(jLabel1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel5)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel2)
+                .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(msgTelRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(msgTelRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(volverRetiroColones3)
+                        .addComponent(volverRetiroDolares3)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(continuarRetiroColones3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(continuarRetiroDolares3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void msgTelRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msgTelRetiroColonesActionPerformed
+    private void msgTelRetiroDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msgTelRetiroDolaresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_msgTelRetiroColonesActionPerformed
+    }//GEN-LAST:event_msgTelRetiroDolaresActionPerformed
 
     private void continuarRetiroColones2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroColones2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_continuarRetiroColones2ActionPerformed
 
-    private void continuarRetiroColones3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroColones3ActionPerformed
+    private void continuarRetiroDolares3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroDolares3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_continuarRetiroColones3ActionPerformed
+    }//GEN-LAST:event_continuarRetiroDolares3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +161,10 @@ public class RetiroDolaresPaso3 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -168,11 +176,12 @@ public class RetiroDolaresPaso3 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton continuarRetiroColones2;
-    public javax.swing.JButton continuarRetiroColones3;
+    public javax.swing.JButton continuarRetiroDolares3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    public javax.swing.JTextField msgTelRetiroColones;
-    public javax.swing.JButton volverRetiroColones3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    public javax.swing.JTextField msgTelRetiroDolares;
+    public javax.swing.JButton volverRetiroDolares3;
     // End of variables declaration//GEN-END:variables
 }

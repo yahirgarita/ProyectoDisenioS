@@ -23,30 +23,30 @@ public class RetiroDolaresPaso1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        numCuentaRetiroColones = new javax.swing.JTextField();
+        numCuentaRetiroDolares = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        volverRetiroColones1 = new javax.swing.JButton();
-        continuarRetiroColones = new javax.swing.JButton();
+        volverRetiroDolares1 = new javax.swing.JButton();
+        continuarRetiroDolares = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Número de cuenta:");
 
-        numCuentaRetiroColones.addActionListener(new java.awt.event.ActionListener() {
+        numCuentaRetiroDolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numCuentaRetiroColonesActionPerformed(evt);
+                numCuentaRetiroDolaresActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Realizar retiro en colones");
+        jLabel2.setText("Realizar retiro en dolares");
 
-        volverRetiroColones1.setText("Volver");
+        volverRetiroDolares1.setText("Volver");
 
-        continuarRetiroColones.setText("Continuar proceso");
-        continuarRetiroColones.addActionListener(new java.awt.event.ActionListener() {
+        continuarRetiroDolares.setText("Continuar proceso");
+        continuarRetiroDolares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarRetiroColonesActionPerformed(evt);
+                continuarRetiroDolaresActionPerformed(evt);
             }
         });
 
@@ -55,23 +55,23 @@ public class RetiroDolaresPaso1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(numCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(numCuentaRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(41, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(volverRetiroColones1)
+                        .addComponent(volverRetiroDolares1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(continuarRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(continuarRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,27 +81,27 @@ public class RetiroDolaresPaso1 extends javax.swing.JFrame {
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(numCuentaRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numCuentaRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(volverRetiroColones1)
+                        .addComponent(volverRetiroDolares1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(continuarRetiroColones, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(continuarRetiroDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void numCuentaRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuentaRetiroColonesActionPerformed
+    private void numCuentaRetiroDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuentaRetiroDolaresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_numCuentaRetiroColonesActionPerformed
+    }//GEN-LAST:event_numCuentaRetiroDolaresActionPerformed
 
-    private void continuarRetiroColonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroColonesActionPerformed
+    private void continuarRetiroDolaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarRetiroDolaresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_continuarRetiroColonesActionPerformed
+    }//GEN-LAST:event_continuarRetiroDolaresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +136,14 @@ public class RetiroDolaresPaso1 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -146,10 +154,10 @@ public class RetiroDolaresPaso1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton continuarRetiroColones;
+    public javax.swing.JButton continuarRetiroDolares;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    public javax.swing.JTextField numCuentaRetiroColones;
-    public javax.swing.JButton volverRetiroColones1;
+    public javax.swing.JTextField numCuentaRetiroDolares;
+    public javax.swing.JButton volverRetiroDolares1;
     // End of variables declaration//GEN-END:variables
 }
