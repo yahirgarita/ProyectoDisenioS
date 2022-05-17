@@ -18,10 +18,13 @@ public class ConexionBD {
     String usuario = "sqlserver";
     String contrasenia = "proyecto1234";
     String daseDatos ="PROYECTODISENO";
+    String puerto = "1433";
+    String database = "proyectoBanco";
     
     public Connection conexionDataBase(){
          try {
-             String dbURL = "jdbc:sqlserver://34.133.118.143;databaseName=PROYECTODISENO";
+             //String dbURL = "jdbc:sqlserver://34.133.118.143;databaseName=PROYECTODISENO";
+             String dbURL = "jdbc:sqlserver//localhost:" + puerto + ";" + "database=" +database;
              conexionBD = DriverManager.getConnection(dbURL, usuario, contrasenia);
         } catch (SQLException e) {
                e.printStackTrace();
