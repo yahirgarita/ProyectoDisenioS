@@ -42,7 +42,7 @@ public class Menu extends javax.swing.JFrame {
         btnCompraDolar = new javax.swing.JButton();
         botonCambiarPin = new javax.swing.JButton();
         btnRetiroEnDolares1 = new javax.swing.JButton();
-        btnCompraDolar1 = new javax.swing.JButton();
+        btnrealizarTransferencia = new javax.swing.JButton();
 
         jButton5.setText("Volver");
 
@@ -147,11 +147,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btnCompraDolar1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        btnCompraDolar1.setText("Tipo de Cambio Compra");
-        btnCompraDolar1.addActionListener(new java.awt.event.ActionListener() {
+        btnrealizarTransferencia.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnrealizarTransferencia.setText("Realizar transferencia");
+        btnrealizarTransferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraDolar1ActionPerformed(evt);
+                btnrealizarTransferenciaActionPerformed(evt);
             }
         });
 
@@ -190,7 +190,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(btnVentaDolar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCompraDolar, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                             .addComponent(btnRetiroEnDolares1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCompraDolar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)))
+                            .addComponent(btnrealizarTransferencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(444, 444, 444)
                         .addComponent(jLabel1)))
@@ -224,7 +224,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonListarCuentas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDepositarDolares1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCompraDolar1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnrealizarTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRetiroEnColones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,9 +281,9 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRetiroEnDolares1ActionPerformed
 
-    private void btnCompraDolar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraDolar1ActionPerformed
+    private void btnrealizarTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrealizarTransferenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCompraDolar1ActionPerformed
+    }//GEN-LAST:event_btnrealizarTransferenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,7 +329,6 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton botonListarCuentas;
     public javax.swing.JButton botonRegistrarClienteMenu1;
     public javax.swing.JButton btnCompraDolar;
-    public javax.swing.JButton btnCompraDolar1;
     public javax.swing.JButton btnConsultarSaldo;
     public javax.swing.JButton btnConsultarSaldoDolares;
     public javax.swing.JButton btnDepositarColones;
@@ -337,6 +336,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton btnRetiroEnColones;
     public javax.swing.JButton btnRetiroEnDolares1;
     public javax.swing.JButton btnVentaDolar;
+    public javax.swing.JButton btnrealizarTransferencia;
     public javax.swing.JButton butonCrearCuenta;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
