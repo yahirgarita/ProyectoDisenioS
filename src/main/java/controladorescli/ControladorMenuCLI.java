@@ -70,8 +70,10 @@ public class ControladorMenuCLI {
                    verSaldoDolares();
                    break;
                case 15:
+                   consultarEstadoCuentaColones();
                    break;
                case 16:
+                   consultarEstadoCuentaDolares();
                    break;
                case 17:
                    consultarEstatusCuenta();
@@ -192,6 +194,18 @@ public class ControladorMenuCLI {
        ConsultarGananciasCLI vista = new ConsultarGananciasCLI();
        ControladorConsultarGananciasCLI controlador = new ControladorConsultarGananciasCLI(vista);
        controlador.consultarGananciasPorCuenta();
+    }
+    
+    private void consultarEstadoCuentaColones() throws IOException, MessagingException{
+        ConsultarEstadoCuentaCLI vista = new ConsultarEstadoCuentaCLI();
+        ControladorConsultarEstadoCuentaCLI controlador = new ControladorConsultarEstadoCuentaCLI(vista);
+        controlador.consultarEstadoCuentaColones();
+    }
+    
+    private void consultarEstadoCuentaDolares() throws IOException, MessagingException{
+        ConsultarEstadoCuentaCLI vista = new ConsultarEstadoCuentaCLI();
+        ControladorConsultarEstadoCuentaCLI controlador = new ControladorConsultarEstadoCuentaCLI(vista);
+        controlador.consultarEstadoCuentaDolares();
     }
 
 }

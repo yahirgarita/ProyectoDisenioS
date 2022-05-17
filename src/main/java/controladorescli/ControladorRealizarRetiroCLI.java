@@ -160,7 +160,7 @@ public class ControladorRealizarRetiroCLI {
             intentos++;
         }
         System.out.println("Su cuenta se inactivo");
-        //CuentaBD.modificarEstado(Encriptar.cifrar(numeroCuenta), "Inactiva");
+        CuentaBD.modificarEstado(Encriptar.cifrar(numeroCuenta), "Inactiva");
         Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(numeroCuenta));
         Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), "Su cuenta a pasado a estar Inactiva por fallar el PIN");
     }
@@ -184,9 +184,4 @@ public class ControladorRealizarRetiroCLI {
         return false;
     }
     
-    public static void main(String args[]) throws IOException, MessagingException{
-        RealizarRetiroCLI vista = new RealizarRetiroCLI();
-        ControladorRealizarRetiroCLI controlador = new ControladorRealizarRetiroCLI(vista);
-        controlador.realizarRetiroColones();
-    }
 }

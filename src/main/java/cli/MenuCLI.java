@@ -35,7 +35,7 @@ public class MenuCLI {
         System.out.println("13. Consultar saldo actual");
         System.out.println("14. Consultar saldo actual en dolares");
         System.out.println("15. Consultar estado de cuenta");
-        System.out.println("16. Consultar estado de cuenta e dolares");
+        System.out.println("16. Consultar estado de cuenta en dolares");
         System.out.println("17. Consultar estatus de una cuenta");
         System.out.println("18. Consultar ganancias del banco TOTALIZADO");
         System.out.println("19. Consultar ganancias del banco de una cuenta especifico");

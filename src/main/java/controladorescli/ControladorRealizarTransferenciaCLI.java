@@ -96,7 +96,7 @@ public class ControladorRealizarTransferenciaCLI {
             intentos++;
         }
         System.out.println("Su cuenta se inactivo");
-        //CuentaBD.modificarEstado(Encriptar.cifrar(numeroCuenta), "Inactiva");
+        CuentaBD.modificarEstado(Encriptar.cifrar(numeroCuenta), "Inactiva");
         Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(numeroCuenta));
         Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), "Su cuenta a pasado a estar Inactiva por fallar el PIN");
     }

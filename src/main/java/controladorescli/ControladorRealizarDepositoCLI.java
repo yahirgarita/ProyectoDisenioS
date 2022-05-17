@@ -62,7 +62,7 @@ public class ControladorRealizarDepositoCLI {
         }
         else{  
             CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(monto)),Encriptar.cifrar(numeroCuenta));
-            Operacion oper = new Operacion("depósitos", "colones", false, Double.parseDouble(monto), LocalDate.now());
+            Operacion oper = new Operacion("depósitos", "Colones", false, Double.parseDouble(monto), LocalDate.now());
             OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));
             mensaje = "Estimado usuario, se ha realizado correctamente el deposito " + monto + " colones\n" +                   
                 "[El monto real deposito a su cuenta " + numeroCuenta + " es de " + monto + " colones]\n" +
@@ -91,7 +91,7 @@ public class ControladorRealizarDepositoCLI {
             CuentaBD.agregarComision(Encriptar.cifrar(numeroCuenta),comision,"depósitos");
             montoColones = Operacion.calcularComision(montoColones);
             CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(montoColones)),Encriptar.cifrar(numeroCuenta));
-            Operacion oper = new Operacion("depósitos","Dolares", true, Double.parseDouble(montoEnDolar), LocalDate.now());
+            Operacion oper = new Operacion("depósitos","Dólares", true, Double.parseDouble(montoEnDolar), LocalDate.now());
             OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(numeroCuenta));
              
             mensaje = "Estimado usuario, se ha realizado correctamente el deposito " + montoEnDolar + " dólares\n" +
@@ -102,7 +102,7 @@ public class ControladorRealizarDepositoCLI {
            
         }else{
             CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(montoColones)),Encriptar.cifrar(numeroCuenta));
-            Operacion oper = new Operacion("depósitos", "colones", false, Double.parseDouble(montoEnDolar), LocalDate.now());
+            Operacion oper = new Operacion("depósitos", "Dólares", false, Double.parseDouble(montoEnDolar), LocalDate.now());
             OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));
              
             mensaje = "Estimado usuario, se ha realizado correctamente el deposito " + montoEnDolar + " dólares\n" +

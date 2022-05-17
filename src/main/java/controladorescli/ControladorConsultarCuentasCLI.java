@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import logicadeaccesoadatos.ConexionBD;
 import logicadeaccesoadatos.CuentaBD;
+import logicadeaccesoadatos.OperacionBD;
 import logicadenegocios.CuentaBancaria;
+import logicadenegocios.Operacion;
 import logicadenegocios.Persona;
 import util.Encriptar;
 
@@ -31,7 +33,7 @@ public class ControladorConsultarCuentasCLI {
         this.vista = vista;
     }
     public void listarCuentas() throws IOException{
-        //organizarCuentas();
+        organizarCuentas();
         for(int i = 0;i<this.cuentas.size();i++){
             Persona duenio = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(String.valueOf(cuentas.get(i).getNumCuenta())));
             this.vista.listarCuentas(cuentas.get(i).getNumCuenta(), cuentas.get(i).getEstatus(), cuentas.get(i).getSaldo(), 
@@ -39,6 +41,8 @@ public class ControladorConsultarCuentasCLI {
         } 
         if(this.vista.consultarCuenta().equals("1")){
             seleccionarCuenta();
+            /*Operacion oper = new Operacion("consultas", "No aplica", false, 0 , LocalDate.now());
+            OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));*/
         }
     }
     

@@ -7,8 +7,11 @@ package controladorescli;
 
 import cli.ConsultarEstatusCuentaCLI;
 import java.io.IOException;
+import java.time.LocalDate;
 import logicadeaccesoadatos.CuentaBD;
+import logicadeaccesoadatos.OperacionBD;
 import logicadenegocios.CuentaBancaria;
+import logicadenegocios.Operacion;
 import util.Encriptar;
 
 /**
@@ -28,6 +31,8 @@ public class ControladorConsultarEstatusCuentaCLI {
         CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         String mensaje = "La cuenta número " + numeroCuenta +" tiene estatus de " + cuentaBanc.getEstatus();
         this.vista.verEstatusMostrar(mensaje);
+       /*Operacion oper = new Operacion("consultas", "No aplica", false,0, LocalDate.now());
+        OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));*/
     }
     
 }

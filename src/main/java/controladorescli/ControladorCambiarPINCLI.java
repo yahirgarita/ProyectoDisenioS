@@ -7,9 +7,12 @@ package controladorescli;
 
 import cli.CambiarPinCLI;
 import java.io.IOException;
+import java.time.LocalDate;
 import javax.mail.MessagingException;
 import logicadeaccesoadatos.CuentaBD;
+import logicadeaccesoadatos.OperacionBD;
 import logicadenegocios.CuentaBancaria;
+import logicadenegocios.Operacion;
 import logicadenegocios.Persona;
 import util.Email;
 import util.Encriptar;
@@ -43,6 +46,8 @@ public class ControladorCambiarPINCLI {
                 pinNuevo = this.vista.cambiarPinPedirPinNuevo();
                 CuentaBD.cambiarPinCuenta(Encriptar.cifrar(numeroCuenta), Encriptar.cifrar(pinNuevo));
                 this.vista.cambiarPinCompletado(numeroCuenta);
+                /*Operacion oper = new Operacion("cambiar de PIN", "No aplica", false, 0, LocalDate.now());
+                OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));*/
                 return;
             }
             intentos++;
