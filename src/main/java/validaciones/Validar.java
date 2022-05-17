@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDate;
 import logicadeaccesoadatos.*;
+import logicadenegocios.CuentaBancaria;
 import util.Encriptar;
 import util.TipoCambio;
 
@@ -149,8 +150,8 @@ public class Validar{
     
     public static boolean existeSaldoSuficienteEnTipoCambio(double pSaldo, String pNumCuenta){
         TipoCambio dolar = new TipoCambio();
-        return pSaldo*dolar.getVenta() < CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(pNumCuenta)).getSaldo();
+        CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(pNumCuenta));
+        return pSaldo*dolar.getVenta() < cuenta.getSaldo();
     }
-    
 }
 

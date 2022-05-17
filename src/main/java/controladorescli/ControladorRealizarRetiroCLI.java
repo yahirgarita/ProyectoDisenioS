@@ -49,14 +49,14 @@ public class ControladorRealizarRetiroCLI {
             pinActual = this.vista.realizarRetiroPedirPin();
             if(pinActual.equals(cuentaBanc.getPin())){
                 if(verificarPalabraCorrectaRetiro(numeroCuenta)){
-                    String monto = this.vista.realizarRetiroPedirMonto(Encriptar.cifrar(numeroCuenta));
+                    String monto = this.vista.realizarRetiroPedirMonto(numeroCuenta);
                     
                     if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(numeroCuenta)) >= 3){  
                    
                         double comision = Double.parseDouble(monto) * 0.02;
                         while(Double.parseDouble(monto) + comision > cuentaBanc.getSaldo() ){
                             this.vista.retiroError("Saldo no alcanza para pagar comisiones");
-                            monto = this.vista.realizarRetiroPedirMonto(Encriptar.cifrar(numeroCuenta));
+                            monto = this.vista.realizarRetiroPedirMonto(numeroCuenta);
                         }
                         CuentaBD.agregarComision(Encriptar.cifrar(numeroCuenta), comision, "retiros");
                         Double montoTotal = Operacion.calcularComision(Double.parseDouble(monto));
@@ -112,14 +112,14 @@ public class ControladorRealizarRetiroCLI {
             pinActual = this.vista.realizarRetiroPedirPin();
             if(pinActual.equals(cuentaBanc.getPin())){
                 if(verificarPalabraCorrectaRetiro(numeroCuenta)){
-                    String monto = this.vista.realizarRetiroPedirMonto(Encriptar.cifrar(numeroCuenta));
+                    String monto = this.vista.realizarRetiroPedirMontoDolares(numeroCuenta);
                     double montoEnColones = Double.parseDouble(monto) * tipoCambio.getVenta();
                     if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(numeroCuenta)) >= 3){
                    
                         double comision = montoEnColones * 0.02;
                         while(montoEnColones + comision > cuentaBanc.getSaldo() ){
                             this.vista.retiroError("Saldo no alcanza para pagar comisiones");
-                            monto = this.vista.realizarRetiroPedirMontoDolares(Encriptar.cifrar(numeroCuenta));
+                            monto = this.vista.realizarRetiroPedirMontoDolares(numeroCuenta);
                             montoEnColones = Double.parseDouble(monto) * tipoCambio.getVenta();
                         }
                         CuentaBD.agregarComision(Encriptar.cifrar(numeroCuenta), comision, "retiros");
