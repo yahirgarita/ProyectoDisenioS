@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import logicadeaccesoadatos.ConexionBD;
 import logicadeaccesoadatos.CuentaBD;
+import logicadeaccesoadatos.OperacionBD;
 import logicadenegocios.CuentaBancaria;
+import logicadenegocios.Operacion;
 import logicadenegocios.Persona;
 import util.Encriptar;
 
@@ -26,21 +28,25 @@ public class ControladorConsultarCuentasCLI {
     private ArrayList<CuentaBancaria> cuentas;
     private ConsultarCuentasCLI vista;
     
-    public ControladorConsultarCuentasCLI(){
+    public ControladorConsultarCuentasCLI(ConsultarCuentasCLI vista){
         this.cuentas = CuentaBD.recuperarCuentas();
-        this.vista = new ConsultarCuentasCLI();
+        this.vista = vista;
     }
-    public void listarCuentas(){
-        //organizarCuentas();
+    public void listarCuentas() throws IOException{
+        organizarCuentas();
         for(int i = 0;i<this.cuentas.size();i++){
             Persona duenio = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(String.valueOf(cuentas.get(i).getNumCuenta())));
             this.vista.listarCuentas(cuentas.get(i).getNumCuenta(), cuentas.get(i).getEstatus(), cuentas.get(i).getSaldo(), 
                     duenio.getIdPersona(),duenio.getNombre()+ " " + duenio.getPrimerApellido() + " " + duenio.getSegundoApellido());
-            //System.out.println(cuentas.get(i).getEstatus());
-        }      
+        } 
+        if(this.vista.consultarCuenta().equals("1")){
+            seleccionarCuenta();
+            /*Operacion oper = new Operacion("consultas", "No aplica", false, 0 , LocalDate.now());
+            OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));*/
+        }
     }
     
-    public void seleccionarCuenta() throws IOException{
+    private void seleccionarCuenta() throws IOException{
         String numeroCuenta = this.vista.seleccionarCuenta();
         CuentaBancaria cuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
         this.vista.mostrarCuenta(cuenta.toString());
@@ -49,19 +55,5 @@ public class ControladorConsultarCuentasCLI {
     private void organizarCuentas(){
         cuentas.sort(Comparator.comparing(CuentaBancaria::getSaldo).reversed());
     }
-    
-    public static void main (String args[]) throws IOException{
-        ControladorConsultarCuentasCLI nuevo = new ControladorConsultarCuentasCLI();
-        nuevo.listarCuentas();
-        //nuevo.seleccionarCuenta();
-        /*ConexionBD conexionBD = new ConexionBD();
-        conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("update Cuenta set saldo = " + Encriptar.cifrar(String.valueOf(2000.0)) + 
-                " where numeroCuenta = '" + ":=8:97" + "'");
-        conexionBD.salirBD();*/
-        /*LocalDate date = LocalDate.now();
-        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("MM/d/uuuu");
-        String text = date.format(formatters);
-        System.out.println(text);*/
-    }
+
 }

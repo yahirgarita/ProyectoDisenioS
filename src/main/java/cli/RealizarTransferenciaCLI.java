@@ -5,10 +5,87 @@
  */
 package cli;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import validaciones.Validar;
+import validaciones.ValidarTipoDeDato;
+
 /**
  *
  * @author Jimmy
  */
 public class RealizarTransferenciaCLI {
     
+    public String realizarTranferenciaPedirCuentaOrigen() throws IOException{
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String cuenta;
+        
+        System.out.println("Por favor ingrese el numero de cuenta: ");
+        while(Validar.existeCuenta(cuenta = reader.readLine()) != true){
+            System.out.println("Por favor ingrese un numero de cuenta existente: ");
+        }
+        
+        return cuenta;
+    }   
+    
+    public String realizarTransferenciaPedirPin() throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Por favor ingrese el numero de PIN de la cuenta: ");
+        String pin;
+        pin = reader.readLine();
+        return pin;
+    }
+    
+    public String realizarTransferenciaPedirSMS() throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Estimado usuario se ha enviado una palabra por mensaje de texto, por favor revise sus mensajes y proceda a digitar la palabra enviada: ");
+        String mensajeTexto;
+        mensajeTexto = reader.readLine();
+        return mensajeTexto;
+    }
+    
+    public String realizarTransferenciaPedirMonto(String cuenta) throws IOException{
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String monto;
+        System.out.println("Por favor ingrese el monto a retirar: ");
+        while(true){
+            while(ValidarTipoDeDato.validarEsEntero(monto = reader.readLine()) != true){
+                System.out.println("Por favor ingrese un monto valido sin decimales: ");
+            }
+            
+            if(Validar.existeSaldoSuficiente(Integer.parseInt(monto), cuenta)){
+                break;
+            }
+            else{
+                System.out.println("Saldo insuficiente, por favor ingrese un monto valido sin decimales: ");
+            }
+        }
+        return monto;
+    }
+    
+    public String realizarTranferenciaPedirCuentaDestino() throws IOException{
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String cuenta;
+        
+        System.out.println("Por favor ingrese el numero de cuenta a transferir: ");
+        while(Validar.existeCuenta(cuenta = reader.readLine()) != true){
+            System.out.println("Por favor ingrese un numero de cuenta existente: ");
+        }
+        
+        return cuenta;
+    }  
+    
+    public void transferenciaError(String mensaje){
+        System.out.println(mensaje);
+    }
+    public void transferenciaRealizado(String mensaje){
+        System.out.println(mensaje);
+    }
+     
 }

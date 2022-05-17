@@ -22,6 +22,15 @@ public class ConsultarClientesCLI {
         System.out.println("Segundo Apellido: " + segundoApellido);
         System.out.println("Nombre: " + nombre);
         System.out.println("Numero de identificacion: " + identificacion);
+        System.out.println();
+    }
+    
+    public String consultarCliente() throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String opcion;
+        System.out.println("Digite 1 si desea consultar un cliente o digite cualquier otra tecla para salir");
+        opcion = reader.readLine();
+        return opcion;
     }
     
     public String selecionarCliente() throws IOException{

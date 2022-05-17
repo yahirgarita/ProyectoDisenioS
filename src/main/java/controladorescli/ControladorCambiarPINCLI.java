@@ -7,9 +7,12 @@ package controladorescli;
 
 import cli.CambiarPinCLI;
 import java.io.IOException;
+import java.time.LocalDate;
 import javax.mail.MessagingException;
 import logicadeaccesoadatos.CuentaBD;
+import logicadeaccesoadatos.OperacionBD;
 import logicadenegocios.CuentaBancaria;
+import logicadenegocios.Operacion;
 import logicadenegocios.Persona;
 import util.Email;
 import util.Encriptar;
@@ -23,8 +26,8 @@ public class ControladorCambiarPINCLI {
     
     private CambiarPinCLI vista;
     
-    public ControladorCambiarPINCLI(){
-        this.vista = new CambiarPinCLI();
+    public ControladorCambiarPINCLI(CambiarPinCLI vista){
+        this.vista = vista;
     }
     public void cambiarPinPedirCuenta() throws IOException, MessagingException{
         String numeroCuenta = this.vista.cambiarPinPedirCuenta();
@@ -36,7 +39,6 @@ public class ControladorCambiarPINCLI {
         String pinActual;
         String pinNuevo ;
         int intentos = 0;
-        //System.out.println("el pin es " + pinActual + " y el otro es " + cuenta.getPin());
         
         while(intentos < 2){
             pinActual = this.vista.cambiarPinPedirPinActual();
@@ -44,6 +46,8 @@ public class ControladorCambiarPINCLI {
                 pinNuevo = this.vista.cambiarPinPedirPinNuevo();
                 CuentaBD.cambiarPinCuenta(Encriptar.cifrar(numeroCuenta), Encriptar.cifrar(pinNuevo));
                 this.vista.cambiarPinCompletado(numeroCuenta);
+                /*Operacion oper = new Operacion("cambiar de PIN", "No aplica", false, 0, LocalDate.now());
+                OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));*/
                 return;
             }
             intentos++;
@@ -54,9 +58,5 @@ public class ControladorCambiarPINCLI {
         Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), "Su cuenta a pasado a estar Inactiva por fallar el PIN");
         
     }
-    
-    public static void main(String[] args) throws IOException, MessagingException{
-        ControladorCambiarPINCLI nuevo = new ControladorCambiarPINCLI();
-        nuevo.cambiarPinPedirCuenta();
-    }
+
 }

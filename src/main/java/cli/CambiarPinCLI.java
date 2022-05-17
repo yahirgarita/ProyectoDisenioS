@@ -57,6 +57,6 @@ public class CambiarPinCLI {
     }
     
     public void cuentaInactiva(){
-        System.out.println("Estimado usuario esta cueta esta inactiva.");
+        System.out.println("Estimado usuario esta cuenta esta inactiva.");
     }
 }

@@ -176,14 +176,6 @@ public class CuentaBD {
         return cadena;
     }
     
-    public static void retirarColones(String monto, CuentaBancaria cuenta){
-        int saldoTotal = (int) (cuenta.getSaldo() - Integer.parseInt(monto));
-        conexionBD.conexionDataBase();
-        conexionBD.ejecutarSentSQL("update Cuenta set saldo = '" + String.valueOf(saldoTotal) + "'" +
-                " where numeroCuenta = '" + Encriptar.cifrar(String.valueOf(cuenta.getNumCuenta())) + "'");
-        conexionBD.salirBD();
-    }
-    
     public static void agregarComision(String pNumCuenta, double pMonto, String tipo){
         conexionBD.conexionDataBase();
         conexionBD.ejecutarSentSQL("insert into Comision values ('" + pNumCuenta + "','" + pMonto + "','" + tipo + "')");

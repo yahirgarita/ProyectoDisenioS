@@ -87,10 +87,4 @@ public class TipoCambio{
   private void setVenta(){
     this.indicador = 318;
   }
-  
-  public static void main(String[] args){
-      cambio nuevo = new cambio();
-      System.out.println(nuevo.getCompra());
-      System.out.println(nuevo.getVenta());
-  }
 }

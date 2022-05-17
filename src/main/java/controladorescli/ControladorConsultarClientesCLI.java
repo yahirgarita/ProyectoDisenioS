@@ -29,29 +29,31 @@ public class ControladorConsultarClientesCLI {
     private SeleccionarClienteCLI vistaSeleccionarCliente; 
     private ArrayList<Persona> lista;
     
-    public ControladorConsultarClientesCLI(){
-        this.vistaClientes = new ConsultarClientesCLI();
-        this.vistaSeleccionarCliente = new SeleccionarClienteCLI();
+    public ControladorConsultarClientesCLI(ConsultarClientesCLI vistaClientes, SeleccionarClienteCLI vistaSeleccionarCliente){
+        this.vistaClientes = vistaClientes;
+        this.vistaSeleccionarCliente = vistaSeleccionarCliente;
         this.lista = new  ArrayList<Persona>();
         this.convetirClientesAObj();
         this.organizarPersonas();
         
         
     }
-    public void listarClientes(){
+    public void listarClientes() throws IOException{
         for(int i = 0;i < lista.size(); i++){
             vistaClientes.listarClientes(lista.get(i).getPrimerApellido(), lista.get(i).getSegundoApellido(), 
                     lista.get(i).getNombre(), lista.get(i).getIdPersona());
         }
+        if(this.vistaClientes.consultarCliente().equals("1")){
+            seleccionarCliente();
+        }
     }
     
-    public void seleccionarCliente() throws IOException{
+    private void seleccionarCliente() throws IOException{
        
         String id = this.vistaClientes.selecionarCliente();
         Persona usuario = PersonaBD.recuperarClientePorID(Integer.parseInt(id));
         ArrayList<CuentaBancaria> cuentas = PersonaBD.recuperarCuentasClientes(usuario.getCodigo());
         this.vistaSeleccionarCliente.consultarInformacionCliente(usuario.toString());
-        System.out.println("el tamano de la lista es: " + cuentas.size());
         for(int i = 0;i<cuentas.size();i++){
             this.vistaSeleccionarCliente.listarCuentas(cuentas.get(i).getNumCuenta());
             
@@ -78,12 +80,4 @@ public class ControladorConsultarClientesCLI {
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         }
     }
- 
-    public static void main(String argss[]) throws IOException{
-        
-        ControladorConsultarClientesCLI nuevo = new ControladorConsultarClientesCLI();
-        nuevo.listarClientes();
-        nuevo.seleccionarCliente();
-    }
-   
 }

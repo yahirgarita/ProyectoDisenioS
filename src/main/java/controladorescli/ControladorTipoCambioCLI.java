@@ -18,9 +18,9 @@ public class ControladorTipoCambioCLI {
     
     private ConsultarTipoCambioCLI vista;
     
-    public ControladorTipoCambioCLI(){
-        precio = new cambio();
-        vista = new ConsultarTipoCambioCLI();   
+    public ControladorTipoCambioCLI(ConsultarTipoCambioCLI vista){
+        this.precio = new cambio();
+        this.vista = vista;   
     }
     
     public void consultarVenta(){

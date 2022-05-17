@@ -6,6 +6,9 @@ import logicadenegocios.Operacion;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import util.Encriptar;
 
 
 /**
@@ -40,6 +43,92 @@ public class OperacionBD {
             return 0;
         }
         return cont;
+    }
+    public static ArrayList<Operacion> obtenerOperacionesPorNumCuenta(String numeroCuenta){
+        ArrayList<Operacion> operaciones = new ArrayList<>();
+        conexionBD.conexionDataBase();
+         ResultSet resultado = conexionBD.inquiry("select * from Operacion where cuenta = '" +numeroCuenta+ "'");
+        try{
+            while(resultado.next()){
+                boolean cargo;
+                if(resultado.getString("cargo").equals("Si")){
+                    cargo = true;
+                }
+                else{
+                    cargo = false;
+                }
+                Operacion operacion = new Operacion(resultado.getString("tipo"),resultado.getString("moneda"), cargo
+                        , Double.parseDouble(resultado.getString("monto")),LocalDate.parse(resultado.getString("fecha"), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                operaciones.add(operacion);
+            }
+        }
+        catch(SQLException e){
+            return operaciones;
+        }
+        return operaciones;
+    }
+    public static Double obtenerComisionOperacionesDepositos(){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'depósitos'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
+    }
+    
+    public static Double obtenerComisionOperacionesRetiros(){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'retiros'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
+    }
+    
+    public static Double obtenerComisionOperacionesDepositosPorCuenta(String numeroCuenta){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'depósitos' AND cuenta = '"+ numeroCuenta + "'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
+    }
+    
+    public static Double obtenerComisionOperacionesRetirosPorCuenta(String numeroCuenta){
+        
+        conexionBD.conexionDataBase();
+        double comision = 0;
+        ResultSet resultado = conexionBD.inquiry("select * from Comision where tipoComision = 'retiros' AND cuenta = '"+ numeroCuenta + "'");
+        try{
+            while(resultado.next()){
+                comision+= Double.parseDouble(resultado.getString("monto"));
+            }
+        }
+        catch(SQLException e){
+            return comision;
+        }
+        return comision;
     }
     
 }

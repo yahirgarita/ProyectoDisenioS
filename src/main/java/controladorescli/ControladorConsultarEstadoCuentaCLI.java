@@ -5,9 +5,9 @@
  */
 package controladorescli;
 
-import cli.ConsultarSaldoActualCLI;
+import cli.ConsultarEstadoCuentaCLI;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.mail.MessagingException;
 import logicadeaccesoadatos.CuentaBD;
 import logicadeaccesoadatos.OperacionBD;
@@ -23,16 +23,17 @@ import validaciones.Validar;
  *
  * @author Jimmy
  */
-public class ControladorConsultarSaldoActualCLI {
+public class ControladorConsultarEstadoCuentaCLI {
+    private ConsultarEstadoCuentaCLI vista;
+    private TipoCambio tipoCambio;
     
-    private ConsultarSaldoActualCLI vista;
-    
-    public ControladorConsultarSaldoActualCLI(ConsultarSaldoActualCLI vista){
+    public ControladorConsultarEstadoCuentaCLI(ConsultarEstadoCuentaCLI vista){
         this.vista = vista;
+        this.tipoCambio =  new TipoCambio();
     }
     
-    public void consultarSaldoActual() throws IOException, MessagingException{
-        String numeroCuenta = this.vista.consultarSaldoActual();
+    public void consultarEstadoCuentaColones() throws IOException, MessagingException{
+        String numeroCuenta = this.vista.consultarEstadoCuentaPedirCuenta();
         if(Validar.validarEstatusInactivo(Encriptar.cifrar(numeroCuenta))){
             this.vista.cuentaInactiva();
             return;
@@ -41,9 +42,19 @@ public class ControladorConsultarSaldoActualCLI {
         int intentos = 0;
         String pinActual;
         while(intentos < 2){
-            pinActual = this.vista.consultarSaldoActualPedirPin();
+            pinActual = this.vista.consultarEstadoCuentaPedirPin();
+            
             if(pinActual.equals(cuenta.getPin())){
-                this.vista.mostrarSaldoActualColones(cuenta.getSaldo());
+                ArrayList<Operacion> operaciones = OperacionBD.obtenerOperacionesPorNumCuenta(Encriptar.cifrar(numeroCuenta));
+                this.vista.mostrarEstadoCuentaTitulo();
+                for(int i = 0;i < operaciones.size(); i++){
+                    double monto = operaciones.get(i).getMonto();
+                    if(operaciones.get(i).getMoneda().equals("Dólares")){
+                        monto = operaciones.get(i).getMonto() * this.tipoCambio.getCompra();
+                    }
+                    this.vista.mostrarEstadoCuenta(operaciones.get(i).getFechaOperacion().toString(),operaciones.get(i).getTipo(),Math.round(monto*100.0)/100.0,operaciones.get(i).getCargo());
+                }
+                
                 /*Operacion oper = new Operacion("consultas", "No aplica", false, 0, LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));*/
                 return;
@@ -56,9 +67,8 @@ public class ControladorConsultarSaldoActualCLI {
         Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), "Su cuenta a pasado a estar Inactiva por fallar el PIN");
     }
     
-    public void consultarSaldoActualDolares() throws IOException, MessagingException{        
-        
-        String numeroCuenta = this.vista.consultarSaldoActual();
+    public void consultarEstadoCuentaDolares() throws IOException, MessagingException{
+        String numeroCuenta = this.vista.consultarEstadoCuentaPedirCuenta();
         if(Validar.validarEstatusInactivo(Encriptar.cifrar(numeroCuenta))){
             this.vista.cuentaInactiva();
             return;
@@ -67,11 +77,19 @@ public class ControladorConsultarSaldoActualCLI {
         int intentos = 0;
         String pinActual;
         while(intentos < 2){
-            pinActual = this.vista.consultarSaldoActualPedirPin();
+            pinActual = this.vista.consultarEstadoCuentaPedirPin();
+            
             if(pinActual.equals(cuenta.getPin())){
-                double precioDolar = new TipoCambio().getCompra();
-                double saldoDolar = cuenta.getSaldo() / precioDolar;
-                this.vista.mostrarSaldoActualDolares(saldoDolar, precioDolar);
+                ArrayList<Operacion> operaciones = OperacionBD.obtenerOperacionesPorNumCuenta(Encriptar.cifrar(numeroCuenta));
+                this.vista.mostrarEstadoCuentaTitulo();
+                for(int i = 0;i < operaciones.size(); i++){
+                    double monto = operaciones.get(i).getMonto();
+                    if(operaciones.get(i).getMoneda().equals("Colones")){
+                        monto = operaciones.get(i).getMonto() / this.tipoCambio.getVenta();
+                    }
+                    this.vista.mostrarEstadoCuenta(operaciones.get(i).getFechaOperacion().toString(),operaciones.get(i).getTipo(),Math.round(monto*100.0)/100.0,operaciones.get(i).getCargo());
+                }
+                
                 /*Operacion oper = new Operacion("consultas", "No aplica", false, 0, LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(oper,Encriptar.cifrar(numeroCuenta));*/
                 return;
@@ -83,5 +101,4 @@ public class ControladorConsultarSaldoActualCLI {
         Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(numeroCuenta));
         Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), "Su cuenta a pasado a estar Inactiva por fallar el PIN");
     }
-
 }
