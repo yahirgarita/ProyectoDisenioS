@@ -43,6 +43,8 @@ public class ControladorListarClientes implements ActionListener{
     /**
      * ControladorListarClientes
      * 
+     * @param pClientes
+     * @param pMenuInicial
      * @param pListarClientes
      */
     public ControladorListarClientes(ListarClientes pClientes, Menu pMenuInicial){
@@ -54,6 +56,7 @@ public class ControladorListarClientes implements ActionListener{
         this.listarClientes.botonConsultarInfoCliente.addActionListener(this);
         convetirClientesAObj();
         Ordenamiento.ordenarAscendentemente(personasEnBD);
+
     }
     
     @Override
@@ -72,7 +75,7 @@ public class ControladorListarClientes implements ActionListener{
        }        
     }
     private void organizarPersona(){
-        personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
+        Ordenamiento.ordenarAscendentemente(personasEnBD);
     }
     
     

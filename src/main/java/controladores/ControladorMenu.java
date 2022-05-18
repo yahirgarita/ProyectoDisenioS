@@ -43,6 +43,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnGananciasCuenta.addActionListener(this);
         this.menuInicial.btnGananciaBanco.addActionListener(this);
         this.menuInicial.btnCerrar.addActionListener(this);
+        this.menuInicial.btnEstadoCuentaColones.addActionListener(this);
     }
      
      @Override
@@ -205,6 +206,13 @@ public class ControladorMenu implements ActionListener{
          Ganancias ganan = new Ganancias();
          ControladorGanancias controGanan = new ControladorGanancias(ganan);
          controGanan.ganancias.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarEstadoCuentaColoes(){
+         EstadoDeCuentaColones estado = new EstadoDeCuentaColones();
+         ControladorConsultarEstadoCuentaColones controEstadoColones =  new ControladorConsultarEstadoCuentaColones(estado);
+         controEstadoColones.estadoCuentaColones.setVisible(true);
          this.menuInicial.setVisible(false);
      }
      

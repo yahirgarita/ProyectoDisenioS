@@ -7,6 +7,20 @@
         <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="btnVerEstatus1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ver estatus de cuenta"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerEstatus1ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -42,33 +56,40 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="botonCambiarPin" min="-2" pref="218" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnRetiroEnColones" min="-2" pref="254" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="butonCrearCuenta" pref="240" max="32767" attributes="0"/>
+                                  <Component id="botonListarClientes" max="32767" attributes="0"/>
+                                  <Component id="botonRegistrarClienteMenu1" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="botonListarCuentas" min="-2" pref="218" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Component id="btnDepositarDolares1" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnConsultarSaldo" max="32767" attributes="0"/>
+                                  <Component id="btnConsultarSaldoDolares" max="32767" attributes="0"/>
+                                  <Component id="btnDepositarColones" min="-2" pref="254" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="botonRegistrarClienteMenu1" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                                      <Component id="butonCrearCuenta" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                                      <Component id="botonListarClientes" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="botonListarCuentas" max="32767" attributes="0"/>
+                                  <Component id="btnEstadoCuentaColones" max="32767" attributes="0"/>
+                                  <Component id="botonCambiarPin" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="77" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnRetiroEnColones" alignment="1" min="-2" pref="254" max="-2" attributes="0"/>
+                                          <Component id="btnVerEstatus" alignment="1" min="-2" pref="254" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnConsultarSaldo" max="32767" attributes="0"/>
-                                      <Component id="btnConsultarSaldoDolares" max="32767" attributes="0"/>
-                                      <Component id="btnDepositarColones" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                      <Component id="btnDepositarDolares1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="btnVerEstatus" min="-2" pref="254" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -133,6 +154,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnGananciaBanco" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="btnVerEstatus" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="btnEstadoCuentaColones" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="71" max="32767" attributes="0"/>
               <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
@@ -385,6 +407,20 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerEstatusActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEstadoCuentaColones">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Consultar estado cuenta en colones"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstadoCuentaColonesActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
