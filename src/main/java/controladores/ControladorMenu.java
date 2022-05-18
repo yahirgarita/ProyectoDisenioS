@@ -83,6 +83,8 @@ public class ControladorMenu implements ActionListener{
                 break;
              case "Ganancia comisiones banco": consultarGananciasTotales();
                 break;
+             case "Consultar estado cuenta en colones": consultarEstadoCuentaColoes();
+                break;
              case "Cerrar": cerrar();
                 default:break;
          }
@@ -211,7 +213,7 @@ public class ControladorMenu implements ActionListener{
      
      private void consultarEstadoCuentaColoes(){
          EstadoDeCuentaColones estado = new EstadoDeCuentaColones();
-         ControladorConsultarEstadoCuentaColones controEstadoColones =  new ControladorConsultarEstadoCuentaColones(estado);
+         ControladorConsultarEstadoCuentaColones controEstadoColones =  new ControladorConsultarEstadoCuentaColones(estado, menuInicial);
          controEstadoColones.estadoCuentaColones.setVisible(true);
          this.menuInicial.setVisible(false);
      }

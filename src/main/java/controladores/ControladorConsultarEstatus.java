@@ -22,6 +22,7 @@ public class ControladorConsultarEstatus implements ActionListener{
         consultaEstatus = pConsultarSaldo;
         consultaEstatus.verEstatus.addActionListener(this);
         consultaEstatus.btnVolver.addActionListener(this);
+        
     }
 
     @Override

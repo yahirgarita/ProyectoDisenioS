@@ -39,16 +39,24 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
     private int attempt = 0;
     private Menu menuInicial;
     
-    public ControladorConsultarEstadoCuentaColones( EstadoDeCuentaColones pEstadoCuentaColones){
+    public ControladorConsultarEstadoCuentaColones( EstadoDeCuentaColones pEstadoCuentaColones, Menu pMenuInicial){
         this.estadoCuentaColones = pEstadoCuentaColones;
-        this.estadoCuentaColones.numCuentaEstadoColones.addActionListener(this);
-        this.estadoCuentaColones.pinEstadoCuentaColones.addActionListener(this);
+        this.menuInicial = pMenuInicial;
+        this.estadoCuentaColones.Consultar.addActionListener(this);
+        this.estadoCuentaColones.volverPin1.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent evento) {
         switch(evento.getActionCommand()){
-            case "Consultar cuenta": 
+            case "Consultar estado": {
+                try {
+                    realizarConsultaCuentaColones();
+                } catch (MessagingException ex) {
+                    Logger.getLogger(ControladorConsultarEstadoCuentaColones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                break;
+
             case "Volver":
                 controladores.ControladoresGlobales.volver();
                 this.estadoCuentaColones.setVisible(false);

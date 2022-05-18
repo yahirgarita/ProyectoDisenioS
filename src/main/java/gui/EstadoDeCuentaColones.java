@@ -50,14 +50,14 @@ public class EstadoDeCuentaColones extends javax.swing.JFrame {
 
         volverPin1.setText("Volver");
 
-        Consultar.setText("Consultar cuenta");
+        Consultar.setText("Consultar estado");
         Consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsultarActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Número de cuenta:");
+        jLabel2.setText("Pin de la cuenta:");
 
         pinEstadoCuentaColones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,16 +77,16 @@ public class EstadoDeCuentaColones extends javax.swing.JFrame {
                     .addComponent(Consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(42, 42, 42)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(pinEstadoCuentaColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(44, 44, 44)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
-                            .addComponent(numCuentaEstadoColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(numCuentaEstadoColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pinEstadoCuentaColones, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(57, 57, 57)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
