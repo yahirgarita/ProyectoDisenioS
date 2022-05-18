@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import controladores.*;
 import gui.*;
 import javax.swing.*;
+import logicadeaccesoadatos.CuentaBD;
 
 /**
  * @author Carlos Rojas Molina
@@ -39,6 +40,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnVentaDolar.addActionListener(this);
         this.menuInicial.btnRetiroEnDolares1.addActionListener(this);
         this.menuInicial.btnrealizarTransferencia.addActionListener(this);
+        this.menuInicial.btnGananciasCuenta.addActionListener(this);
     }
      
      @Override
@@ -72,7 +74,12 @@ public class ControladorMenu implements ActionListener{
                 break;
              case "Realizar transferencia": realizarTransferencia();
                 break;
-             default: break;
+             case "Ganancias comisiones por cuenta": consultarGananciasCuenta();
+                break;
+             case "Ganancia comisiones banco": consultarGananciasTotales();
+                break;    
+             default:
+                break;
          }
      }
     private void registrarCliente(){
@@ -183,7 +190,25 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.setVisible(false);
      }
      
+     private void consultarGananciasCuenta(){
+         Ganancias ganan = new Ganancias();
+         ControladorGanancias controGanan = new ControladorGanancias(ganan);
+         controGanan.ganancias.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarGananciasTotales(){
+         JOptionPane.showMessageDialog(null, "El monto total de comisiones por concepto de depósitos es de: " + 
+                 CuentaBD.totalComisionesBancoDepositos() + " colones");
+         JOptionPane.showMessageDialog(null, "El monto total de comisiones por concepto de retiros es de: " +
+                 CuentaBD.totalComisionesBancoRetiros() + " colones");
+         JOptionPane.showMessageDialog(null, "El monto total del cobro de comisiones es de: " +
+                 CuentaBD.totalComisiones() + " colones"); 
+     }
+     
      private void volver(){
          this.menuInicial.dispose();
      }
+     
+     
 }
