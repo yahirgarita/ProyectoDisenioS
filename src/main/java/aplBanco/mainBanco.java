@@ -13,7 +13,7 @@ public class mainBanco {
         /*RegistroCliente inicio = new RegistroCliente();
         ControladorRegistroClientes controladorReg = new ControladorRegistroClientes(inicio);
         controladorReg.registrarCliente.setVisible(true);*/
-        
+        //pinga
         Menu inicio = new Menu();
         ControladorMenu controladorMenu = new ControladorMenu(inicio);
         controladorMenu.menuInicial.setVisible(true);
