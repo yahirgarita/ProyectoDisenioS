@@ -38,6 +38,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnCompraDolar.addActionListener(this);
         this.menuInicial.btnVentaDolar.addActionListener(this);
         this.menuInicial.btnRetiroEnDolares1.addActionListener(this);
+        this.menuInicial.btnrealizarTransferencia.addActionListener(this);
     }
      
      @Override
@@ -68,6 +69,8 @@ public class ControladorMenu implements ActionListener{
              case "Tipo de Cambio Venta": consultarTipoCambioVenta();
                 break;
              case "Tipo de Cambio Compra": consultarTipoCambioCompra();
+                break;
+             case "Realizar transferencia": realizarTransferencia();
                 break;
              default: break;
          }
@@ -153,6 +156,16 @@ public class ControladorMenu implements ActionListener{
         RetiroDolaresPaso4 retiroDolares4 = new RetiroDolaresPaso4();
         ControladorRetiroDolares controRetiroD = new ControladorRetiroDolares(retiroDolares1,retiroDolares2,retiroDolares3,retiroDolares4, menuInicial);
         controRetiroD.retiroDolares1.setVisible(true);
+        this.menuInicial.setVisible(false);
+     }
+     
+     private void realizarTransferencia(){
+        TransferenciaPaso1 transferencia1 = new TransferenciaPaso1();
+        TransferenciaPaso2 transferencia2 = new TransferenciaPaso2(); 
+        TransferenciaPaso3 transferencia3 = new TransferenciaPaso3();
+        TransferenciaPaso4 transferencia4 = new TransferenciaPaso4();
+        ControladorTransferencia controTrans = new ControladorTransferencia(transferencia1, transferencia2, transferencia3, transferencia4, menuInicial);
+        controTrans.transferencia1.setVisible(true);
         this.menuInicial.setVisible(false);
      }
      

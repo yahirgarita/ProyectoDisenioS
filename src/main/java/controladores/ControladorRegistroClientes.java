@@ -71,7 +71,7 @@ public class ControladorRegistroClientes implements ActionListener{
             Integer.parseInt(this.registrarCliente.telRegistro1.getText()), this.registrarCliente.correoRegistro1.getText());
         if(PersonaBD.registrarClientesEnBD(nuevoCliente)){
             clientesSistema.add(nuevoCliente);
-            JOptionPane.showMessageDialog(null, "El usuario ha sido registrado");
+            JOptionPane.showMessageDialog(null, nuevoCliente.mensajeCreacion());
             controladores.ControladoresGlobales.volver();
             this.registrarCliente.setVisible(false);
         }

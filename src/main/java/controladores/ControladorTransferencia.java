@@ -144,7 +144,7 @@ public class ControladorTransferencia implements ActionListener{
     
     private void realizarRetiroDolares(){ 
        String monto = this.transferencia4.montoTransferencia.getText();
-       CuentaBancaria cuentaReceptora = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.transferencia4.jLabel1.getText()));
+       CuentaBancaria cuentaReceptora = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.transferencia4.cuentaDestino.getText()));
        String cuentaActual = this.transferencia4.jLabel1.getText();
        if(ValidarTipoDeDato.validarEsEntero(monto)){
            if(Validar.existeSaldoSuficiente(Double.parseDouble(monto), cuentaActual)){
