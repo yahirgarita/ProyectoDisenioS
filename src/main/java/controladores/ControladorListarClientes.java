@@ -19,6 +19,7 @@ import logicadeaccesoadatos.PersonaBD;
 import validaciones.*;
 import controladores.*;
 import javax.swing.*;
+import util.Ordenamiento;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -52,7 +53,7 @@ public class ControladorListarClientes implements ActionListener{
         this.listarClientes.botonVolver.addActionListener(this);
         this.listarClientes.botonConsultarInfoCliente.addActionListener(this);
         convetirClientesAObj();
-        organizarPersona();
+        Ordenamiento.ordenarAscendentemente(personasEnBD);
     }
     
     @Override
@@ -70,10 +71,10 @@ public class ControladorListarClientes implements ActionListener{
                 break;
        }        
     }
-    
     private void organizarPersona(){
         personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
     }
+    
     
     private void convetirClientesAObj(){
         ResultSet resultado = PersonaBD.cargarTodosLosClientes();
