@@ -1,21 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cli;
+
+//Librerías importadas.
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+//Clases importadas.
 import validaciones.ValidarTipoDeDato;
+
 /**
- *
- * @author Jimmy
+ * @author Carlos Rojas Molina
+ * @author Jimmy Tsang Feng
+ * @author Yahir Garita Arias
+ * 
+ * @version 1.0
  */
 public class MenuCLI {
-    
-    public int mostrarMenu() throws IOException{
-        
+    /**
+     * Método para imprimir por consola todo el menú.
+     * @return opción dada por el usuario.
+     * @throws IOException 
+     */
+    public int mostrarMenu() throws IOException{       
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String opcion;
         System.out.println("Bienvenido al menu del banco");
@@ -44,6 +49,5 @@ public class MenuCLI {
             System.out.println("Por favor elija una opcion correcta (1-20)");
         }
         return Integer.parseInt(opcion);
-    }
-    
+    }   
 }
