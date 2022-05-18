@@ -56,7 +56,7 @@ public class Validar{
                 return true;
             }
         }catch (SQLException e){
-            return true;
+            return false;
         }
         coneccion.salirBD();
         return false;        
