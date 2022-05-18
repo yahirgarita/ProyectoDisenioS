@@ -39,6 +39,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnVentaDolar.addActionListener(this);
         this.menuInicial.btnRetiroEnDolares1.addActionListener(this);
         this.menuInicial.btnrealizarTransferencia.addActionListener(this);
+        this.menuInicial.btnVerEstatus.addActionListener(this);
     }
      
      @Override
@@ -71,6 +72,8 @@ public class ControladorMenu implements ActionListener{
              case "Tipo de Cambio Compra": consultarTipoCambioCompra();
                 break;
              case "Realizar transferencia": realizarTransferencia();
+                break;
+             case "Ver estatus de cuenta": verEstatus();
                 break;
              default: break;
          }
@@ -172,15 +175,22 @@ public class ControladorMenu implements ActionListener{
      private void consultarTipoCambioCompra(){
         ConsultarCompraDolar vista = new ConsultarCompraDolar();
         ControladorCompraDolar nuevo = new ControladorCompraDolar(vista);
-        vista.setVisible(true);
+        nuevo.compraDolar.setVisible(true);
         this.menuInicial.setVisible(false);
      }
      
      private void consultarTipoCambioVenta(){
         ConsultarVentaDolar vista = new ConsultarVentaDolar();
         ControladorVentaDolar nuevo = new ControladorVentaDolar(vista);
-        vista.setVisible(true);
+        nuevo.ventaDolar.setVisible(true);
         this.menuInicial.setVisible(false);
+     }
+     
+     private void verEstatus(){
+         ConsultarEstatus vista = new ConsultarEstatus();
+         ControladorConsultarEstatus controlEstatus = new ControladorConsultarEstatus(vista);
+         controlEstatus.consultaEstatus.setVisible(true);
+         this.menuInicial.setVisible(false);
      }
      
      private void volver(){

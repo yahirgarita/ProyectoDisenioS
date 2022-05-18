@@ -16,7 +16,7 @@ import util.TipoCambio;
  */
 public class ControladorCompraDolar implements ActionListener {
 
-    private ConsultarCompraDolar compraDolar;
+    public ConsultarCompraDolar compraDolar;
     private TipoCambio tipoCambio;
     
     public ControladorCompraDolar(ConsultarCompraDolar compraDolar){

@@ -4,10 +4,12 @@
  */
 package controladores;
 import gui.ConsultarEstatus;
-import logicadeaccesoadatos.*;
+import logicadeaccesoadatos.CuentaBD;
+import logicadenegocios.CuentaBancaria;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import util.Encriptar;
 
 /**
  * @author Carlos Rojas Molina
@@ -41,5 +43,11 @@ public class ControladorConsultarEstatus implements ActionListener{
     }
     private void verEstatus(){
         String cuenta = this.consultaEstatus.numCuenta.getText();
+        CuentaBancaria buscar = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(cuenta));
+        if(buscar != null){
+            JOptionPane.showMessageDialog(null,"La cuenta n° " + buscar.getNumCuenta() + " tiene el estatus de " + buscar.getEstatus());
+        }else{
+            JOptionPane.showMessageDialog(null, "El número de cuenta no existe.");
+        }
     }
 }
