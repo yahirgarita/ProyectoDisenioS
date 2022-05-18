@@ -81,9 +81,9 @@ public class ControladorMenu implements ActionListener{
              case " Ganancias comisiones por cuenta": consultarGananciasCuenta();
                 break;
              case "Ganancia comisiones banco": consultarGananciasTotales();
-             break;
+                break;
              case "Cerrar": cerrar();
-             default:break;
+                default:break;
          }
      }
     private void registrarCliente(){
