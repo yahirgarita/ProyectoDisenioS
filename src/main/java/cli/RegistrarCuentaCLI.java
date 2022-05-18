@@ -26,7 +26,7 @@ public class RegistrarCuentaCLI {
         
         System.out.println("Por favor ingresar la identifiacaion cliente: "); 
         while(Validar.existeCliente(codigo = reader.readLine()) != true){
-            System.out.println("Por favor ingresar una indentificacion de cliente valido: ");
+            System.out.println("Por favor ingresar una identificacion de cliente valido: ");
         }
         
         System.out.println("Por favor ingrese un nuevo PIN para la cuenta: "); 
@@ -41,6 +41,10 @@ public class RegistrarCuentaCLI {
         
         String informacion[] = {codigo,pin,montoInicial};
         return informacion;
+    }
+    
+    public void mostrarMensaje(String mensaje){
+        System.out.println(mensaje);
     }
    
 }

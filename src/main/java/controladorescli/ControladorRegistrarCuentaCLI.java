@@ -33,7 +33,8 @@ public class ControladorRegistrarCuentaCLI {
         Persona usuario = PersonaBD.recuperarClientePorID(Integer.parseInt(informacion[0]));
         CuentaBancaria cuenta = new CuentaBancaria(CuentaBancaria.generarNumCuenta(),Double.parseDouble(informacion[2]),informacion[1],LocalDate.now());
         CuentaBD.registrarCuentaEnBD(cuenta, usuario.getCodigo());
-        cuenta.msgCreacion();
+        cuenta.afiliarDuenio(usuario);
+        this.ventana.mostrarMensaje(cuenta.msgCreacion());
         
     }
     
