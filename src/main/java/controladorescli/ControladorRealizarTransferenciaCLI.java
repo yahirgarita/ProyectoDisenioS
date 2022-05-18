@@ -46,14 +46,14 @@ public class ControladorRealizarTransferenciaCLI {
             pinActual = this.vista.realizarTransferenciaPedirPin();
             if(pinActual.equals(cuentaBanc.getPin())){
                 if(verificarPalabraCorrectaRetiro(numeroCuenta)){
-                    String monto = this.vista.realizarTransferenciaPedirMonto(Encriptar.cifrar(numeroCuenta));
+                    String monto = this.vista.realizarTransferenciaPedirMonto(numeroCuenta);
                     String numeroCuentaDestino = this.vista.realizarTranferenciaPedirCuentaDestino();
                     if(OperacionBD.numOperacionEnCuenta(Encriptar.cifrar(numeroCuenta)) >= 3){
                         
                         double comision = Double.parseDouble(monto) * 0.02;
                         while(Double.parseDouble(monto) + comision > cuentaBanc.getSaldo() ){
                             this.vista.transferenciaError("Saldo no alcanza para pagar comisiones");
-                            monto = this.vista.realizarTransferenciaPedirMonto(Encriptar.cifrar(numeroCuenta));
+                            monto = this.vista.realizarTransferenciaPedirMonto(numeroCuenta);
                         }
                         CuentaBD.agregarComision(Encriptar.cifrar(numeroCuenta), comision, "retiros");
                         Double montoTotal = Operacion.calcularComision(Double.parseDouble(monto));
