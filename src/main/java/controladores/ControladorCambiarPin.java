@@ -79,8 +79,9 @@ public class ControladorCambiarPin implements ActionListener{
     private void cambiarPinPaso2() throws MessagingException{
         CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.cambiarPin2.jLabel4.getText()));
         if(Objects.equals(this.cambiarPin2.pinActual.getText(),cuentaBanc.getPin())){
-            if(ValidarTipoDeDato.validarFormatoPIN(this.cambiarPin2.pinActual.getText())){
-                CuentaBD.cambiarPinCuenta(String.valueOf(cuentaBanc.getNumCuenta()), this.cambiarPin2.nuevoPin.getText());
+            if(ValidarTipoDeDato.validarFormatoPIN(this.cambiarPin2.nuevoPin.getText())){
+                CuentaBD.cambiarPinCuenta(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta())), Encriptar.cifrar(this.cambiarPin2.nuevoPin.getText()));
+                
                 Operacion operacion = new Operacion("modificación de Pin","Colones", false, 0, LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(operacion, Encriptar.cifrar(this.cambiarPin2.jLabel4.getText()));
                 JOptionPane.showMessageDialog(null, "Su nuevo PIN ha sido almacenado exitosamente");

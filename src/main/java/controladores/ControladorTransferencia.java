@@ -55,11 +55,11 @@ public class ControladorTransferencia implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
-             case "Continuar proceso": verificarNumCuentaRetiroDolares();
+             case "Continuar proceso": verificarNumCuentaTransferencia();
                  break;
              case "Continuar": {
                 try {
-                    verificarPinCuentaRetiroDolares();
+                    verificarPinCuentaTransferencia();
                 } catch (MessagingException ex) {
                     Logger.getLogger(ControladorRetiroColones.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -75,7 +75,7 @@ public class ControladorTransferencia implements ActionListener{
             }
                  break;
 
-             case "Realizar retiro": realizarRetiroDolares();
+             case "Realizar retiro": realizarTransferencia();
                  break;      
              case "Volver":
                  controladores.ControladoresGlobales.volver();
@@ -87,7 +87,7 @@ public class ControladorTransferencia implements ActionListener{
                  break;
          }
     }
-    private void verificarNumCuentaRetiroDolares(){
+    private void verificarNumCuentaTransferencia(){
        CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.transferencia1.numCuentaTransferencia.getText()));
        if(cuentaBanc != null && !Objects.equals(cuentaBanc.getEstatus(),"Inactiva")){
            this.transferencia2 = new TransferenciaPaso2();
@@ -102,7 +102,7 @@ public class ControladorTransferencia implements ActionListener{
        }
     }
     
-    private void verificarPinCuentaRetiroDolares() throws MessagingException{
+    private void verificarPinCuentaTransferencia() throws MessagingException{
        CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaPorNumPin(Encriptar.cifrar(this.transferencia2.jLabel3.getText()), 
                Encriptar.cifrar(this.transferencia2.pinTransferencia.getText()));
        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(transferencia1.numCuentaTransferencia.getText()));
@@ -142,7 +142,7 @@ public class ControladorTransferencia implements ActionListener{
        }
    }
     
-    private void realizarRetiroDolares(){ 
+    private void realizarTransferencia(){ 
        String monto = this.transferencia4.montoTransferencia.getText();
        CuentaBancaria cuentaReceptora = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.transferencia4.cuentaDestino.getText()));
        String cuentaActual = this.transferencia4.jLabel1.getText();

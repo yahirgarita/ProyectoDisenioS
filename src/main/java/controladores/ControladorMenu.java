@@ -32,7 +32,6 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.botonListarCuentas.addActionListener(this);
         this.menuInicial.botonCambiarPin.addActionListener(this);
         this.menuInicial.btnDepositarColones.addActionListener(this);
-        this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);  
         this.menuInicial.btnDepositarDolares1.addActionListener(this);
         this.menuInicial.btnRetiroEnColones.addActionListener(this);

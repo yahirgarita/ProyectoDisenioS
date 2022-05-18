@@ -39,7 +39,7 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setText("Crear cuenta");
+        jLabel3.setText("Cambiar Pin");
 
         jLabel1.setText("Nuevo Pin:");
 
@@ -73,7 +73,7 @@ public class CambiarPinPaso2 extends javax.swing.JFrame {
 
         jLabel4.setText("saber pin");
 
-        jLabel5.setText("Pin:");
+        jLabel5.setText("Cuenta:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
