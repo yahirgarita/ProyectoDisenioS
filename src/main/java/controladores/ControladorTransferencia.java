@@ -55,11 +55,11 @@ public class ControladorTransferencia implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evento){
         switch(evento.getActionCommand()){
-             case "Continuar proceso": verificarNumCuentaRetiroDolares();
+             case "Continuar proceso": verificarNumCuentaTransferencia();
                  break;
              case "Continuar": {
                 try {
-                    verificarPinCuentaRetiroDolares();
+                    verificarPinCuentaTransferencia();
                 } catch (MessagingException ex) {
                     Logger.getLogger(ControladorRetiroColones.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -75,7 +75,7 @@ public class ControladorTransferencia implements ActionListener{
             }
                  break;
 
-             case "Realizar retiro": realizarRetiroDolares();
+             case "Realizar retiro": realizarTransferencia();
                  break;      
              case "Volver":
                  controladores.ControladoresGlobales.volver();
@@ -87,8 +87,8 @@ public class ControladorTransferencia implements ActionListener{
                  break;
          }
     }
-    private void verificarNumCuentaRetiroDolares(){
-       CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.transferencia1.numCuentaRetiroColones.getText()));
+    private void verificarNumCuentaTransferencia(){
+       CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.transferencia1.numCuentaTransferencia.getText()));
        if(cuentaBanc != null && !Objects.equals(cuentaBanc.getEstatus(),"Inactiva")){
            this.transferencia2 = new TransferenciaPaso2();
            this.transferencia2.continuarTransfencia2.addActionListener(this);
@@ -102,10 +102,10 @@ public class ControladorTransferencia implements ActionListener{
        }
     }
     
-    private void verificarPinCuentaRetiroDolares() throws MessagingException{
+    private void verificarPinCuentaTransferencia() throws MessagingException{
        CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaPorNumPin(Encriptar.cifrar(this.transferencia2.jLabel3.getText()), 
                Encriptar.cifrar(this.transferencia2.pinTransferencia.getText()));
-       Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(transferencia1.numCuentaRetiroColones.getText()));
+       Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(transferencia1.numCuentaTransferencia.getText()));
 
        if(cuentaBanc != null){
            this.transferencia3 = new TransferenciaPaso3();
@@ -124,7 +124,7 @@ public class ControladorTransferencia implements ActionListener{
     }
     
     private void verificarPalabraCorrectaRetiro() throws MessagingException{ 
-       Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(transferencia1.numCuentaRetiroColones.getText()));
+       Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(transferencia1.numCuentaTransferencia.getText()));
        if(Objects.equals(this.transferencia3.msgTelTransferencia.getText(), this.transferencia3.palabraMsgTelefono)){
            this.transferencia4 = new TransferenciaPaso4();
            this.transferencia4.continuarTransferencia4.addActionListener(this);
@@ -142,7 +142,7 @@ public class ControladorTransferencia implements ActionListener{
        }
    }
     
-    private void realizarRetiroDolares(){ 
+    private void realizarTransferencia(){ 
        String monto = this.transferencia4.montoTransferencia.getText();
        CuentaBancaria cuentaReceptora = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.transferencia4.cuentaDestino.getText()));
        String cuentaActual = this.transferencia4.jLabel1.getText();
@@ -161,7 +161,7 @@ public class ControladorTransferencia implements ActionListener{
                         Operacion oper = new Operacion("retiros", "Colones", true,Double.parseDouble(monto),LocalDate.now());
                         OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(cuentaActual));
 
-                        clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(transferencia1.numCuentaRetiroColones.getText()));
+                        clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(transferencia1.numCuentaTransferencia.getText()));
                         Operacion oper2 = new Operacion("depósitos", "Colones", false, Double.parseDouble(monto),LocalDate.now());
                         JOptionPane.showMessageDialog(null,"Estimado usario, la transferencia de fondos se ejecutó satisfactoriamente\n" +
                                 "El monto retiro de la cuenta origen y depositado en la cuenta destino es " + monto + " colones \n" +    
@@ -178,7 +178,7 @@ public class ControladorTransferencia implements ActionListener{
                         Operacion oper2 = new Operacion("depósitos", "Colones", false, Double.parseDouble(monto),LocalDate.now());
                         OperacionBD.realizarOperacionEnBD(oper2, Encriptar.cifrar(String.valueOf(cuentaReceptora.getNumCuenta())));
                         
-                        clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(transferencia1.numCuentaRetiroColones.getText()));
+                        clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(transferencia1.numCuentaTransferencia.getText()));
                         JOptionPane.showMessageDialog(null, "Estimado usuario, la transferencia de fondos se ejecutó satisfactoriamente. \n" +
                                 "El monto retirado de la cuenta de origen y depositado en la cuenta destino es " + monto + " colones \n" +      
                                 "[El monto cobrado por concepto de comisión a la cuenta origen de 0 colones, que fueron rebajados automáticamente de su saldo actual\n" +

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import controladores.*;
 import gui.*;
 import javax.swing.*;
+import logicadeaccesoadatos.CuentaBD;
 
 /**
  * @author Carlos Rojas Molina
@@ -31,7 +32,6 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.botonListarCuentas.addActionListener(this);
         this.menuInicial.botonCambiarPin.addActionListener(this);
         this.menuInicial.btnDepositarColones.addActionListener(this);
-        this.menuInicial.btnConsultarSaldo.addActionListener(this);
         this.menuInicial.btnConsultarSaldoDolares.addActionListener(this);  
         this.menuInicial.btnDepositarDolares1.addActionListener(this);
         this.menuInicial.btnRetiroEnColones.addActionListener(this);
@@ -40,6 +40,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnRetiroEnDolares1.addActionListener(this);
         this.menuInicial.btnrealizarTransferencia.addActionListener(this);
         this.menuInicial.btnVerEstatus.addActionListener(this);
+        this.menuInicial.btnGananciasCuenta.addActionListener(this);
     }
      
      @Override
@@ -75,7 +76,10 @@ public class ControladorMenu implements ActionListener{
                 break;
              case "Ver estatus de cuenta": verEstatus();
                 break;
-             default: break;
+             case "Ganancias comisiones por cuenta": consultarGananciasCuenta();
+                break;
+             case "Ganancia comisiones banco": consultarGananciasTotales();
+             default:break;
          }
      }
     private void registrarCliente(){
@@ -191,6 +195,22 @@ public class ControladorMenu implements ActionListener{
          ControladorConsultarEstatus controlEstatus = new ControladorConsultarEstatus(vista);
          controlEstatus.consultaEstatus.setVisible(true);
          this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarGananciasCuenta(){
+         Ganancias ganan = new Ganancias();
+         ControladorGanancias controGanan = new ControladorGanancias(ganan);
+         controGanan.ganancias.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     
+     private void consultarGananciasTotales(){
+         JOptionPane.showMessageDialog(null, "El monto total de comisiones por concepto de depósitos es de: " + 
+                 CuentaBD.totalComisionesBancoDepositos() + " colones");
+         JOptionPane.showMessageDialog(null, "El monto total de comisiones por concepto de retiros es de: " +
+                 CuentaBD.totalComisionesBancoRetiros() + " colones");
+         JOptionPane.showMessageDialog(null, "El monto total del cobro de comisiones es de: " +
+                 CuentaBD.totalComisiones() + " colones"); 
      }
      
      private void volver(){
