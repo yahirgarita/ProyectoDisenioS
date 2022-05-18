@@ -17,7 +17,7 @@ public class SMS {
     
     private static final String ACCOUNT_SID = "AC7322a8cae254e2177d28f29cb19bf7be"; 
     
-    private static final String AUTH_TOKEN = "511d7a65001bf749e67053e8669f5ab3"; 
+    private static final String AUTH_TOKEN = "0c5f81b63066f82edb8826e631fa3265"; 
     private static final String numYAbecedario = "abcdefghijklmnopqrstuvwxyz1234567890";
  
     public static String enviarSMS(String destinario) { 
