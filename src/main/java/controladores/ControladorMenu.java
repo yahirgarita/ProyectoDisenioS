@@ -42,6 +42,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnVerEstatus.addActionListener(this);
         this.menuInicial.btnGananciasCuenta.addActionListener(this);
         this.menuInicial.btnGananciaBanco.addActionListener(this);
+        this.menuInicial.btnCerrar.addActionListener(this);
     }
      
      @Override
@@ -80,6 +81,8 @@ public class ControladorMenu implements ActionListener{
              case " Ganancias comisiones por cuenta": consultarGananciasCuenta();
                 break;
              case "Ganancia comisiones banco": consultarGananciasTotales();
+             break;
+             case "Cerrar": cerrar();
              default:break;
          }
      }
@@ -211,8 +214,8 @@ public class ControladorMenu implements ActionListener{
                  "El monto total de comisiones por concepto de retiros es de: " + CuentaBD.totalComisionesBancoRetiros() + " colones\n" +
                  "El monto total del cobro de comisiones es de: " + CuentaBD.totalComisiones() + " colones\n"); 
      }
-     
-     private void volver(){
-         this.menuInicial.dispose();
+
+     private void cerrar(){
+         System.exit(0);
      }
 }

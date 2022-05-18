@@ -31,7 +31,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnVentaDolar = new javax.swing.JButton();
         botonListarCuentas = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         butonCrearCuenta = new javax.swing.JButton();
         botonRegistrarClienteMenu1 = new javax.swing.JButton();
         btnConsultarSaldo = new javax.swing.JButton();
@@ -78,7 +78,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Cerrar");
+        btnCerrar.setText("Cerrar");
 
         butonCrearCuenta.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         butonCrearCuenta.setText("Crear cuenta bancaria");
@@ -190,7 +190,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton6))
+                        .addComponent(btnCerrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(444, 444, 444)
                         .addComponent(jLabel1))
@@ -267,7 +267,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(btnGananciaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(btnCerrar)
                 .addContainerGap())
         );
 
@@ -377,6 +377,7 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton botonListarClientes;
     public javax.swing.JButton botonListarCuentas;
     public javax.swing.JButton botonRegistrarClienteMenu1;
+    public javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnCompraDolar;
     public javax.swing.JButton btnConsultarSaldo;
     public javax.swing.JButton btnConsultarSaldoDolares;
@@ -391,7 +392,6 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton btnrealizarTransferencia;
     public javax.swing.JButton butonCrearCuenta;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
