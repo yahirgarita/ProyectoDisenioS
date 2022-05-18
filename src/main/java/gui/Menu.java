@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         btnRetiroEnDolares1 = new javax.swing.JButton();
         btnrealizarTransferencia = new javax.swing.JButton();
         btnGananciasCuenta = new javax.swing.JButton();
-        btnGananciasCuenta1 = new javax.swing.JButton();
+        btnGananciaBanco = new javax.swing.JButton();
         btnVerEstatus = new javax.swing.JButton();
 
         jButton5.setText("Volver");
@@ -166,11 +166,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btnGananciasCuenta1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnGananciasCuenta1.setText("Ganancia comisiones banco");
-        btnGananciasCuenta1.addActionListener(new java.awt.event.ActionListener() {
+        btnGananciaBanco.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnGananciaBanco.setText("Ganancia comisiones banco");
+        btnGananciaBanco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGananciasCuenta1ActionPerformed(evt);
+                btnGananciaBancoActionPerformed(evt);
             }
         });
 
@@ -219,7 +219,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(btnVerEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGananciasCuenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGananciaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnVentaDolar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnCompraDolar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,7 +264,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(btnGananciasCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGananciasCuenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGananciaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jButton6)
@@ -326,9 +326,9 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGananciasCuentaActionPerformed
 
-    private void btnGananciasCuenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGananciasCuenta1ActionPerformed
+    private void btnGananciaBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGananciaBancoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnGananciasCuenta1ActionPerformed
+    }//GEN-LAST:event_btnGananciaBancoActionPerformed
 
     private void btnVerEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEstatusActionPerformed
         // TODO add your handling code here:
@@ -382,8 +382,8 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton btnConsultarSaldoDolares;
     public javax.swing.JButton btnDepositarColones;
     public javax.swing.JButton btnDepositarDolares1;
+    public javax.swing.JButton btnGananciaBanco;
     public javax.swing.JButton btnGananciasCuenta;
-    public javax.swing.JButton btnGananciasCuenta1;
     public javax.swing.JButton btnRetiroEnColones;
     public javax.swing.JButton btnRetiroEnDolares1;
     public javax.swing.JButton btnVentaDolar;

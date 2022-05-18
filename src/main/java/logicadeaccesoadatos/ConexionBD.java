@@ -23,7 +23,8 @@ public class ConexionBD {
     
     public Connection conexionDataBase(){
          try {
-             String dbURL = "jdbc:sqlserver://DESKTOP-MASRC1K\\SQLEXPRESS:" + puerto + ";" + "database=" +database;
+             //String dbURL = "jdbc:sqlserver://DESKTOP-MASRC1K\\SQLEXPRESS:" + puerto + ";" + "database=" +database;
+             String dbURL = "jdbc:sqlserver://YIRLAB:" + puerto + ";" + "database=" +database;
              conexionBD = DriverManager.getConnection(dbURL, usuario, contrasenia);
         } catch (SQLException e) {
                e.printStackTrace();
