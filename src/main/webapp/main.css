@@ -1,0 +1,33 @@
+
+/* 
+    Created on : 18 may. 2022, 00:41:17
+    Author     : yahir
+*/
+/* Define como va a ser la imagen de fondo dentro de la aplicación*/
+body {font-family: 'Tinos', serif;
+
+    background-image: url("https://elceo.com/wp-content/uploads/2019/11/creditos_banco_fotoarte.jpg");
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:fixed;
+    -o-background-size: 100% 100%, auto;
+    -moz-background-size: 100% 100%, auto;
+    -webkit-background-size: 100% 100%, auto;
+    background-size: 100% 100%, auto;
+}
+
+
+
+.button {
+    background-color: #0075EA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button1{font-size: 80px;} 
