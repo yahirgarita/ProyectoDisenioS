@@ -30,8 +30,10 @@ public class Email {
         props.put("mail.smtp.host", host);
         props.put("mail.smtps.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
+        
         Session session = Session.getInstance(props, null);
         MimeMessage message = new MimeMessage(session);
+        
         message.setFrom(new InternetAddress(correoEmisor));
         message.setRecipients(Message.RecipientType.TO, correoDestinatario);
         message.setSubject("Información inportante del banco");
