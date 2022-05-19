@@ -4,21 +4,17 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import javax.mail.SendFailedException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Jimmy
+ * @author Carlos Rojas Molina
+ * @author Jimmy Tsang Feng
+ * @author Yahir Garita Arias
+ * 
+ * @version 1.0
  */
 public interface Email {
    
