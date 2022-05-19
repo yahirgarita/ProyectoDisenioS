@@ -18,8 +18,8 @@ import util.Encriptar;
 public class ControladorConsultarEstatus implements ActionListener{
     public ConsultarEstatus consultaEstatus;
     
-    public ControladorConsultarEstatus(ConsultarEstatus pConsultarSaldo){
-        consultaEstatus = pConsultarSaldo;
+    public ControladorConsultarEstatus(ConsultarEstatus pConsultarEstatus){
+        consultaEstatus = pConsultarEstatus;
         consultaEstatus.verEstatus.addActionListener(this);
         consultaEstatus.btnVolver.addActionListener(this);
         
