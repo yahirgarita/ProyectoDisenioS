@@ -1,5 +1,5 @@
 
-package controladores;
+package controladoresgui;
 
 import gui.Menu;
 

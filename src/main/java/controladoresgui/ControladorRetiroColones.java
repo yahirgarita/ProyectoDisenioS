@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 
 import gui.*;
@@ -76,7 +76,7 @@ public class ControladorRetiroColones implements ActionListener{
             case "Realizar retiro": realizarRetiroColones();
                 break;      
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.retiroColones1.setVisible(false);
                 this.retiroColones2.setVisible(false);
                 this.retiroColones3.setVisible(false);
@@ -192,7 +192,7 @@ public class ControladorRetiroColones implements ActionListener{
             JOptionPane.showMessageDialog(null, pMsg);
             Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), pMsg);
             frame.dispose();
-            controladores.ControladoresGlobales.volver();
+            controladoresgui.ControladoresGlobales.volver();
         }
     }
    

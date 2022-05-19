@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controladores;
+package controladoresgui;
 import gui.ConsultarSaldo;
 import logicadeaccesoadatos.*;
 import java.awt.event.ActionEvent;
@@ -32,7 +32,7 @@ public class ControladorVerSaldo implements ActionListener{
             case "Ver Saldo": verSaldo();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.consultaSaldo.setVisible(false);
                 break;
             default:

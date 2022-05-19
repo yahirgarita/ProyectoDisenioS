@@ -1,9 +1,8 @@
-package controladores;
+package controladoresgui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import controladores.*;
 import gui.*;
 import javax.swing.*;
 import logicadeaccesoadatos.CuentaBD;
@@ -136,7 +135,7 @@ public class ControladorMenu implements ActionListener{
      private void realizarDepositoEnColones(){
          RealizarDepositoEnColones depositoEnColones = new RealizarDepositoEnColones();
          RealizarDepositoEnColonesPaso2 depositoColones2 = new RealizarDepositoEnColonesPaso2();
-         ControladoDepositoColones controColones = new ControladoDepositoColones(depositoEnColones, depositoColones2);
+         ControladorDepositoColones controColones = new ControladorDepositoColones(depositoEnColones, depositoColones2);
          controColones.realizarDepositoC.setVisible(true);
          this.menuInicial.setVisible(false);
      }
@@ -151,7 +150,7 @@ public class ControladorMenu implements ActionListener{
      
      private void verSaldoDolares(){
          ConsultarSaldoDolares verDolares = new ConsultarSaldoDolares();
-         ping control5 = new ping(verDolares);
+         ControladorVerSaldoDolares control5 = new ControladorVerSaldoDolares(verDolares);
          control5.consultaDolares.setVisible(true);
          this.menuInicial.setVisible(false);
      }

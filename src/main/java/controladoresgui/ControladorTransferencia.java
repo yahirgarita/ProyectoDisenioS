@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 import gui.*;
 import java.awt.event.ActionEvent;
@@ -78,7 +78,7 @@ public class ControladorTransferencia implements ActionListener{
              case "Realizar retiro": realizarTransferencia();
                  break;      
              case "Volver":
-                 controladores.ControladoresGlobales.volver();
+                 controladoresgui.ControladoresGlobales.volver();
                  this.transferencia1.setVisible(false);
                  this.transferencia2.setVisible(false);
                  this.transferencia3.setVisible(false);
@@ -208,7 +208,7 @@ public class ControladorTransferencia implements ActionListener{
             JOptionPane.showMessageDialog(null, pMsg);
             Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), pMsg);
             frame.dispose();
-            controladores.ControladoresGlobales.volver();
+            controladoresgui.ControladoresGlobales.volver();
         }
     }
     

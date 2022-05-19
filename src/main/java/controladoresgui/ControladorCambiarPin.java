@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 import gui.*;
 import java.awt.event.ActionEvent;
@@ -53,7 +53,7 @@ public class ControladorCambiarPin implements ActionListener{
                 break;
 
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.cambiarPin1.setVisible(false);
                 this.cambiarPin2.setVisible(false);
                 break;
@@ -85,7 +85,7 @@ public class ControladorCambiarPin implements ActionListener{
                 Operacion operacion = new Operacion("modificación de Pin","Colones", false, 0, LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(operacion, Encriptar.cifrar(this.cambiarPin2.jLabel4.getText()));
                 JOptionPane.showMessageDialog(null, "Su nuevo PIN ha sido almacenado exitosamente");
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.cambiarPin2.setVisible(false);
                 attempt = 0;
             }else{
@@ -108,7 +108,7 @@ public class ControladorCambiarPin implements ActionListener{
             JOptionPane.showMessageDialog(null, pMsg);
             Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), pMsg);
             frame.dispose();
-            controladores.ControladoresGlobales.volver();
+            controladoresgui.ControladoresGlobales.volver();
         }
     }
 }

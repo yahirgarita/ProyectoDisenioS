@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 import gui.ListarClientes;
 import gui.Menu;
@@ -59,7 +59,7 @@ public class ControladorListarCuentas implements ActionListener{
             case "Consultar información de un cuenta": consultarListarCuentas();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.listarCuentas.setVisible(false);
                 break;
             default:

@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 import gui.*;
 import java.awt.event.ActionEvent;
@@ -79,7 +79,7 @@ public class ControladorRetiroDolares implements ActionListener{
             case "Realizar retiro": realizarRetiroDolares();
                 break;      
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.retiroDolares1.setVisible(false);
                 this.retiroDolares2.setVisible(false);
                 this.retiroDolares3.setVisible(false);
@@ -201,7 +201,7 @@ public class ControladorRetiroDolares implements ActionListener{
             JOptionPane.showMessageDialog(null, pMsg);
             Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), pMsg);
             frame.dispose();
-            controladores.ControladoresGlobales.volver();
+            controladoresgui.ControladoresGlobales.volver();
         }
     }
 }

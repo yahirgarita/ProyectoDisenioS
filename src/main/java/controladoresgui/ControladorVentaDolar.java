@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controladores;
+package controladoresgui;
 
 import gui.ConsultarVentaDolar;
 import java.awt.event.ActionEvent;
@@ -29,7 +29,7 @@ public class ControladorVentaDolar implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         switch(evento.getActionCommand()){
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.ventaDolar.setVisible(false);
             default:
                 break;

@@ -1,5 +1,5 @@
 
-package controladores;
+package controladoresgui;
 
 import gui.*;
 import java.awt.event.ActionEvent;
@@ -18,11 +18,11 @@ import validaciones.*;
  *
  * @version 1.0
  */
-public class ControladoDepositoColones implements ActionListener{
+public class ControladorDepositoColones implements ActionListener{
    public RealizarDepositoEnColones realizarDepositoC;
    public RealizarDepositoEnColonesPaso2 realizarDepositoC2;
    private Menu menuInicial;
-   public ControladoDepositoColones(RealizarDepositoEnColones pRealizarDepositoC, RealizarDepositoEnColonesPaso2 pRealizarDepositoC2){
+   public ControladorDepositoColones(RealizarDepositoEnColones pRealizarDepositoC, RealizarDepositoEnColonesPaso2 pRealizarDepositoC2){
        this.realizarDepositoC = pRealizarDepositoC;
        this.realizarDepositoC2 = pRealizarDepositoC2;
        this.realizarDepositoC.continuarDepoColones.addActionListener(this);
@@ -38,7 +38,7 @@ public class ControladoDepositoColones implements ActionListener{
             case "Depositar": hacerDepositoColones();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.realizarDepositoC.setVisible(false);
                 this.realizarDepositoC2.setVisible(false);
             default:

@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 import gui.*;
 
@@ -9,7 +9,6 @@ import java.util.Date;
         
 import javax.swing.*;
 import java.util.*;
-import controladores.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +16,6 @@ import java.util.logging.Logger;
 import logicadenegocios.*;
 import logicadeaccesoadatos.PersonaBD;
 import validaciones.*;
-import controladores.*;
 import javax.swing.*;
 import util.Ordenamiento;
 import java.sql.ResultSet;
@@ -68,7 +66,7 @@ public class ControladorListarClientes implements ActionListener{
             case "Consultar información de un cliente": consultarListarClientes();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.listarClientes.setVisible(false);
                 break;
             default:

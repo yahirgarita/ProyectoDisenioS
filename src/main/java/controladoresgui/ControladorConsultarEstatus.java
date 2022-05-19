@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 import gui.ConsultarEstatus;
 import logicadeaccesoadatos.CuentaBD;
 import logicadenegocios.CuentaBancaria;
@@ -31,7 +31,7 @@ public class ControladorConsultarEstatus implements ActionListener{
             case "Ver Estatus": verEstatus();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.consultaEstatus.setVisible(false);
                 break;
             default:

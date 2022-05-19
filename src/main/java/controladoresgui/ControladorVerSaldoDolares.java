@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 import gui.ConsultarSaldoDolares;
 import logicadeaccesoadatos.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +31,7 @@ public class ControladorVerSaldoDolares implements ActionListener{
             case "Ver Saldo Dolares": verSaldo();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.consultaDolares.setVisible(false);
                 break;
             default:

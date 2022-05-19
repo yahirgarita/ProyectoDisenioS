@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 import gui.*;
 
@@ -9,7 +9,6 @@ import java.util.Date;
         
 import javax.swing.*;
 import java.util.*;
-import controladores.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -62,7 +61,7 @@ public class ControladorCrearCuenta implements ActionListener{
             case "Registrar":crearCuenta();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.crearCuenta.setVisible(false);
                 break;
             default:

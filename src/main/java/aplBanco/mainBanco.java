@@ -1,6 +1,6 @@
 package aplBanco;
 import gui.Menu;
-import controladores.ControladorMenu;
+import controladoresgui.ControladorMenu;
 /**
  * @author Carlos Rojas Molina
  * @author Jimmy Tsang Feng

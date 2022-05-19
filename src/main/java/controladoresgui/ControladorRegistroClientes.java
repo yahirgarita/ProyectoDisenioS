@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 import gui.*;
 
@@ -10,7 +10,6 @@ import java.util.Date;
         
 import javax.swing.*;
 import java.util.*;
-import controladores.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,7 +56,7 @@ public class ControladorRegistroClientes implements ActionListener{
             }
                 break;
 
-            case "Volver":controladores.ControladoresGlobales.volver();
+            case "Volver":controladoresgui.ControladoresGlobales.volver();
                 this.registrarCliente.setVisible(false);
                 break;
             default:
@@ -72,7 +71,7 @@ public class ControladorRegistroClientes implements ActionListener{
         if(PersonaBD.registrarClientesEnBD(nuevoCliente)){
             clientesSistema.add(nuevoCliente);
             JOptionPane.showMessageDialog(null, nuevoCliente.mensajeCreacion());
-            controladores.ControladoresGlobales.volver();
+            controladoresgui.ControladoresGlobales.volver();
             this.registrarCliente.setVisible(false);
         }
     } 

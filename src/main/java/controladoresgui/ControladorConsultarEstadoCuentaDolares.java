@@ -1,6 +1,7 @@
-package controladores;
+package controladoresgui;
 
 import gui.*;
+
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +9,6 @@ import java.util.Date;
         
 import javax.swing.*;
 import java.util.*;
-import controladores.*;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,50 +34,51 @@ import validaciones.*;
  *
  * @version 1.0
  */
-public class ControladorConsultarEstadoCuentaColones implements ActionListener{
-    public EstadoDeCuentaColones estadoCuentaColones;
-    private int attempt = 0;
-    private Menu menuInicial;
-    private TipoCambio tipoCambio;
-    
-    public ControladorConsultarEstadoCuentaColones( EstadoDeCuentaColones pEstadoCuentaColones, Menu pMenuInicial){
-        this.estadoCuentaColones = pEstadoCuentaColones;
+public class ControladorConsultarEstadoCuentaDolares implements ActionListener{
+     public EstadoDeCuentaDolares estadoCuentaDolares;
+     private int attempt = 0;
+     private Menu menuInicial;
+     private TipoCambio tipoCambio;
+     
+     public ControladorConsultarEstadoCuentaDolares( EstadoDeCuentaDolares pEstadoCuentaDolares, Menu pMenuInicial){
+        this.estadoCuentaDolares = pEstadoCuentaDolares;
         this.menuInicial = pMenuInicial;
-        this.estadoCuentaColones.Consultar.addActionListener(this);
-        this.estadoCuentaColones.volverPin1.addActionListener(this);
+        this.tipoCambio = new TipoCambio();
+        this.estadoCuentaDolares.Consultar.addActionListener(this);
+        this.estadoCuentaDolares.volverDolar.addActionListener(this);
     }
+    
     @Override
     public void actionPerformed(ActionEvent evento) {
         switch(evento.getActionCommand()){
             case "Consultar estado": {
                 try {
-                    realizarConsultaCuentaColones();
+                    realizarConsultaCuentaDolares();
                 } catch (MessagingException ex) {
                     Logger.getLogger(ControladorConsultarEstadoCuentaColones.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                Logger.getLogger(ControladorConsultarEstadoCuentaColones.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ControladorConsultarEstadoCuentaDolares.class.getName()).log(Level.SEVERE, null, ex);
             }
             }
                break;
 
             case "Volver":
-                controladores.ControladoresGlobales.volver();
-                this.estadoCuentaColones.setVisible(false);
+                controladoresgui.ControladoresGlobales.volver();
+                this.estadoCuentaDolares.setVisible(false);
             default:
                 break;
         }
     }
-    
-    public void realizarConsultaCuentaColones() throws MessagingException, IOException{
-        CuentaBancaria numCuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.estadoCuentaColones.numCuentaEstadoColones.getText()));
+      public void realizarConsultaCuentaDolares() throws MessagingException, IOException{
+        CuentaBancaria numCuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.estadoCuentaDolares.numCuentaEstadoDolares.getText()));
         if(numCuenta != null && !Objects.equals(numCuenta.getEstatus(),"Inactiva")){
-            if(Objects.equals(numCuenta.getPin(),this.estadoCuentaColones.pinEstadoCuentaColones.getText())){
-                ArrayList<Operacion> operaciones = OperacionBD.obtenerOperacionesPorNumCuenta(Encriptar.cifrar(this.estadoCuentaColones.numCuentaEstadoColones.getText()));
+            if(Objects.equals(numCuenta.getPin(),this.estadoCuentaDolares.pinEstadoCuentaDolares.getText())){
+                ArrayList<Operacion> operaciones = OperacionBD.obtenerOperacionesPorNumCuenta(Encriptar.cifrar(this.estadoCuentaDolares.numCuentaEstadoDolares.getText()));
                 String consulta = "";
                 for(int i = 0;i < operaciones.size(); i++){
                     double monto = operaciones.get(i).getMonto();
-                    if(operaciones.get(i).getMoneda().equals("Dólares")){
-                        monto = operaciones.get(i).getMonto() * this.tipoCambio.getCompra();
+                    if(operaciones.get(i).getMoneda().equals("Colones")){
+                        monto = operaciones.get(i).getMonto() / this.tipoCambio.getVenta();
                     }
                    consulta += mostrarEstadoCuenta(operaciones.get(i).getFechaOperacion().toString(),operaciones.get(i).getTipo(),Math.round(monto*100.0)/100.0,operaciones.get(i).getCargo());
                 }
@@ -85,13 +86,13 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
                 attempt = 0;
                 Operacion oper = new Operacion("consultas","colones",false,0, LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(String.valueOf(numCuenta.getNumCuenta())));
-                this.estadoCuentaColones.setVisible(false);
+                this.estadoCuentaDolares.setVisible(false);
                 this.menuInicial.setVisible(true);
             }
             else{
                 JOptionPane.showMessageDialog(null, "El pin que indico es incorrecto");
                 attempt++;
-                comprobrarIntentos(Encriptar.cifrar(this.estadoCuentaColones.pinEstadoCuentaColones.getText()),this.estadoCuentaColones,"Se ha inactivado la cuenta por fallar el pin repetiadamente");
+                comprobrarIntentos(Encriptar.cifrar(this.estadoCuentaDolares.pinEstadoCuentaDolares.getText()),this.estadoCuentaDolares,"Se ha inactivado la cuenta por fallar el pin repetiadamente");
             }
         }
         else{
@@ -104,7 +105,7 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
         return (fecha + " \t " + tipo + " \t " + monto + " \t\t " + cargo + "\n");
        
     }
-    private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
+      private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
         
         Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(pNumCuenta);
         if(attempt == 2){
@@ -113,7 +114,7 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
             JOptionPane.showMessageDialog(null, pMsg);
             Email.enviarEmail(comparacionPersonaCuenta.getCorreoPersona(), pMsg);
             frame.dispose();
-            controladores.ControladoresGlobales.volver();
+            controladoresgui.ControladoresGlobales.volver();
         }
     }
 }

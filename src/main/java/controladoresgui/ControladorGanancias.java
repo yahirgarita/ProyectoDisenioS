@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 
 import gui.*;
@@ -42,7 +42,7 @@ public class ControladorGanancias implements ActionListener{
             case "Consultar": consultarGanancias();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.ganancias.setVisible(false);
                 break;
             default:

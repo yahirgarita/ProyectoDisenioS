@@ -1,4 +1,4 @@
-package controladores;
+package controladoresgui;
 
 
 import gui.*;
@@ -42,7 +42,7 @@ public class ControladorDepositoDolares implements ActionListener{
             case "Depositar": hacerDepositoDolares();
                 break;
             case "Volver":
-                controladores.ControladoresGlobales.volver();
+                controladoresgui.ControladoresGlobales.volver();
                 this.depositoDolares1.setVisible(false);
                 this.depositoDolares2.setVisible(false);
             default:
