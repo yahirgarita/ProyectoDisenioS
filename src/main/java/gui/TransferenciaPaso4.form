@@ -120,7 +120,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="continuarTransferencia4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Realizar retiro"/>
+        <Property name="text" type="java.lang.String" value="Realizar transferencia"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="continuarTransferencia4ActionPerformed"/>
