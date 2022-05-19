@@ -100,7 +100,7 @@ public class ControladorCambiarPin implements ActionListener{
     
     private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
         
-        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(pNumCuenta));
+        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(pNumCuenta);
         clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(cambiarPin1.numCuentaPin.getText()));
         if(attempt == 2){
             CuentaBD.modificarEstado(pNumCuenta, "Inactiva");

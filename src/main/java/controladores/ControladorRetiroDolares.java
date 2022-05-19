@@ -194,7 +194,7 @@ public class ControladorRetiroDolares implements ActionListener{
    }
    
    private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
-        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(this.retiroDolares2.jLabel3.getText()));
+        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(this.retiroDolares2.jLabel3.getText());
         if(attempt == 2){
             CuentaBD.modificarEstado(pNumCuenta, "Inactiva");
             attempt = 0;

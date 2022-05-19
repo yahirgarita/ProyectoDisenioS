@@ -19,10 +19,14 @@ import logicadeaccesoadatos.PersonaBD;
 import validaciones.*;
 import controladores.*;
 import javax.swing.*;
+import util.Ordenamiento;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
+import util.Comparable;
+import util.Ordenamiento;
+import java.lang.*;
 
 /**
  * @author Carlos Rojas Molina
@@ -37,22 +41,23 @@ public class ControladorListarClientes implements ActionListener{
     private Menu menuInicial;
     private ArrayList<Persona> personasEnBD;
     
-    
-    
     /**
      * ControladorListarClientes
      * 
+     * @param pClientes
+     * @param pMenuInicial
      * @param pListarClientes
      */
     public ControladorListarClientes(ListarClientes pClientes, Menu pMenuInicial){
         this.listarClientes = pClientes;
         this.menuInicial = pMenuInicial;
-        this.personasEnBD = new ArrayList<>();
+        this.personasEnBD = new ArrayList<Persona>();
         this.listarClientes.botonConsultarClientes.addActionListener(this);
         this.listarClientes.botonVolver.addActionListener(this);
         this.listarClientes.botonConsultarInfoCliente.addActionListener(this);
         convetirClientesAObj();
         organizarPersona();
+
     }
     
     @Override
@@ -70,7 +75,6 @@ public class ControladorListarClientes implements ActionListener{
                 break;
        }        
     }
-    
     private void organizarPersona(){
         personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
     }
@@ -78,6 +82,7 @@ public class ControladorListarClientes implements ActionListener{
     private void convetirClientesAObj(){
         ResultSet resultado = PersonaBD.cargarTodosLosClientes();
         try{
+            int index = 0;
             while(resultado.next()){
                 Persona infoCliente = new Persona(resultado.getString("primerApellido"),
                 resultado.getString("segundoApellido"), resultado.getString("nombre"), Integer.parseInt(resultado.getString("identificacion")), LocalDate.parse(resultado.getString("fechaNacimiento"),

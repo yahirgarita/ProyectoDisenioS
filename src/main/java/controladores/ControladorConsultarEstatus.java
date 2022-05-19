@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controladores;
 import gui.ConsultarEstatus;
 import logicadeaccesoadatos.CuentaBD;
@@ -26,6 +22,7 @@ public class ControladorConsultarEstatus implements ActionListener{
         consultaEstatus = pConsultarSaldo;
         consultaEstatus.verEstatus.addActionListener(this);
         consultaEstatus.btnVolver.addActionListener(this);
+        
     }
 
     @Override
