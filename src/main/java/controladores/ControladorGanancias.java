@@ -54,10 +54,10 @@ public class ControladorGanancias implements ActionListener{
         CuentaBancaria cuentaBanc = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.ganancias.numCuentaGanancias.getText()));
         if(cuentaBanc != null){
             JOptionPane.showMessageDialog(null, "El total de comisiones por concepto de retiros es de: " 
-                    + CuentaBD.totalComisionesCuentaRetiros(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta()))) + " colones");
-            JOptionPane.showMessageDialog(null, "El total de comisiones por concepto de dépositos es de: " 
-                    + CuentaBD.totalComisionesCuentaDepositos(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta()))) + " colones");
-            JOptionPane.showMessageDialog(null, "Las ganancias que tuvo el banco del cobro de comisiones para la cuenta " + cuentaBanc.getNumCuenta() + 
+                    + CuentaBD.totalComisionesCuentaRetiros(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta()))) + " colones \n" + 
+                     "El total de comisiones por concepto de dépositos es de: " 
+                    + CuentaBD.totalComisionesCuentaDepositos(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta()))) + " colones \n" + 
+                    "Las ganancias que tuvo el banco del cobro de comisiones para la cuenta " + cuentaBanc.getNumCuenta() + 
                     " es de " + CuentaBD.totalComisionesCuenta(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta()))) + " colones");
         }
         else{
