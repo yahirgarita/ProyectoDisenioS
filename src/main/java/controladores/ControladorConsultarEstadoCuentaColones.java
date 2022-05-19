@@ -106,7 +106,7 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
     }
     private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
         
-        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar(pNumCuenta));
+        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(pNumCuenta);
         if(attempt == 2){
             CuentaBD.modificarEstado(pNumCuenta, "Inactiva");
             attempt = 0;
