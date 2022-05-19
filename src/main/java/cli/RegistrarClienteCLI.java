@@ -32,7 +32,6 @@ public class RegistrarClienteCLI {
         System.out.println("Por favor ingresar su primer apellido: ");
         primerApellido = reader.readLine();
         
-        System.out.println("hola " + primerApellido);
         System.out.println("Por favor ingresar su segundo apellido: ");
         segundoApellido = reader.readLine();
         
@@ -40,13 +39,11 @@ public class RegistrarClienteCLI {
         nombre = reader.readLine();
         
         System.out.println("Por favor ingresar el numero de identificacion: "); 
-        //identificacion = reader.readLine();
         while(ValidarTipoDeDato.validarEsEntero(identificacion = reader.readLine())!= true){
             System.out.println("Por favor ingresar el numero de identificacion valido: ");
         }
         
         System.out.println("Por favor ingresar la fecha de nacimiento (DD/MM/AAAA): ");
-        //fechaNacimiento = reader.readLine();
         while(ValidarTipoDeDato.validarFormatoFechaCLI(fechaNacimiento = reader.readLine())!= true){
             System.out.println("Por favor ingresar la fecha de nacimiento con formato correcto (DD/MM/AAAA): ");
         }
