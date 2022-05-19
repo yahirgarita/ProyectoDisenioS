@@ -7,6 +7,7 @@ package controladorescli;
 
 import cli.ConsultarGananciasCLI;
 import java.io.IOException;
+import logicadeaccesoadatos.CuentaBD;
 import logicadeaccesoadatos.OperacionBD;
 import util.Encriptar;
 
@@ -24,8 +25,8 @@ public class ControladorConsultarGananciasCLI {
     
     public void consultarGananciasTotales(){
         
-        double gananciasDepositos = OperacionBD.obtenerComisionOperacionesDepositos();
-        double gananciasRetiros = OperacionBD.obtenerComisionOperacionesRetiros();
+        double gananciasDepositos = CuentaBD.totalComisionesBancoDepositos();
+        double gananciasRetiros = CuentaBD.totalComisionesBancoRetiros();
         double gananciasTotales = gananciasDepositos + gananciasRetiros;
 
         this.vista.consultarGanancias(gananciasTotales,gananciasDepositos,gananciasRetiros);
@@ -33,8 +34,8 @@ public class ControladorConsultarGananciasCLI {
     
      public void consultarGananciasPorCuenta() throws IOException{
         String cuenta = Encriptar.cifrar(this.vista.consultarGananciasPedirCuenta());
-        double gananciasDepositos = OperacionBD.obtenerComisionOperacionesDepositosPorCuenta(cuenta);
-        double gananciasRetiros = OperacionBD.obtenerComisionOperacionesRetirosPorCuenta(cuenta);
+        double gananciasDepositos = CuentaBD.totalComisionesCuentaDepositos(cuenta);
+        double gananciasRetiros = CuentaBD.totalComisionesCuentaRetiros(cuenta);
         double gananciasTotales = gananciasDepositos + gananciasRetiros;
 
         this.vista.consultarGanancias(gananciasTotales,gananciasDepositos,gananciasRetiros);
