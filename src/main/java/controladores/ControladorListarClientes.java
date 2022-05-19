@@ -55,7 +55,7 @@ public class ControladorListarClientes implements ActionListener{
         this.listarClientes.botonVolver.addActionListener(this);
         this.listarClientes.botonConsultarInfoCliente.addActionListener(this);
         convetirClientesAObj();
-        Ordenamiento.ordenarAscendentemente(personasEnBD);
+        organizarPersona();
 
     }
     

@@ -1,8 +1,6 @@
 package controladores;
 
-
 import gui.*;
-
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +9,7 @@ import java.util.Date;
 import javax.swing.*;
 import java.util.*;
 import controladores.*;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -26,6 +25,7 @@ import logicadeaccesoadatos.*;
 import java.time.format.DateTimeFormatter;
 import javax.mail.MessagingException;
 import util.Email;
+import util.TipoCambio;
 import validaciones.*;
 /**
  * @author Carlos Rojas Molina
@@ -38,6 +38,7 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
     public EstadoDeCuentaColones estadoCuentaColones;
     private int attempt = 0;
     private Menu menuInicial;
+    private TipoCambio tipoCambio;
     
     public ControladorConsultarEstadoCuentaColones( EstadoDeCuentaColones pEstadoCuentaColones, Menu pMenuInicial){
         this.estadoCuentaColones = pEstadoCuentaColones;
@@ -53,7 +54,9 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
                     realizarConsultaCuentaColones();
                 } catch (MessagingException ex) {
                     Logger.getLogger(ControladorConsultarEstadoCuentaColones.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                } catch (IOException ex) {
+                Logger.getLogger(ControladorConsultarEstadoCuentaColones.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
                break;
 
@@ -65,11 +68,22 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
         }
     }
     
-    public void realizarConsultaCuentaColones() throws MessagingException{
+    public void realizarConsultaCuentaColones() throws MessagingException, IOException{
         CuentaBancaria numCuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.estadoCuentaColones.numCuentaEstadoColones.getText()));
         if(numCuenta != null && !Objects.equals(numCuenta.getEstatus(),"Inactiva")){
-            if(numCuenta != null && !Objects.equals(numCuenta.getPin(),String.valueOf(Encriptar.cifrar(this.estadoCuentaColones.pinEstadoCuentaColones.getText())))){
-                JOptionPane.showMessageDialog(null, numCuenta.toString());
+            System.out.println(numCuenta.getPin());
+            System.out.println(this.estadoCuentaColones.pinEstadoCuentaColones.getText());
+            if(Objects.equals(numCuenta.getPin(),this.estadoCuentaColones.pinEstadoCuentaColones.getText())){
+                ArrayList<Operacion> operaciones = OperacionBD.obtenerOperacionesPorNumCuenta(Encriptar.cifrar(this.estadoCuentaColones.numCuentaEstadoColones.getText()));
+                String consulta = "";
+                for(int i = 0;i < operaciones.size(); i++){
+                    double monto = operaciones.get(i).getMonto();
+                    if(operaciones.get(i).getMoneda().equals("Dólares")){
+                        monto = operaciones.get(i).getMonto() * this.tipoCambio.getCompra();
+                    }
+                   consulta += mostrarEstadoCuenta(operaciones.get(i).getFechaOperacion().toString(),operaciones.get(i).getTipo(),Math.round(monto*100.0)/100.0,operaciones.get(i).getCargo());
+                }
+                JOptionPane.showMessageDialog(null,"FECHA \t\t TIPO \t\t MONTO \t\t CARGO \n" + consulta);
                 attempt = 0;
                 Operacion oper = new Operacion("consultas","colones",false,0, LocalDate.now());
                 OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(String.valueOf(numCuenta.getNumCuenta())));
@@ -77,7 +91,7 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
                 this.menuInicial.setVisible(true);
             }
             else{
-                JOptionPane.showConfirmDialog(null, "El pin que indico es incorrecto");
+                JOptionPane.showMessageDialog(null, "El pin que indico es incorrecto");
                 attempt++;
                 comprobrarIntentos(Encriptar.cifrar(this.estadoCuentaColones.pinEstadoCuentaColones.getText()),this.estadoCuentaColones,"Se ha inactivado la cuenta por fallar el pin repetiadamente");
             }
@@ -85,6 +99,12 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
         else{
             JOptionPane.showMessageDialog(null, "La cuenta que digito no existe o está inactiiva");
         }
+    }
+    
+    public String mostrarEstadoCuenta(String fecha, String tipo, double monto, String cargo) throws IOException{
+       
+        return (fecha + " \t " + tipo + " \t " + monto + " \t\t " + cargo + "\n");
+       
     }
     private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
         

@@ -33,6 +33,36 @@ import validaciones.*;
  *
  * @version 1.0
  */
-public class ControladorConsultarEstadoCuentaDolares {
+public class ControladorConsultarEstadoCuentaDolares implements ActionListener{
+     public EstadoDeCuentaColones estadoCuentaDolares;
+     private int attempt = 0;
+     private Menu menuInicial;
+     
+     public ControladorConsultarEstadoCuentaDolares( EstadoDeCuentaColones pEstadoCuentaColones, Menu pMenuInicial){
+        this.estadoCuentaDolares = pEstadoCuentaColones;
+        this.menuInicial = pMenuInicial;
+        this.estadoCuentaDolares.Consultar.addActionListener(this);
+        this.estadoCuentaDolares.volverPin1.addActionListener(this);
+    }
     
+    @Override
+    public void actionPerformed(ActionEvent evento) {
+        switch(evento.getActionCommand()){
+            case "Consultar estado": {
+                try {
+                    realizarConsultaCuentaColones();
+                } catch (MessagingException ex) {
+                    Logger.getLogger(ControladorConsultarEstadoCuentaColones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+               break;
+
+            case "Volver":
+                controladores.ControladoresGlobales.volver();
+                this.estadoCuentaColones.setVisible(false);
+            default:
+                break;
+        }
+    }
+     public void realizarConsultaCuentaColones() throws MessagingException{
 }
