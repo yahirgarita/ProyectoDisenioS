@@ -41,7 +41,6 @@ public class ControladorListarCuentas implements ActionListener{
         this.listarCuentas.botonVolver.addActionListener(this);
         this.listarCuentas.botonConsultarInfoCliente.addActionListener(this);
         recolectarInfoCuentas();
-        organizarPersona();
     }  
     
     @Override
@@ -67,8 +66,9 @@ public class ControladorListarCuentas implements ActionListener{
         }        
     }
     
-    private void organizarPersona(){
-        personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
+    private void organizarCuentas(ArrayList<CuentaBancaria> cadenaCuenta){
+        
+        cadenaCuenta.sort(Comparator.comparing(CuentaBancaria::getSaldo).reversed());
     }
     
     
@@ -115,6 +115,7 @@ public class ControladorListarCuentas implements ActionListener{
         this.listarCuentas.tablaCuenta.setModel(this.listarCuentas.modeloCuenta);
         
         ArrayList<CuentaBancaria> cuentaBancCadena = recolectarInfoCuentas();
+        organizarCuentas(cuentaBancCadena);
         for(CuentaBancaria count: cuentaBancCadena){
             Object[] msg = {count.getNumCuenta(),count.getEstatus(),count.getSaldo(),
             CuentaBD.saberDuenioCuenta(Encriptar.cifrar(String.valueOf(count.getNumCuenta()))).getNombreCompleto(),

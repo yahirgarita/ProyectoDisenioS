@@ -54,7 +54,7 @@ public class ControladorListarClientes implements ActionListener{
         this.listarClientes.botonVolver.addActionListener(this);
         this.listarClientes.botonConsultarInfoCliente.addActionListener(this);
         convetirClientesAObj();
-        organizarPersona();
+        organizarClientes();
 
     }
     
@@ -73,9 +73,19 @@ public class ControladorListarClientes implements ActionListener{
                 break;
        }        
     }
-    private void organizarPersona(){
+    private void organizarClientes(){
         personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
     }
+    /*
+    private void organizarPersona(){
+        Persona clienteLista[]= new Persona[personasEnBD.size()];
+        int index = 0;
+        for(Persona cadaCliente : personasEnBD){
+            clienteLista [index] = cadaCliente;
+            index++;
+        }
+        Ordenamiento.insercion((Comparable[]) clienteLista);
+    }*/
     
     private void convetirClientesAObj(){
         ResultSet resultado = PersonaBD.cargarTodosLosClientes();
