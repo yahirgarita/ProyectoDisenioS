@@ -94,7 +94,7 @@ public class ControladorCambiarPin implements ActionListener{
         }else{
             JOptionPane.showMessageDialog(null, "El Pin que ingreso es erroneo, revise los datos ingresados");
             attempt++;
-            comprobrarIntentos(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta())),this.cambiarPin2, "Su cuenta a pasado a esta Inactiva por fallar el PIN");
+            comprobrarIntentos(Encriptar.cifrar(String.valueOf(cuentaBanc.getNumCuenta())),this.cambiarPin2, "Su cuenta a pasado a estado Inactiva por fallar el PIN");
         }
     }
     

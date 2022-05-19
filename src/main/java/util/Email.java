@@ -20,7 +20,7 @@ import javax.mail.SendFailedException;
  *
  * @author Jimmy
  */
-public class Email {
+public interface Email {
    
     public static void enviarEmail(String correo,String mensaje) throws MessagingException {
         String host = "smtp.gmail.com";

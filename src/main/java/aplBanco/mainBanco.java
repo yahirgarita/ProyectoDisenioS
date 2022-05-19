@@ -10,9 +10,6 @@ import controladores.ControladorMenu;
  */
 public class mainBanco {
     public static void main(String[] arg){
-        /*RegistroCliente inicio = new RegistroCliente();
-        ControladorRegistroClientes controladorReg = new ControladorRegistroClientes(inicio);
-        controladorReg.registrarCliente.setVisible(true);*/
         Menu inicio = new Menu();
         ControladorMenu controladorMenu = new ControladorMenu(inicio);
         controladorMenu.menuInicial.setVisible(true);
