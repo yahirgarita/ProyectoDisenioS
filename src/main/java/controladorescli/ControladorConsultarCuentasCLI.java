@@ -7,15 +7,10 @@ package controladorescli;
 
 import cli.ConsultarCuentasCLI;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
-import logicadeaccesoadatos.ConexionBD;
 import logicadeaccesoadatos.CuentaBD;
-import logicadeaccesoadatos.OperacionBD;
 import logicadenegocios.CuentaBancaria;
-import logicadenegocios.Operacion;
 import logicadenegocios.Persona;
 import util.Encriptar;
 

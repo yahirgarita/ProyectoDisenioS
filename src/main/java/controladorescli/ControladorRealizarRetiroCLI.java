@@ -130,7 +130,7 @@ public class ControladorRealizarRetiroCLI {
                         OperacionBD.realizarOperacionEnBD(oper, Encriptar.cifrar(numeroCuenta));
 
                         CuentaBancaria clienteActual = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(numeroCuenta));
-                        mensaje = "Estimado usuario, el monto de este retiro es " + monto + " colones \n" +
+                        mensaje = "Estimado usuario, el monto de este retiro es " + monto + " dolares \n" +
                                 "[Según el BCCR, el tipo de cambio de venta del dólar de hoy es: " + tipoCambio.getVenta() + "]\n"+
                                 "[El monto equivalente de su retiro es "+ Math.round(montoEnColones*100)/100 + " colones]\n"+
                                 "[El monto cobrado por concepto de comisión fue de " + comision + "colones, que fueron rebajados automáticamente de su saldo actual\n";
