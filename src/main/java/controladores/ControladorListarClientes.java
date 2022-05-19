@@ -25,6 +25,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 import util.Comparable;
+import util.Ordenamiento;
+import java.lang.*;
 
 /**
  * @author Carlos Rojas Molina
@@ -38,8 +40,6 @@ public class ControladorListarClientes implements ActionListener{
     public ListarClientes listarClientes;
     private Menu menuInicial;
     private ArrayList<Persona> personasEnBD;
-    
-    
     
     /**
      * ControladorListarClientes
@@ -76,8 +76,7 @@ public class ControladorListarClientes implements ActionListener{
        }        
     }
     private void organizarPersona(){
-
-        Persona clienteLista[]= new Persona[personasEnBD.size()];
+        Persona clienteLista[] = new Persona[personasEnBD.size()];
         int index = 0;
         for(Persona cadaCliente : personasEnBD){
             clienteLista [index] = cadaCliente;
@@ -90,6 +89,7 @@ public class ControladorListarClientes implements ActionListener{
     private void convetirClientesAObj(){
         ResultSet resultado = PersonaBD.cargarTodosLosClientes();
         try{
+            int index = 0;
             while(resultado.next()){
                 Persona infoCliente = new Persona(resultado.getString("primerApellido"),
                 resultado.getString("segundoApellido"), resultado.getString("nombre"), Integer.parseInt(resultado.getString("identificacion")), LocalDate.parse(resultado.getString("fechaNacimiento"),
