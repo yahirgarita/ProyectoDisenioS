@@ -44,6 +44,7 @@ public class ControladorMenu implements ActionListener{
         this.menuInicial.btnGananciaBanco.addActionListener(this);
         this.menuInicial.btnCerrar.addActionListener(this);
         this.menuInicial.btnEstadoCuentaColones.addActionListener(this);
+        this.menuInicial.btnEstadoCuentaDolares.addActionListener(this);
     }
      
      @Override
@@ -83,7 +84,9 @@ public class ControladorMenu implements ActionListener{
                 break;
              case "Ganancia comisiones banco": consultarGananciasTotales();
                 break;
-             case "Consultar estado cuenta en colones": consultarEstadoCuentaColoes();
+             case "Consultar estado cuenta en colones": consultarEstadoCuentaColones();
+                break;
+             case "Consultar estado cuenta en dolares": consultarEstadoCuentaDolares();
                 break;
              case "Cerrar": cerrar();
                 default:break;
@@ -211,10 +214,16 @@ public class ControladorMenu implements ActionListener{
          this.menuInicial.setVisible(false);
      }
      
-     private void consultarEstadoCuentaColoes(){
+     private void consultarEstadoCuentaColones(){
          EstadoDeCuentaColones estado = new EstadoDeCuentaColones();
          ControladorConsultarEstadoCuentaColones controEstadoColones =  new ControladorConsultarEstadoCuentaColones(estado, menuInicial);
          controEstadoColones.estadoCuentaColones.setVisible(true);
+         this.menuInicial.setVisible(false);
+     }
+     private void consultarEstadoCuentaDolares(){
+         EstadoDeCuentaDolares estadoD = new EstadoDeCuentaDolares();
+         ControladorConsultarEstadoCuentaDolares controDolares =  new ControladorConsultarEstadoCuentaDolares(estadoD, menuInicial);
+         controDolares.estadoCuentaDolares.setVisible(true);
          this.menuInicial.setVisible(false);
      }
      

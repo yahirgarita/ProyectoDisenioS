@@ -71,8 +71,6 @@ public class ControladorConsultarEstadoCuentaColones implements ActionListener{
     public void realizarConsultaCuentaColones() throws MessagingException, IOException{
         CuentaBancaria numCuenta = CuentaBD.recuperarCuentaXNum(Encriptar.cifrar(this.estadoCuentaColones.numCuentaEstadoColones.getText()));
         if(numCuenta != null && !Objects.equals(numCuenta.getEstatus(),"Inactiva")){
-            System.out.println(numCuenta.getPin());
-            System.out.println(this.estadoCuentaColones.pinEstadoCuentaColones.getText());
             if(Objects.equals(numCuenta.getPin(),this.estadoCuentaColones.pinEstadoCuentaColones.getText())){
                 ArrayList<Operacion> operaciones = OperacionBD.obtenerOperacionesPorNumCuenta(Encriptar.cifrar(this.estadoCuentaColones.numCuentaEstadoColones.getText()));
                 String consulta = "";
