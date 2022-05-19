@@ -97,7 +97,7 @@ public class ControladorRealizarDepositoCLI {
             mensaje = "Estimado usuario, se ha realizado correctamente el deposito " + montoEnDolar + " dólares\n" +
                 "[Según el BCCR, el tipo de cambio de compra del dólar de hoy " + LocalDate.now().toString() + " es de: " + dolar + "]\n" +
                 "[El monto equivalente en colones es: " + Math.round(((Double.parseDouble(montoEnDolar) * dolar))*100.0)/100.0 + "] \n"+
-                "[El monto real depositado a su cuenta " + numeroCuenta + " es de " + Math.round(montoColones *100.0)+ " colones]\n" +
+                "[El monto real depositado a su cuenta " + numeroCuenta + " es de " + Math.round(montoColones *100.0)/100.0 + " colones]\n" +
                 "[El monto cobrado por concepto añadigo de comisión fue de " + Math.round(comision*100.0)/100.0 + " colones, que fueron rebajados de forma automatica de su saldo actual]";
            
         }else{
