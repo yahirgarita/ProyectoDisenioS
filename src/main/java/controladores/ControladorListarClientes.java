@@ -76,15 +76,8 @@ public class ControladorListarClientes implements ActionListener{
        }        
     }
     private void organizarPersona(){
-        Persona clienteLista[] = new Persona[personasEnBD.size()];
-        int index = 0;
-        for(Persona cadaCliente : personasEnBD){
-            clienteLista [index] = cadaCliente;
-            index++;
-        }
-        Ordenamiento.insercion(clienteLista);
+        personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
     }
-    
     
     private void convetirClientesAObj(){
         ResultSet resultado = PersonaBD.cargarTodosLosClientes();
