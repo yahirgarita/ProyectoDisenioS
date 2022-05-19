@@ -71,6 +71,7 @@ public class ControladorListarCuentas implements ActionListener{
         personasEnBD.sort(Comparator.comparing(Persona::getPrimerApellido));
     }
     
+    
     private void consultarCuentas() throws SQLException{
         
         //Tabla con todos los clientes
