@@ -7,7 +7,7 @@ package util;
  * 
  * @version 1.0
  */
-public class Encriptar {
+public interface Encriptar {
   public static String cifrar(String txtACifrar){
       StringBuilder msgCifrado = new StringBuilder();
       char[] caracter = txtACifrar.toCharArray();
