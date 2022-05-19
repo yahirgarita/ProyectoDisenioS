@@ -7,12 +7,9 @@ package controladorescli;
 
 import cli.CambiarPinCLI;
 import java.io.IOException;
-import java.time.LocalDate;
 import javax.mail.MessagingException;
 import logicadeaccesoadatos.CuentaBD;
-import logicadeaccesoadatos.OperacionBD;
 import logicadenegocios.CuentaBancaria;
-import logicadenegocios.Operacion;
 import logicadenegocios.Persona;
 import util.Email;
 import util.Encriptar;

@@ -15,7 +15,6 @@ import logicadenegocios.CuentaBancaria;
 import logicadenegocios.Operacion;
 import util.Encriptar;
 import util.TipoCambio;
-import validaciones.ValidarTipoDeDato;
 
 /**
  *
