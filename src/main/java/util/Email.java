@@ -8,6 +8,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
+import javax.mail.SendFailedException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,38 +21,7 @@ import java.util.Properties;
  * @author Jimmy
  */
 public class Email {
-    public static void enviarEmail(String correo, String mensaje){
-        Properties properties = new Properties();
-        properties.setProperty("mail.smtp.host", "smtp.gmail.com");
-        properties.setProperty("mail.smtp.starttls.enable", "true");
-        properties.setProperty("mail.smtp.port", "587");
-        properties.setProperty("mail.smtp.auth", "true");
-
-        Session session = Session.getDefaultInstance(properties);
-        String correoSend = "proyectodisenio13@gmail.com";
-        String password = "proyecto1234";
-        String asunto = "Cuenta";
-
-        MimeMessage mail = new MimeMessage(session);
-        try{
-            mail.setFrom(new InternetAddress(correoSend));
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(correo));
-            mail.setSubject(asunto);
-            mail.setText(mensaje);
-            Transport transport = session.getTransport("smtp");
-            transport.connect(correoSend, password);
-            transport.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
-            transport.close();
-            System.out.println("Correo enviado");
-        }catch (AddressException e){
-            System.out.println(e.toString());
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-}
-   /*
+   
     public static void enviarEmail(String correo,String mensaje) throws MessagingException {
         String host = "smtp.gmail.com";
         //String contrasena = "rapiexpress1234";
@@ -86,4 +56,4 @@ public class Email {
     }
 
 }
-    */
+    
