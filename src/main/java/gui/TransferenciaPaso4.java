@@ -49,7 +49,7 @@ public class TransferenciaPaso4 extends javax.swing.JFrame {
 
         volverTransferencia4.setText("Volver");
 
-        continuarTransferencia4.setText("Realizar retiro");
+        continuarTransferencia4.setText("Realizar transferencia");
         continuarTransferencia4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 continuarTransferencia4ActionPerformed(evt);
