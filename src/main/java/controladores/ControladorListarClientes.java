@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
+import util.Comparable;
 
 /**
  * @author Carlos Rojas Molina
@@ -50,7 +51,7 @@ public class ControladorListarClientes implements ActionListener{
     public ControladorListarClientes(ListarClientes pClientes, Menu pMenuInicial){
         this.listarClientes = pClientes;
         this.menuInicial = pMenuInicial;
-        this.personasEnBD = new ArrayList<>();
+        this.personasEnBD = new ArrayList<Persona>();
         this.listarClientes.botonConsultarClientes.addActionListener(this);
         this.listarClientes.botonVolver.addActionListener(this);
         this.listarClientes.botonConsultarInfoCliente.addActionListener(this);
@@ -75,7 +76,14 @@ public class ControladorListarClientes implements ActionListener{
        }        
     }
     private void organizarPersona(){
-        Ordenamiento.ordenarAscendentemente(personasEnBD);
+
+        Persona clienteLista[]= new Persona[personasEnBD.size()];
+        int index = 0;
+        for(Persona cadaCliente : personasEnBD){
+            clienteLista [index] = cadaCliente;
+            index++;
+        }
+        Ordenamiento.insercion(clienteLista);
     }
     
     
