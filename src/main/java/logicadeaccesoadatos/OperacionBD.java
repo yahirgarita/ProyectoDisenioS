@@ -33,7 +33,7 @@ public class OperacionBD {
     public static int numOperacionEnCuenta(String pNumCuenta){
         conexionBD.conexionDataBase();
         int cont = 0;
-        ResultSet resultado = conexionBD.inquiry("select * from Operacion where cuenta = '" + pNumCuenta + "'and tipo = 'depósitos' or tipo = 'retiros'");
+        ResultSet resultado = conexionBD.inquiry("select * from Operacion where cuenta = '" + pNumCuenta + "'and (tipo = 'depósitos' or tipo = 'retiros')"); hola
         try{
             while(resultado.next()){
                 cont ++;

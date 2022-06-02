@@ -24,10 +24,12 @@ public class ControladorDepositoDolares implements ActionListener{
     public RealizarDepositoEnDolaresPaso1 depositoDolares1;
     public RealizarDepositoEnDolaresPaso2 depositoDolares2;
     private TipoCambio tipoCambio = new TipoCambio();
+    private Menu menuInicial;
     
-    public ControladorDepositoDolares(RealizarDepositoEnDolaresPaso1 pRealizarDepositoD, RealizarDepositoEnDolaresPaso2 pRealizarDepositoD2){
+    public ControladorDepositoDolares(RealizarDepositoEnDolaresPaso1 pRealizarDepositoD, RealizarDepositoEnDolaresPaso2 pRealizarDepositoD2, Menu pMenuInicial){
        this.depositoDolares1 = pRealizarDepositoD;
        this.depositoDolares2 = pRealizarDepositoD2;
+       this.menuInicial = pMenuInicial;
        this.depositoDolares1.continuarDepoDolares.addActionListener(this);
        this.depositoDolares1.volverDepoDolares.addActionListener(this);
        this.depositoDolares2.realizarDeposito.addActionListener(this);
@@ -85,6 +87,7 @@ public class ControladorDepositoDolares implements ActionListener{
                         "[El monto real depositado a su cuenta " + this.depositoDolares2.labelInfo.getText() + " es de " + Math.round(montoColones *100.0)+ " colones]\n" +
                         "[El monto cobrado por concepto añadigo de comisión fue de " + Math.round(comision*100.0)/100.0 + " colones, que fueron rebajados de forma automatica de su saldo actual]");
                 this.depositoDolares2.setVisible(false);
+                this.menuInicial.setVisible(true);
            
            }else{
                 CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(montoColones)),Encriptar.cifrar(this.depositoDolares2.labelInfo.getText()));
@@ -97,6 +100,7 @@ public class ControladorDepositoDolares implements ActionListener{
                         "[El monto real depositado a su cuenta " + this.depositoDolares2.labelInfo.getText() + " es de " + montoColones + " colones]\n" +
                         "[El monto cobrado por concepto añadigo de comisión fue de 0 colones, que fueron rebajados de forma automatica de su saldo actual]");
                 this.depositoDolares2.setVisible(false);
+               this.menuInicial.setVisible(true);
             }
         }
        else{

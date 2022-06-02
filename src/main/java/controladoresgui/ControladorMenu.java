@@ -135,7 +135,7 @@ public class ControladorMenu implements ActionListener{
      private void realizarDepositoEnColones(){
          RealizarDepositoEnColones depositoEnColones = new RealizarDepositoEnColones();
          RealizarDepositoEnColonesPaso2 depositoColones2 = new RealizarDepositoEnColonesPaso2();
-         ControladorDepositoColones controColones = new ControladorDepositoColones(depositoEnColones, depositoColones2);
+         ControladorDepositoColones controColones = new ControladorDepositoColones(depositoEnColones, depositoColones2,menuInicial);
          controColones.realizarDepositoC.setVisible(true);
          this.menuInicial.setVisible(false);
      }
@@ -143,7 +143,7 @@ public class ControladorMenu implements ActionListener{
      private void realizarDepositoEnDolares(){
          RealizarDepositoEnDolaresPaso1 depositoEnDolares = new RealizarDepositoEnDolaresPaso1();
          RealizarDepositoEnDolaresPaso2 depositoDolares2 = new RealizarDepositoEnDolaresPaso2();
-         ControladorDepositoDolares controDolares = new ControladorDepositoDolares(depositoEnDolares, depositoDolares2);
+         ControladorDepositoDolares controDolares = new ControladorDepositoDolares(depositoEnDolares, depositoDolares2, menuInicial);
          controDolares.depositoDolares1.setVisible(true);
          this.menuInicial.setVisible(false);
      }

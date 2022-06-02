@@ -121,7 +121,6 @@ public class CuentaBD {
         conexionBD.conexionDataBase();
         ResultSet resultado = conexionBD.inquiry("select * from PersonaCuenta where numeroCuenta = '" + pNumCuenta + "'");
         try{
-            
             while(resultado.next()){
                 ResultSet resuPersona = conexionBD.inquiry("select * from Persona where codigo = '" + resultado.getString("codigoPersona") + "'");
                 while(resuPersona.next()){

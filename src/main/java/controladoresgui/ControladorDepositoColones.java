@@ -22,9 +22,10 @@ public class ControladorDepositoColones implements ActionListener{
    public RealizarDepositoEnColones realizarDepositoC;
    public RealizarDepositoEnColonesPaso2 realizarDepositoC2;
    private Menu menuInicial;
-   public ControladorDepositoColones(RealizarDepositoEnColones pRealizarDepositoC, RealizarDepositoEnColonesPaso2 pRealizarDepositoC2){
+   public ControladorDepositoColones(RealizarDepositoEnColones pRealizarDepositoC, RealizarDepositoEnColonesPaso2 pRealizarDepositoC2, Menu pMenuInicial){
        this.realizarDepositoC = pRealizarDepositoC;
        this.realizarDepositoC2 = pRealizarDepositoC2;
+       this.menuInicial = pMenuInicial;
        this.realizarDepositoC.continuarDepoColones.addActionListener(this);
        this.realizarDepositoC.volverDepoColones.addActionListener(this);
        this.realizarDepositoC2.realizarDeposito.addActionListener(this);
@@ -75,6 +76,7 @@ public class ControladorDepositoColones implements ActionListener{
                         "[El monto real deposito a su cuenta " + this.realizarDepositoC2.labelInfo.getText() + " es de" + montoConvDouble + " colones]\n" +
                         "[El monto cobrado por concepto añadigo de comisión fue de " + comision + " colones, que fueron rebajados de forma automatica de su saldo actual]");
                 this.realizarDepositoC2.setVisible(false);
+                this.menuInicial.setVisible(true);
            
            }else{
                 CuentaBD.actualizarSaldo(Encriptar.cifrar(String.valueOf(monto)),Encriptar.cifrar(this.realizarDepositoC2.labelInfo.getText()));
@@ -84,6 +86,7 @@ public class ControladorDepositoColones implements ActionListener{
                         "[El monto real deposito a su cuenta " + this.realizarDepositoC2.labelInfo.getText() + " es de " + monto + " colones]\n" +
                         "[El monto cobrado por concepto añadigo de comisión fue de 0 colones, que fueron rebajados de forma automatica de su saldo actual]");
                 this.realizarDepositoC2.setVisible(false);
+                this.menuInicial.setVisible(true);
             }
         }
        else{

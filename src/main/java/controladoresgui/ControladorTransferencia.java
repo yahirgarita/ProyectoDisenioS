@@ -75,7 +75,7 @@ public class ControladorTransferencia implements ActionListener{
             }
                  break;
 
-             case "Realizar retiro": realizarTransferencia();
+             case "Realizar transferencia": realizarTransferencia();
                  break;      
              case "Volver":
                  controladoresgui.ControladoresGlobales.volver();
@@ -201,7 +201,7 @@ public class ControladorTransferencia implements ActionListener{
     }
     
     private  void comprobrarIntentos(String pNumCuenta, JFrame frame, String pMsg) throws MessagingException{
-        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(this.transferencia2.jLabel3.getText());
+        Persona comparacionPersonaCuenta = CuentaBD.compararPersonaConCuenta(Encriptar.cifrar((this.transferencia2.jLabel3.getText())));
         if(attempt == 2){
             CuentaBD.modificarEstado(pNumCuenta, "Inactiva");
             attempt = 0;
