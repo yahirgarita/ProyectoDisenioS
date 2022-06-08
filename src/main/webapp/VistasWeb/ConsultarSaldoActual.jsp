@@ -3,13 +3,6 @@
     Created on : 18 may. 2022, 03:26:15
     Author     : yahir
 --%>
-
-<%-- 
-    Document   : ConsultaDeSaldoActual
-    Created on : May 11, 2022, 9:55:56 PM
-    Author     : sebashdez
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +23,7 @@
                     </div>
                 </div>
                 <br>
-                <form action="/" method="GET" >
+                <form  method="GET" action="../ConsultarSaldoActualWeb" >
                     <div class="form-group">
                         <label>Numero de cuenta</label>
                         <input type="text" class "form-control" name = "numeroCuenta" placeholder="Numero de cuenta" required>
@@ -40,10 +33,10 @@
                         <input type="password" class "form-control" name = "pin" placeholder="Pin" required>
                     </div>
                     <div class="box" style="text-align: center">
-                        <button type="submit" class= "btn btn-primary">
+                        <button type="submit" class= "btn btn-primary" name="colones" value="colones" >
                             Consultar en colones
                         </button>
-                        <button type="submit" class= "btn btn-secondary ">
+                        <button type="submit" class= "btn btn-secondary" name="dolares" value="dolares">
                             Consultar en dolares
                         </button>
                     </div>
@@ -53,3 +46,4 @@
         </div>
     </div>
 </html>
+

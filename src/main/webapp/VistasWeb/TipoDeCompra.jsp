@@ -3,7 +3,7 @@
     Created on : 18 may. 2022, 04:16:47
     Author     : yahir
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,7 @@
                     <table class="table table-striped">
                         <div class="card-body">
                             <h4>
-                                1 dolar = ${tipoDeCambioCompra}
+                                1 dolar = ${tipoCambio}
                             </h4>
                         </div>
                     </table>

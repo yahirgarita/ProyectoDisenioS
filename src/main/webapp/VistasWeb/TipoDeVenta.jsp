@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +30,7 @@
                     <table class="table table-striped">
                         <div class="card-body">
                             <h4>
-                                1 dolar = ${tipoDeCambioVenta}
+                                1 dolar = ${tipoCambio}
                             </h4>
                         </div>
                     </table>

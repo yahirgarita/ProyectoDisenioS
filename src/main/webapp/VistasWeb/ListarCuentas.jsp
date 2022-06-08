@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,24 +31,31 @@
                         <th>Identificacion</th>
                     </tr>
                 </thead>
-                {{#each cuenta}}
+                
                 <tbody>
+                    <c:forEach var="cuenta" items="${cuentas}">
                     <tr>
-                        <td>{{cuenta}}</td>
-                        <td>{{estatus}}</td>
-                        <td>{{saldo}}</td>
-                        <td>{{propietario}}</td>
-                        <td>{{identificacion}}</td>
+                        <td><c:out value="${cuenta.get('numeroCuenta')}"/></td>
+                        <td><c:out value="${cuenta.get('estatus')}"/></td>
+                        <td><c:out value="${cuenta.get('saldo')}"/></td>
+                        <td><c:out value="${cuenta.get('nombre')}"/></td>
+                        <td><c:out value="${cuenta.get('identificacion')}"/></td>
                     </tr>
+                    </c:forEach>
                 </tbody>
-                {{/each}}
             </div>
         </div>
     </table>
     <div class="form-group text-center">
-        <button type="submit" class= "btn btn-primary">
-            Consultar
-        </button>
-        <a href="../index.html">Cancelar</a>
+        <form METHOD="GET" action="MostrarCuentaWeb">
+               
+              <label>Numero de cuenta :</label>
+                <input type="Number"  name="numeroCuenta" required>
+                <br><br>
+                <button type="submit" class= "btn btn-primary">
+                     Consultar
+                 </button>
+        </form>
+        <a href="index.html">Cancelar</a>
     </div>
 </html>

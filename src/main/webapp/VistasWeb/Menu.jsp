@@ -24,19 +24,16 @@
                         <a class="btn btn-secondary" href="CrearCuenta.jsp"> Crear cuenta bancaria</a>
                     </div>
                     <div class="col">
-                        <a class="btn btn-secondary" href="ListarClientes.jsp"> Listar clientes</a>
+                        <a class="btn btn-secondary" href="../ConsultarClientesWeb"> Listar clientes</a>
                     </div>
                     <div class="col">
-                        <a class="btn btn-secondary" href="ListarCuentas.jsp"> Listar cuentas</a>
+                        <a class="btn btn-secondary" href="../ConsultarCuentasWeb"> Listar cuentas</a>
                     </div>
                     <div class="col">
                         <a class="btn btn-secondary" href="CambiarPinPaso1.jsp"> Cambiar PIN</a>
                     </div>
                     <div class="col">
                         <a class="btn btn-secondary" href="ConsultarSaldoActual.jsp"> Consultar saldo actual</a>
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-secondary" href="vistaWeb/TransferenciasEntreCuentas"> Saldo actual en dólares</a>
                     </div>
                     <div class="col">
                         <a class="btn btn-secondary"  href="DepositoColones.jsp"> Depositar en colones</a>
@@ -51,13 +48,16 @@
                         <a class="btn btn-secondary" href="RetiroDolares.jsp"> Retiro en dólares</a>
                     </div>
                     <div class="col">
-                        <a class="btn btn-secondary" href="TipoDeVenta.jsp"> Tipo de cambio de venta</a>
+                        <a class="btn btn-secondary" href="../ConsultarTipoCambioVentaWeb"> Tipo de cambio de venta</a>
                     </div>
                     <div class="col">
-                        <a class="btn btn-secondary" href="TipoDeCompra.jsp"> Tipo de cambio compra </a>
+                        <a class="btn btn-secondary" href="../ConsultarTipoCambioWeb"> Tipo de cambio compra </a>
                     </div>
                     <div class="col">
                         <a class="btn btn-secondary" href="Transferencia.jsp""> Realizar transferencia</a>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-secondary" href="ConsultarEstadoCuenta.jsp"> Consultar Estado de Cuenta</a>
                     </div>
                     <div class="col">
                         <a class="btn btn-secondary" href="ComisionesPorCuenta.jsp"> Ganancias de comisiones por cuenta</a>
